@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import QRCode from 'qrcode'
 import Icon from '../components/map/icons.jsx'
 import { signInWithGoogle } from '../lib/auth.js'
 import './landing.css'
@@ -23,6 +24,39 @@ const Phone = ({ shot, alt, className = '' }) => (
   <figure className={`lp-phone ${className}`}><img src={img(shot)} alt={alt} loading="lazy" decoding="async" /></figure>
 )
 const CTA = ({ label = 'Continue with Google' }) => <button className="primary lp-cta" onClick={signInWithGoogle}>{label}</button>
+
+function ScanToJoin() {
+  const [qr, setQr] = useState('')
+  const dialog = useRef(null)
+  const joinUrl = `${window.location.origin}/`
+  useEffect(() => {
+    let active = true
+    QRCode.toDataURL(joinUrl, {
+      width: 1024, margin: 4, errorCorrectionLevel: 'M',
+      color: { dark: '#000000', light: '#FFFFFF' },
+    }).then((src) => { if (active) setQr(src) }).catch(() => {})
+    return () => { active = false }
+  }, [joinUrl])
+  return (
+    <section className="lp-join" aria-labelledby="join-h">
+      <h2 id="join-h">Scan to join on your phone</h2>
+      {qr ? <a href={joinUrl} aria-label="Open Constellation U"><img className="lp-join-qr" src={qr} alt="QR code linking to Constellation U" width="1024" height="1024" /></a>
+        : <p role="status">Preparing QR code. You can also open the link below.</p>}
+      <a className="lp-join-link" href={joinUrl}>{window.location.host}</a>
+      <p className="lp-fine">Open your camera, scan the code, then continue with Google.</p>
+      <button type="button" disabled={!qr} onClick={() => dialog.current?.showModal()}>Enlarge for the room</button>
+      <dialog ref={dialog} className="lp-join-dialog" aria-labelledby="join-room-h">
+        <div className="lp-join-room">
+          <h2 id="join-room-h">Scan to join Constellation U</h2>
+          <img className="lp-join-qr" src={qr || undefined} alt="Scan this QR code to open Constellation U and sign in" width="1024" height="1024" />
+          <a className="lp-join-link" href={joinUrl}>{window.location.host}</a>
+          <p>Scan with your camera, then continue with Google.</p>
+          <button type="button" onClick={() => dialog.current?.close()}>Close</button>
+        </div>
+      </dialog>
+    </section>
+  )
+}
 
 function useReveal() {
   const ref = useRef(null)
@@ -104,11 +138,7 @@ export default function Landing() {
           <CTA />
           <p className="lp-fine">Sign in with Google. Other students only ever see the nickname you pick.</p>
         </div>
-        <div className="lp-hero-art" aria-hidden="true">
-          <Phone shot="half" alt="" className="p1" />
-          <Phone shot="map" alt="" className="p2" />
-          <Phone shot="constellation" alt="" className="p3" />
-        </div>
+        <ScanToJoin />
       </header>
 
       <LaunchVideo />
