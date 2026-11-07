@@ -14,6 +14,7 @@ export const TABS = {
   student: [
     { to: '#/', label: 'Explore', icon: 'map', match: (r) => r.name === '' || r.name === 'event' },
     { to: '#/sky', label: 'My sky', icon: 'sky', match: (r) => r.name === 'sky' },
+    { to: '#/micro', label: 'Host', icon: 'plus', match: (r) => r.name === 'micro' }, // locked until 3 connections
   ],
   organizer: [
     { to: '#/host', label: 'My events', icon: 'list', match: (r) => r.name === 'host' && r.param !== 'new' },

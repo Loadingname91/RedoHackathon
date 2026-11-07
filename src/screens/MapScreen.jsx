@@ -8,6 +8,7 @@ import { busyFromIcs, gapFrom } from '../components/map/schedule.js'
 import { CAMPUS, fmtTime, isNow, isLaterToday, fit, whenText } from '../lib/geo.js'
 import { prefs, setPrefs, deviceId } from '../lib/identity.js'
 import { supabase } from '../lib/supabase.js'
+import { useAuth } from '../lib/auth.js'
 
 // OpenStreetMap tiles (no key). Darkened with a CSS filter in map.css. shortcut: OSM's public server is for light use; switch to a hosted tile provider for real traffic.
 export const TILES = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -112,6 +113,7 @@ function useMyConstellations() {
 }
 
 export default function MapScreen({ query }) {
+  const { role } = useAuth()
   const { events, counts, error } = useEvents()
   const [filter, setFilter] = useState('All')
   const [view, setView] = useState('map')
@@ -304,7 +306,9 @@ export default function MapScreen({ query }) {
                 <input type="file" accept="image/*" capture="environment" className="sr-only" onChange={(e) => e.target.files[0] && onScan(e.target.files[0])} />
               </label>
               <button onClick={() => setFitMode(true)}>What fits my gap</button>
-              <a className="btn" href="#/host/new">Host an event</a>
+              {role === 'student'
+                ? <a className="btn" href="#/micro">Host a meetup</a>
+                : <a className="btn" href="#/host/new">Host an event</a>}
             </div>
             {msg && <p role="status" className="cu-small" style={{ margin: 0 }}>{msg}</p>}
             <div className="cu-row cu-small"><Icon name="locate" size={16} />Your location never leaves this phone. Nobody sees you unless you check in.
