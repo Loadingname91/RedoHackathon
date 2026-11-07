@@ -28,7 +28,10 @@ export function useAuth() {
       load(data.session)
     })
     const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => { setTimeout(() => load(session), 0) })
-    return () => sub.subscription.unsubscribe()
+    // Any screen can ask every useAuth() to reload (e.g. after onboarding saves the profile).
+    const refresh = () => supabase.auth.getSession().then(({ data }) => load(data.session))
+    addEventListener('cu-auth', refresh)
+    return () => { sub.subscription.unsubscribe(); removeEventListener('cu-auth', refresh) }
   }, [])
   return state
 }
@@ -40,3 +43,5 @@ export const signOut = async () => { await supabase.auth.signOut(); setUid(null)
 
 // Where each role lands after signing in.
 export const homeFor = (role) => (role === 'admin' ? '#/admin' : role === 'organizer' ? '#/host' : '#/')
+
+export const refreshAuth = () => dispatchEvent(new Event('cu-auth'))

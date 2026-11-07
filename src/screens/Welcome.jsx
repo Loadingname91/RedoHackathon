@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { supabase } from '../lib/supabase.js'
 import { prefs, setPrefs } from '../lib/identity.js'
-import { useAuth, homeFor } from '../lib/auth.js'
+import { useAuth, homeFor, refreshAuth } from '../lib/auth.js'
+import AddInterest, { addInterest } from '../components/AddInterest.jsx'
 
 // First sign-in only: promise → your star → comfort → location → home for your role.
 const NAMES = ['Comet', 'Nova', 'Vega', 'Lumen', 'Orbit', 'Juniper', 'Pulsar', 'Halley', 'Lyra', 'Quasar']
@@ -44,6 +45,7 @@ export default function Welcome() {
     setPrefs({ nickname: nickname.trim(), interests, ...c, role: role === 'student' ? 'student' : role })
     const { error } = await supabase.rpc('save_my_profile', { p: { nickname: nickname.trim(), interests, comfort: c, onboarded: true } })
     if (error) return setErr(`Couldn't save your profile: ${error.message}`)
+    refreshAuth() // the app still thinks onboarding isn't done until it reloads the profile
     location.hash = homeFor(role)
   }
   const next = () => (step < STEPS.length - 1 ? setStep(step + 1) : finish())
@@ -80,9 +82,10 @@ export default function Welcome() {
         <div>
           <span style={{ display: 'flex', justifyContent: 'space-between' }}><label style={{ margin: 0 }}>Pick 2–3 interests</label><span className="muted" aria-live="polite">{interests.length} / 3</span></span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 8 }}>
-            {INTERESTS.map((i) => <button type="button" key={i} aria-pressed={interests.includes(i)} onClick={() => toggle(i)}
+            {[...INTERESTS, ...interests.filter((x) => !INTERESTS.includes(x))].map((i) => <button type="button" key={i} aria-pressed={interests.includes(i)} onClick={() => toggle(i)}
               style={interests.includes(i) ? { background: 'var(--gold)', color: '#1a1405', borderColor: 'var(--gold)' } : undefined}>{i}</button>)}
           </div>
+          <AddInterest full={interests.length >= 3} onAdd={(t) => setInterests((cur) => addInterest(cur, t))} />
         </div>
       </>)}
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { supabase, rpc, EVENT_COLS } from '../lib/supabase.js'
 import { deviceId, getSession, setSession, prefs } from '../lib/identity.js'
+import AddInterest, { addInterest } from '../components/AddInterest.jsx'
 import { SPARK } from '../components/social/Sky.jsx'
 import '../components/social/social.css'
 
@@ -66,8 +67,9 @@ export default function CheckIn({ param: eventId }) {
             <span className="cu-small" style={{ fontSize: 13 }} aria-live="polite">{interests.length} / 3</span>
           </legend>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-            {INTERESTS.map((i) => <button type="button" key={i} className="cu-chip" aria-pressed={interests.includes(i)} onClick={() => toggle(i)}>{i}</button>)}
+            {[...INTERESTS, ...interests.filter((x) => !INTERESTS.includes(x))].map((i) => <button type="button" key={i} className="cu-chip" aria-pressed={interests.includes(i)} onClick={() => toggle(i)}>{i}</button>)}
           </div>
+          <AddInterest full={interests.length >= 3} onAdd={(t) => setInterests((cur) => addInterest(cur, t))} />
         </fieldset>
         <div>
           <label htmlFor="clue">One clue so your match can find you <span style={{ fontWeight: 400, color: '#AEB7DA' }}>(optional)</span></label>
