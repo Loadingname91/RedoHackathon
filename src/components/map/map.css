@@ -1,3 +1,4 @@
+/* Map styles. Classes shared by name with the social screens are kept out of them with :not(.cu *). */
 .cu-map { position: fixed; inset: 0; background: var(--bg); }
 .leaflet-container { background: var(--bg); font-family: var(--font); }
 .leaflet-control-attribution { background: rgba(11,16,32,.8) !important; color: var(--muted) !important; }
@@ -15,13 +16,13 @@
 @keyframes cu-twinkle { 50% { transform: scale(1.25); filter: brightness(1.25); } }
 .cu-you { width: 18px; height: 18px; border-radius: 50%; background: #4C8DFF; border: 3px solid #fff; box-shadow: 0 0 0 6px rgba(76,141,255,.3); }
 
-.cu-top { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 12px 16px 8px;
+header.cu-top { position: fixed; top: 0; left: 0; right: 0; z-index: 500; padding: 12px 16px 8px;
   background: linear-gradient(var(--bg) 70%, transparent); display: grid; gap: 10px; }
 .cu-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-width: 0; }
 .cu-chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
-.cu-chip { min-height: 40px; padding: 0 12px; border-radius: 999px; font-size: 14px; white-space: nowrap; background: var(--surface); }
-.cu-chip[aria-pressed="true"] { background: var(--gold); color: #1a1405; border-color: var(--gold); }
-.cu-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 600; max-height: 60vh; overflow-y: auto;
+.cu-chip:not(.cu *) { min-height: 40px; padding: 0 12px; border-radius: 999px; font-size: 14px; white-space: nowrap; background: var(--surface); }
+.cu-chip:not(.cu *)[aria-pressed="true"] { background: var(--gold); color: #1a1405; border-color: var(--gold); }
+.cu-sheet:not(.cu *) { position: fixed; left: 0; right: 0; bottom: 0; z-index: 600; max-height: 60vh; overflow-y: auto;
   background: var(--surface); border-top: 1px solid var(--line); border-radius: 20px 20px 0 0; padding: 16px; }
 .cu-sheet-inner { max-width: 520px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
 .cu-item { display: grid; gap: 4px; padding: 12px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--line);
@@ -57,9 +58,9 @@
 .cu-planet .pill.fits { background: #F5C76B; border-color: #F5C76B; color: #0B1020; }
 .cu-planet:focus-visible { outline: 3px solid var(--gold); border-radius: 50%; }
 
-.cu-seg { display: flex; background: #161E3E; border: 1px solid #2C3660; border-radius: 22px; padding: 3px; }
-.cu-seg button { min-height: 38px; min-width: 52px; border: 0; border-radius: 19px; background: transparent; color: #C9D0EC; font: 600 13px var(--font); padding: 0 12px; }
-.cu-seg button[aria-pressed="true"] { background: #F5C76B; color: #0B1020; }
+.cu-seg:not(.cu *) { display: flex; background: #161E3E; border: 1px solid #2C3660; border-radius: 22px; padding: 3px; }
+.cu-seg:not(.cu *) button { min-height: 38px; min-width: 52px; border: 0; border-radius: 19px; background: transparent; color: #C9D0EC; font: 600 13px var(--font); padding: 0 12px; }
+.cu-seg:not(.cu *) button[aria-pressed="true"] { background: #F5C76B; color: #0B1020; }
 .cu-round { width: 44px; height: 44px; padding: 0; border-radius: 22px; background: #161E3E; border: 1px solid #2C3660; }
 .cu-handle { width: 40px; height: 4px; border-radius: 2px; background: #3A4570; justify-self: center; }
 .cu-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
@@ -67,8 +68,8 @@
 .cu-tag { padding: 3px 8px; border-radius: 8px; color: #fff; font: 700 11px var(--font); letter-spacing: .5px; }
 .cu-tag.live { background: #CC0000; } .cu-tag.later { background: #3A4570; }
 .cu-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex: none; }
-.cu-note { padding: 10px 12px; border-radius: 12px; background: #161E3E; border: 1px dashed #5A68A0; font-size: 13px; color: #C9D0EC; }
-.cu-small { font-size: 13px; color: #C9D0EC; }
+.cu-note:not(.cu *) { padding: 10px 12px; border-radius: 12px; background: #161E3E; border: 1px dashed #5A68A0; font-size: 13px; color: #C9D0EC; }
+.cu-small:not(.cu *) { font-size: 13px; color: #C9D0EC; }
 
 /* Show-my-location button: floats on the map's right edge, above the sheet and tab bar. */
 .cu-locate { position: fixed; right: 12px; top: 136px; z-index: 550; color: var(--text); }
