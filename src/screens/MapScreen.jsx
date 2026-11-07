@@ -9,8 +9,9 @@ import { CAMPUS, fmtTime, isNow, isLaterToday, fit, whenText } from '../lib/geo.
 import { prefs, setPrefs, deviceId } from '../lib/identity.js'
 import { supabase } from '../lib/supabase.js'
 
-export const TILES = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-export const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+// OpenStreetMap tiles (no key). Darkened with a CSS filter in map.css. shortcut: OSM's public server is for light use; switch to a hosted tile provider for real traffic.
+export const TILES = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+export const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 
 // Design 01 chips: one filter at a time.
 const CHIPS = ['All', 'Now', 'Later today', 'Open to meet', 'Food', 'Swag', 'Music', 'Games', 'Speaker', 'Step-free', 'Quiet']
