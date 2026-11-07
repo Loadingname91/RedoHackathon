@@ -4,6 +4,7 @@ import { deviceId, prefs, setPrefs, clearSession } from '../lib/identity.js'
 import { SPARK } from '../components/social/Sky.jsx'
 import { Back, Toggle } from './CheckIn.jsx'
 import '../components/social/social.css'
+import KeepInTouch from '../components/social/KeepInTouch.jsx'
 
 const HOST_AT = 3
 const read = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d } catch { return d } }
@@ -30,11 +31,6 @@ export default function MySky() {
   useEffect(() => { rpc('my_sky', { p_device: deviceId() }).then(setSky).catch((e) => setError(e.message)) }, [])
   useEffect(() => { loadLive().then(setLive) }, [])
 
-  async function removeConn(ev, c) {
-    if (!confirm(`Remove your line with ${c.other.nickname}? It's deleted for both of you. They aren't told.`)) return
-    try { await rpc('remove_connection', { p_id: ev.session.participant_id, p_secret: ev.session.secret, p_conn: c.id }); setLive(await loadLive()) }
-    catch (e) { setError(e.message) }
-  }
   async function leaveEvent(ev) {
     try { await rpc('leave_event', { p_id: ev.session.participant_id, p_secret: ev.session.secret }) } catch {}
     clearSession(ev.eventId); setLive(await loadLive())
@@ -48,7 +44,6 @@ export default function MySky() {
   }
 
   const groups = (sky?.constellations ?? []).filter((g) => !hiddenGroups.includes(g.name))
-  const people = live.flatMap((ev) => ev.conns.map((c) => ({ ...c, ev })))
   const current = live[0]
   const badges = p.badges ?? {}
   const cue = (k, d) => (p.cues ?? {})[k] ?? d
@@ -86,22 +81,7 @@ export default function MySky() {
           </section>
         )}
 
-        <section aria-labelledby="met">
-          <h2 id="met" className="cu-h" style={{ fontSize: 18, marginBottom: 6 }}>People you've met</h2>
-          <p className="cu-small" style={{ marginBottom: 10 }}>From events you're checked into now. Nicknames only.</p>
-          {people.length === 0 ? <p className="cu-sub">No lines yet. Connect with someone at an event.</p> : (
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 8 }}>
-              {people.map((c) => (
-                <li key={c.id} className="cu-card" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 14px' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d={SPARK} fill="#F5C76B" /></svg>
-                  <div style={{ flex: 1 }}><b style={{ font: '600 15px Inter, sans-serif' }}>{c.other.nickname}</b><p className="cu-small">Met at {c.ev.title}</p></div>
-                  <button className="cu-pill" onClick={() => removeConn(c.ev, c)} aria-label={`Remove connection with ${c.other.nickname}`}>Remove</button>
-                </li>
-              ))}
-            </ul>
-          )}
-          <p className="cu-small" style={{ marginTop: 8 }}>Removing a connection deletes that line for both of you. They aren't told.</p>
-        </section>
+        <KeepInTouch />
 
         <section aria-labelledby="cons">
           <h2 id="cons" className="cu-h" style={{ fontSize: 18, marginBottom: 10 }}>Constellations ({groups.length})</h2>
