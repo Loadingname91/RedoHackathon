@@ -114,6 +114,23 @@ People can move between ways of using the app. Maya starts as a browser, becomes
 
 ---
 
+## Persona 4: Priya, "Keep the map complete and correct" (admin)
+- **Who:** a student-affairs data admin or club council member. Not an organizer; responsible for the map as a whole.
+- **Job to be done:** "Make sure every in-person campus event shows up on the map, in the right building, without duplicates, and know right away when the import breaks."
+- **Pain points:**
+  1. Clubs post only on Campus Connect, so the map misses events unless someone imports them. *(High.)*
+  2. Many listings hide the location behind Campus Connect sign-in or give only a street address.
+  3. No way to tell whether an import worked, or why an event is missing.
+- **What she wants:** one "Sync now" button, a clear healthy/failed status, a run history, and a list of skipped events with plain-English reasons.
+- **Way in:** `#/admin` with an admin key (saved on that device only).
+
+### Priya's view (`#/admin`)
+- **Status:** a pill with text (Healthy / Failed / Running), last sync, last successful sync, feed health (HTTP status, in-person events in the next 7 days), and the schedule ("once a day at 6:00 AM, or Sync now").
+- **Sync now:** live progress text, then "N new, N updated, N unchanged, N skipped".
+- **Run history:** the last 20 runs (in feed, new, updated, skipped, duration, error).
+- **Not placed:** skipped events grouped by reason (location hidden, online or desk hours, later repeat, building not on our map), with "Add it by hand" for the last group.
+- **Honesty rule:** Campus Connect offers a calendar feed, not live updates. The screen says so and never claims "real time".
+
 ## How each screen differs by persona
 
 | Screen | Maya (connector) | Sam (browser) | Jordan (organizer) |

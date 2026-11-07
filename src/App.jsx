@@ -14,6 +14,7 @@ const routes = {
   'host': lazy(() => import('./screens/Host.jsx')),              // lane C  #/host/new, #/host/:id?k=secret
   'feedback': lazy(() => import('./screens/Feedback.jsx')),      // lane A  #/feedback/:id
   'micro': lazy(() => import('./screens/Micro.jsx')),            // lane C  #/micro
+  'admin': lazy(() => import('./screens/Admin.jsx')),            // admin  #/admin (Campus Connect sync)
 }
 
 function parseHash() {
