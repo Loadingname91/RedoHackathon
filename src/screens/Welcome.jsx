@@ -3,10 +3,10 @@ import { supabase } from '../lib/supabase.js'
 import { prefs, setPrefs } from '../lib/identity.js'
 import { useAuth, homeFor, refreshAuth, isTestAuth } from '../lib/auth.js'
 import AddInterest, { addInterest } from '../components/AddInterest.jsx'
+import { INTERESTS } from '../lib/foryou.js'
 
 // First sign-in only: promise → your star → comfort → location → home for your role.
 const NAMES = ['Comet', 'Nova', 'Vega', 'Lumen', 'Orbit', 'Juniper', 'Pulsar', 'Halley', 'Lyra', 'Quasar']
-const INTERESTS = ['Games', 'Pizza', 'Music', 'Coding', 'Hiking', 'Art', 'Film', 'Skiing']
 const STEPS = ['Welcome', 'Your star', 'Comfort', 'Location']
 
 function Toggle({ on, set, title, sub }) {
