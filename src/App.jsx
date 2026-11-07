@@ -1,6 +1,7 @@
 import React, { useEffect, useState, lazy, Suspense } from 'react'
 import { prefs, setPrefs } from './lib/identity.js'
 import { applySeeing } from './screens/MySky.jsx'
+import TabBar from './components/TabBar.jsx'
 
 // Hash routes: #/path/param?query. Each screen file is owned by one lane (see docs/plan/BUILD_LANES.md).
 const routes = {
@@ -14,7 +15,8 @@ const routes = {
   'host': lazy(() => import('./screens/Host.jsx')),              // lane C  #/host/new, #/host/:id?k=secret
   'feedback': lazy(() => import('./screens/Feedback.jsx')),      // lane A  #/feedback/:id
   'micro': lazy(() => import('./screens/Micro.jsx')),            // lane C  #/micro
-  'admin': lazy(() => import('./screens/Admin.jsx')),            // admin  #/admin (Campus Connect sync)
+  'admin': lazy(() => import('./screens/Admin.jsx')),
+  'start': lazy(() => import('./screens/Start.jsx')),             // role picker            // admin  #/admin (Campus Connect sync)
 }
 
 function parseHash() {
@@ -34,10 +36,19 @@ export default function App() {
     addEventListener('hashchange', on)
     return () => removeEventListener('hashchange', on)
   }, [])
-  const Screen = routes[route.name] ?? routes['']
+  const role = prefs().role
+  // First visit to the home page goes to the role picker; links shared to events, check-in or host pages open directly.
+  const name = route.name === '' && !role ? 'start' : route.name
+  const Screen = routes[name] ?? routes['']
+  // Tab bar on the main screens only; immersive screens (at the event, navigation, projector, check-in) keep the full screen.
+  const tabs = ['', 'event', 'sky', 'host', 'admin', 'micro'].includes(name)
+  useEffect(() => { document.documentElement.dataset.tabs = tabs ? '1' : '0' }, [tabs])
   return (
-    <Suspense fallback={<p className="screen muted" role="status">Loading…</p>}>
-      <Screen param={route.param} query={route.query} prefs={prefs()} />
-    </Suspense>
+    <>
+      <Suspense fallback={<p className="screen muted" role="status">Loading…</p>}>
+        <Screen param={route.param} query={route.query} prefs={prefs()} />
+      </Suspense>
+      {tabs && <TabBar role={role ?? 'student'} route={{ ...route, name }} />}
+    </>
   )
 }

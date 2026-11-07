@@ -1,0 +1,13 @@
+/* Phone tab bar. --tabbar is set on :root only while the bar is shown, so sheets and pages sit above it. */
+:root[data-tabs="1"] { --tabbar: calc(64px + env(safe-area-inset-bottom)); }
+.tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; height: var(--tabbar, 64px);
+  padding-bottom: env(safe-area-inset-bottom); display: flex; justify-content: space-around;
+  background: #0E1430; border-top: 1px solid var(--line); }
+.tabbar a { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  color: var(--muted); text-decoration: none; font: 600 12px var(--font); }
+.tabbar a.on { color: var(--gold); }
+.tabbar a:focus-visible { outline: 3px solid var(--gold); outline-offset: -3px; }
+:root[data-tabs="1"] .screen { padding-bottom: calc(16px + var(--tabbar)); }
+:root[data-tabs="1"] .cu-sheet { bottom: var(--tabbar) !important; }
+:root[data-tabs="1"] .cu-list { padding-bottom: calc(32px + var(--tabbar)); }
+:root[data-tabs="1"] .leaflet-bottom { bottom: var(--tabbar); }
