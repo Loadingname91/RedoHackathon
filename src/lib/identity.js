@@ -30,3 +30,4 @@ export const hostLink = (eventId, secret) => `${location.origin}/#/host/${eventI
 
 export const prefs = () => read('cu.prefs', { calm: false, sound: false, stepFree: false, freeUntil: null })
 export const setPrefs = (p) => { write('cu.prefs', { ...prefs(), ...p }); document.documentElement.dataset.calm = prefs().calm ? '1' : '0' }
+export const allSessions = () => read('cu.sessions', {})

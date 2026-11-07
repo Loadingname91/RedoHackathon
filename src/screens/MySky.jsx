@@ -5,6 +5,7 @@ import { SPARK } from '../components/social/Sky.jsx'
 import { Back, Toggle } from './CheckIn.jsx'
 import '../components/social/social.css'
 import KeepInTouch from '../components/social/KeepInTouch.jsx'
+import { syncCheckins } from '../lib/checkins.js'
 
 const HOST_AT = 3
 const read = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d } catch { return d } }
@@ -29,10 +30,11 @@ export default function MySky() {
   const put = (patch) => { setPrefs(patch); const n = prefs(); setP(n); applySeeing(n) }
 
   useEffect(() => { rpc('my_sky', { p_device: deviceId() }).then(setSky).catch((e) => setError(e.message)) }, [])
-  useEffect(() => { loadLive().then(setLive) }, [])
+  useEffect(() => { syncCheckins().catch(() => {}).finally(() => loadLive().then(setLive)) }, []) // server is the truth for check-ins
 
   async function leaveEvent(ev) {
-    try { await rpc('leave_event', { p_id: ev.session.participant_id, p_secret: ev.session.secret }) } catch {}
+    try { await rpc('leave_event', { p_id: ev.session.participant_id, p_secret: ev.session.secret }) }
+    catch (e) { if (!/not checked in/.test(e.message)) return setError(`Couldn't check you out: ${e.message}`) }
     clearSession(ev.eventId); setLive(await loadLive())
   }
   const leaveGroup = (name) => { const n = [...hiddenGroups, name]; setHiddenGroups(n); write('cu.leftGroups', n); setLastLeft(name); setConfirmLeave(null) }

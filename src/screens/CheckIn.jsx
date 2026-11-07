@@ -22,7 +22,7 @@ export default function CheckIn({ param: eventId }) {
   const [busy, setBusy] = useState(false)
   useEffect(() => { supabase.from('events').select(EVENT_COLS).eq('id', eventId).maybeSingle().then(({ data }) => setEvent(data)) }, [eventId])
 
-  const toggle = (i) => setInterests((cur) => cur.includes(i) ? cur.filter((x) => x !== i) : cur.length < 3 ? [...cur, i] : cur)
+  const toggle = (i) => setInterests((cur) => cur.includes(i) ? cur.filter((x) => x !== i) : [...cur, i])
   const shuffle = () => setNickname((n) => NAMES[(NAMES.indexOf(n) + 1) % NAMES.length])
 
   async function submit(e) {
@@ -63,13 +63,13 @@ export default function CheckIn({ param: eventId }) {
         </div>
         <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
           <legend style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: 8 }}>
-            <span className="cu-label" style={{ margin: 0 }}>Pick 2–3 interests</span>
-            <span className="cu-small" style={{ fontSize: 13 }} aria-live="polite">{interests.length} / 3</span>
+            <span className="cu-label" style={{ margin: 0 }}>Pick at least 2 interests</span>
+            <span className="cu-small" style={{ fontSize: 13 }} aria-live="polite">{interests.length} picked</span>
           </legend>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {[...INTERESTS, ...interests.filter((x) => !INTERESTS.includes(x))].map((i) => <button type="button" key={i} className="cu-chip" aria-pressed={interests.includes(i)} onClick={() => toggle(i)}>{i}</button>)}
           </div>
-          <AddInterest full={interests.length >= 3} onAdd={(t) => setInterests((cur) => addInterest(cur, t))} />
+          <AddInterest full={interests.length >= 20} onAdd={(t) => setInterests((cur) => addInterest(cur, t))} />
         </fieldset>
         <div>
           <label htmlFor="clue">One clue so your match can find you <span style={{ fontWeight: 400, color: '#AEB7DA' }}>(optional)</span></label>

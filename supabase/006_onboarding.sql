@@ -14,7 +14,7 @@ begin
   if auth.uid() is null then raise exception 'sign in first'; end if;
   update profiles set
     nickname = coalesce(left(nullif(trim(p->>'nickname'), ''), 24), nickname),
-    interests = case when p ? 'interests' then array(select left(trim(x), 24) from jsonb_array_elements_text(p->'interests') x where trim(x) <> '' limit 3) else interests end,
+    interests = case when p ? 'interests' then array(select left(trim(x), 24) from jsonb_array_elements_text(p->'interests') x where trim(x) <> '' limit 20) else interests end,
     comfort = coalesce(p->'comfort', comfort),
     onboarded = coalesce((p->>'onboarded')::boolean, onboarded)
   where user_id = auth.uid();

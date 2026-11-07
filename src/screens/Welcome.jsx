@@ -33,7 +33,7 @@ export default function Welcome() {
   const [err, setErr] = useState('')
   const first = (user?.user_metadata?.full_name ?? user?.email ?? '').split(/[ @]/)[0]
 
-  const toggle = (i) => setInterests((xs) => xs.includes(i) ? xs.filter((x) => x !== i) : xs.length < 3 ? [...xs, i] : xs)
+  const toggle = (i) => setInterests((xs) => xs.includes(i) ? xs.filter((x) => x !== i) : [...xs, i])
   const askLocation = () => {
     if (!navigator.geolocation) return setLocMsg('This device has no location. You can still use the map.')
     setLocMsg('Asking your phone…')
@@ -81,12 +81,12 @@ export default function Welcome() {
           </div>
         </div>
         <div>
-          <span style={{ display: 'flex', justifyContent: 'space-between' }}><label style={{ margin: 0 }}>Pick 2–3 interests</label><span className="muted" aria-live="polite">{interests.length} / 3</span></span>
+          <span style={{ display: 'flex', justifyContent: 'space-between' }}><label style={{ margin: 0 }}>Pick at least 2 interests</label><span className="muted" aria-live="polite">{interests.length} picked</span></span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 8 }}>
             {[...INTERESTS, ...interests.filter((x) => !INTERESTS.includes(x))].map((i) => <button type="button" key={i} aria-pressed={interests.includes(i)} onClick={() => toggle(i)}
               style={interests.includes(i) ? { background: 'var(--gold)', color: '#1a1405', borderColor: 'var(--gold)' } : undefined}>{i}</button>)}
           </div>
-          <AddInterest full={interests.length >= 3} onAdd={(t) => setInterests((cur) => addInterest(cur, t))} />
+          <AddInterest full={interests.length >= 20} onAdd={(t) => setInterests((cur) => addInterest(cur, t))} />
         </div>
       </>)}
 
