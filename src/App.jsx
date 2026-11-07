@@ -2,6 +2,7 @@ import React, { useEffect, useState, lazy, Suspense } from 'react'
 import { prefs, setPrefs } from './lib/identity.js'
 import { applySeeing } from './screens/MySky.jsx'
 import TabBar from './components/TabBar.jsx'
+import { useAuth, homeFor } from './lib/auth.js'
 
 // Hash routes: #/path/param?query. Each screen file is owned by one lane (see docs/plan/BUILD_LANES.md).
 const routes = {
@@ -16,7 +17,8 @@ const routes = {
   'feedback': lazy(() => import('./screens/Feedback.jsx')),      // lane A  #/feedback/:id
   'micro': lazy(() => import('./screens/Micro.jsx')),            // lane C  #/micro
   'admin': lazy(() => import('./screens/Admin.jsx')),
-  'start': lazy(() => import('./screens/Start.jsx')),             // role picker            // admin  #/admin (Campus Connect sync)
+  'start': lazy(() => import('./screens/Start.jsx')),             // sign in + role picker
+  'welcome': lazy(() => import('./screens/Welcome.jsx')),         // first sign-in onboarding            // admin  #/admin (Campus Connect sync)
 }
 
 function parseHash() {
@@ -36,13 +38,23 @@ export default function App() {
     addEventListener('hashchange', on)
     return () => removeEventListener('hashchange', on)
   }, [])
+  const auth = useAuth()
+  // Sign-in journey on the home page: signed out → start (sign in); first sign-in → welcome (onboarding);
+  // signed in without a chosen view → that role's home. Shared links (event, check-in, host) always open directly.
+  useEffect(() => {
+    if (auth.loading || route.name !== '' || !auth.user || !auth.profile?.onboarded || prefs().role) return
+    setPrefs({ role: auth.role }); if (homeFor(auth.role) !== '#/') location.hash = homeFor(auth.role)
+  }, [auth, route.name])
   const role = prefs().role
-  // First visit to the home page goes to the role picker; links shared to events, check-in or host pages open directly.
-  const name = route.name === '' && !role ? 'start' : route.name
-  const Screen = routes[name] ?? routes['']
+  const name = route.name !== '' ? route.name
+    : auth.loading ? 'loading'
+    : auth.user && !auth.profile?.onboarded ? 'welcome'
+    : !role && !auth.user ? 'start' : ''
   // Tab bar on the main screens only; immersive screens (at the event, navigation, projector, check-in) keep the full screen.
   const tabs = ['', 'event', 'sky', 'host', 'admin', 'micro'].includes(name)
   useEffect(() => { document.documentElement.dataset.tabs = tabs ? '1' : '0' }, [tabs])
+  if (name === 'loading') return <p className="screen muted" role="status">Loading…</p>
+  const Screen = routes[name] ?? routes['']
   return (
     <>
       <Suspense fallback={<p className="screen muted" role="status">Loading…</p>}>
