@@ -5,11 +5,12 @@ import '../components/map/map.css'
 import Icon, { OFFERING_LABEL, ICON_PATHS } from '../components/map/icons.jsx'
 import { useEvents, buildingByCode, openCount } from '../components/map/useEvents.js'
 import { busyFromIcs, gapFrom } from '../components/map/schedule.js'
-import { CAMPUS, endOf, fmtTime, isNow, isLaterToday, fit, whenText } from '../lib/geo.js'
+import { CAMPUS, fmtTime, isNow, isLaterToday, fit, whenText } from '../lib/geo.js'
 import { prefs, setPrefs, deviceId } from '../lib/identity.js'
 import { supabase } from '../lib/supabase.js'
 import { rankEvents, INTERESTS } from '../lib/foryou.js'
 import affinity from '../data/affinity.json'
+import { useAuth } from '../lib/auth.js'
 
 // OpenStreetMap tiles (no key). Darkened with a CSS filter in map.css. shortcut: OSM's public server is for light use; switch to a hosted tile provider for real traffic.
 export const TILES = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -52,6 +53,43 @@ function planetHtml({ e, n, mine, sel, dim, pill, pillFits, label }) {
     <span class="sr-only">${label}</span></span>`
 }
 
+// Legend: the real planet drawings from the map, plus what each offering icon means.
+function Legend() {
+  const h = 3600e3, now = Date.now(), iso = (t) => new Date(t).toISOString()
+  const live = { start_at: iso(now - h), end_at: iso(now + h), offerings: [{ type: 'food' }], source: 'host' }
+  const later = { ...live, start_at: iso(now + 2 * h), end_at: iso(now + 3 * h) }
+  const rows = [
+    [planetHtml({ e: live, label: '' }), 'Live now', 'Solid red ring with a slow pulse.'],
+    [planetHtml({ e: later, label: '' }), 'Later today', 'Dashed grey ring, no pulse.'],
+    [planetHtml({ e: { ...later, source: 'campus_connect' }, label: '' }), 'From Campus Connect', 'Dotted ring. No live food or status until a host claims it.'],
+    [planetHtml({ e: live, n: 9, label: '' }), 'People here', 'Number of people checked in. Only shown once 3 or more are there.'],
+    [planetHtml({ e: live, mine: 3, label: '' }), 'Your constellation', 'Gold star: a constellation you are part of formed here.'],
+  ]
+  return (
+    <div style={{ display: 'grid', gap: 14 }}>
+      <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: 10 }}>
+        {rows.map(([html, title, sub]) => (
+          <li key={title} style={{ display: 'grid', gridTemplateColumns: '56px 1fr', gap: 12, alignItems: 'center' }}>
+            <span aria-hidden="true" style={{ position: 'relative', width: 56, height: 48, display: 'grid', placeItems: 'center' }} dangerouslySetInnerHTML={{ __html: html }} />
+            <span><strong style={{ display: 'block', fontSize: 15 }}>{title}</strong><span className="cu-small">{sub}</span></span>
+          </li>
+        ))}
+      </ul>
+      <div>
+        <strong style={{ fontSize: 15 }}>Icon inside a planet = the main thing on offer</strong>
+        <ul style={{ listStyle: 'none', margin: '8px 0 0', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 8 }}>
+          {Object.entries(OFFERING_LABEL).filter(([k]) => ICON_PATHS[k]).map(([k, label]) => (
+            <li key={k} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14 }}>
+              <span aria-hidden="true" style={{ width: 32, height: 32, borderRadius: 16, background: '#141C40', border: '1.5px solid #8E9AC0', display: 'grid', placeItems: 'center', color: '#FFE2A3', flex: 'none' }}><Icon name={k} size={18} /></span>
+              {label}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
+
 async function scanQrImage(file) {
   const img = await createImageBitmap(file)
   const c = document.createElement('canvas'); c.width = img.width; c.height = img.height
@@ -77,9 +115,8 @@ function useMyConstellations() {
 }
 
 export default function MapScreen({ query }) {
-  const { events: all, counts, error } = useEvents()
-  // Ended events stay in the database (feedback and event pages need them) but leave the map.
-  const events = useMemo(() => all && all.filter((e) => !e.start_at || endOf(e) > new Date()), [all])
+  const { role } = useAuth()
+  const { events, counts, error } = useEvents()
   const [filter, setFilter] = useState('All')
   const [view, setView] = useState('map')
   const [sel, setSel] = useState(null)        // event id
@@ -297,7 +334,9 @@ export default function MapScreen({ query }) {
                 <input type="file" accept="image/*" capture="environment" className="sr-only" onChange={(e) => e.target.files[0] && onScan(e.target.files[0])} />
               </label>
               <button onClick={() => setFitMode(true)}>What fits my gap</button>
-              <a className="btn" href="#/host/new">Host an event</a>
+              {role === 'student'
+                ? <a className="btn" href="#/micro">Host a meetup</a>
+                : <a className="btn" href="#/host/new">Host an event</a>}
             </div>
             {msg && <p role="status" className="cu-small" style={{ margin: 0 }}>{msg}</p>}
             <div className="cu-row cu-small"><Icon name="locate" size={16} />Your location never leaves this phone. Nobody sees you unless you check in.
@@ -396,14 +435,7 @@ export default function MapScreen({ query }) {
               <button className="cu-round" onClick={() => setLegend(false)} aria-label="Close"><Icon name="close" /></button>
             </div>
             <p className="cu-small" style={{ margin: 0 }}>Every state also has a text label, so nothing relies on color alone. Never shown anywhere: photos, real names, connection counts, rankings.</p>
-            <dl style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '8px 12px', margin: 0, fontSize: 14 }}>
-              <dt><strong>Live now</strong></dt><dd style={{ margin: 0 }} className="cu-small">Solid red ring, slow pulse</dd>
-              <dt><strong>Later today</strong></dt><dd style={{ margin: 0 }} className="cu-small">Dashed grey ring, no pulse</dd>
-              <dt><strong>White number</strong></dt><dd style={{ margin: 0 }} className="cu-small">People checked in, only once 3+ are there</dd>
-              <dt><strong>Gold ★</strong></dt><dd style={{ margin: 0 }} className="cu-small">Your constellation formed here</dd>
-              <dt><strong>Dotted ring</strong></dt><dd style={{ margin: 0 }} className="cu-small">From Campus Connect. No live status until claimed</dd>
-              <dt><strong>Icon inside</strong></dt><dd style={{ margin: 0 }} className="cu-small">The main offering</dd>
-            </dl>
+            <Legend />
             <p className="cu-small" style={{ margin: 0 }}>People are stars, and only appear inside an event you've checked into.</p>
           </div>
         </section>

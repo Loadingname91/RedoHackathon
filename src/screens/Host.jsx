@@ -1,3 +1,4 @@
+import { useAuth } from '../lib/auth.js'
 import React, { useEffect, useState } from 'react'
 import QRCode from 'qrcode'
 import { setHostSecret, getHostSecret, hostLink } from '../lib/identity.js'
@@ -381,9 +382,22 @@ function HostHome({ events }) {
 }
 
 export default function Host({ param, query }) {
+  const { role, loading } = useAuth()
   const [mine, setMine] = useState([])
   useEffect(() => { Promise.all(hostedIds().map((id) => getEvent(id).catch(() => null))).then((r) => setMine(r.filter(Boolean))) }, [param])
   const live = mine.filter((e) => isLive(e))
+  if (!loading && role === 'student' && (!param || param === 'new')) return (
+    <main className="screen" style={{ display: 'grid', gap: 14, alignContent: 'start', paddingTop: 28 }}>
+      <h1 style={{ fontSize: 24 }}>Club events are posted by organizers</h1>
+      <p className="muted" style={{ margin: 0 }}>Running a club event? Ask an admin to add your email as an organizer.</p>
+      <div className="card" style={{ display: 'grid', gap: 8 }}>
+        <strong>Host a small meetup instead</strong>
+        <span className="muted">Students unlock their own meetups after 3 confirmed connections across their events.</span>
+        <a className="btn primary" href="#/micro">Host a meetup</a>
+      </div>
+      <a className="btn" href="#/">Back to the map</a>
+    </main>
+  )
   return (
     <main style={{ padding: 24, maxWidth: 1200, margin: '0 auto' }}>
       <header style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>

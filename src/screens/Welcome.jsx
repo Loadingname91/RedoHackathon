@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { supabase } from '../lib/supabase.js'
 import { prefs, setPrefs } from '../lib/identity.js'
-import { useAuth, homeFor } from '../lib/auth.js'
+import { useAuth, homeFor, refreshAuth, isTestAuth } from '../lib/auth.js'
+import AddInterest, { addInterest } from '../components/AddInterest.jsx'
 import { INTERESTS } from '../lib/foryou.js'
 
 // First sign-in only: promise → your star → comfort → location → home for your role.
@@ -32,7 +33,7 @@ export default function Welcome() {
   const [err, setErr] = useState('')
   const first = (user?.user_metadata?.full_name ?? user?.email ?? '').split(/[ @]/)[0]
 
-  const toggle = (i) => setInterests((xs) => xs.includes(i) ? xs.filter((x) => x !== i) : xs.length < 3 ? [...xs, i] : xs)
+  const toggle = (i) => setInterests((xs) => xs.includes(i) ? xs.filter((x) => x !== i) : [...xs, i])
   const askLocation = () => {
     if (!navigator.geolocation) return setLocMsg('This device has no location. You can still use the map.')
     setLocMsg('Asking your phone…')
@@ -42,8 +43,10 @@ export default function Welcome() {
   const finish = async () => {
     setErr('')
     setPrefs({ nickname: nickname.trim(), interests, ...c, role: role === 'student' ? 'student' : role })
-    const { error } = await supabase.rpc('save_my_profile', { p: { nickname: nickname.trim(), interests, comfort: c, onboarded: true } })
+    const { error } = isTestAuth() ? (localStorage.setItem('cu.test-onboarded', '1'), {}) // dev-only layout tests
+      : await supabase.rpc('save_my_profile', { p: { nickname: nickname.trim(), interests, comfort: c, onboarded: true } })
     if (error) return setErr(`Couldn't save your profile: ${error.message}`)
+    refreshAuth() // the app still thinks onboarding isn't done until it reloads the profile
     location.hash = homeFor(role)
   }
   const next = () => (step < STEPS.length - 1 ? setStep(step + 1) : finish())
@@ -78,11 +81,12 @@ export default function Welcome() {
           </div>
         </div>
         <div>
-          <span style={{ display: 'flex', justifyContent: 'space-between' }}><label style={{ margin: 0 }}>Pick 2–3 interests</label><span className="muted" aria-live="polite">{interests.length} / 3</span></span>
+          <span style={{ display: 'flex', justifyContent: 'space-between' }}><label style={{ margin: 0 }}>Pick at least 2 interests</label><span className="muted" aria-live="polite">{interests.length} picked</span></span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 8 }}>
-            {INTERESTS.map((i) => <button type="button" key={i} aria-pressed={interests.includes(i)} onClick={() => toggle(i)}
+            {[...INTERESTS, ...interests.filter((x) => !INTERESTS.includes(x))].map((i) => <button type="button" key={i} aria-pressed={interests.includes(i)} onClick={() => toggle(i)}
               style={interests.includes(i) ? { background: 'var(--gold)', color: '#1a1405', borderColor: 'var(--gold)' } : undefined}>{i}</button>)}
           </div>
+          <AddInterest full={interests.length >= 20} onAdd={(t) => setInterests((cur) => addInterest(cur, t))} />
         </div>
       </>)}
 

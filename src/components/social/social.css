@@ -66,3 +66,5 @@
 /* High contrast (My sky › Access and comfort). */
 :root[data-contrast="1"] .cu  { --d-text: #fff; --d-muted: #FFFF66; --d-soft: #fff; --d-line: #fff; --d-btnline: #fff; --d-surf: #000; --d-btn: #000; --d-field: #000; background: #000; }
 :root[data-contrast="1"] .cu .cu-card, :root[data-contrast="1"] .cu .cu-sheet, :root[data-contrast="1"] .cu input, :root[data-contrast="1"] .cu textarea  { border-width: 2px; }
+
+.cu-spin { animation: cu-spin 1s linear infinite; } @keyframes cu-spin { to { transform: rotate(360deg); } }

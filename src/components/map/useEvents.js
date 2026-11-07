@@ -17,7 +17,7 @@ export function useEvents() {
     let alive = true
     const loadEvents = async () => {
       const [{ data, error }, vis] = await Promise.all([
-        supabase.from('events').select(EVENT_COLS).order('start_at', { ascending: true, nullsFirst: false }),
+        supabase.from('events').select(EVENT_COLS).or(`end_at.is.null,end_at.gte.${new Date().toISOString()}`).order('start_at', { ascending: true, nullsFirst: false }), // ended events stay off the map
         supabase.rpc('visible_event_ids', { p_device: deviceId() }),
       ])
       if (!alive) return

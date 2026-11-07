@@ -43,7 +43,7 @@ export default function Micro() {
       {sky && !sky.hosting_unlocked ? (
         <section className="card" aria-labelledby="lock-h">
           <h1 id="lock-h">{left} more connection{left === 1 ? '' : 's'} to host</h1>
-          <p className="muted">Three confirmed connections unlock small events of your own. Only you see your count.</p>
+          <p className="muted">Make 3 confirmed connections, across any of your events, to host small meetups of your own. Only you see your count.</p>
           <a className="btn" href="#/">Find an event</a>
         </section>
       ) : posted ? (

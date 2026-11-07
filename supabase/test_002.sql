@@ -18,6 +18,9 @@ begin
   assert (select count(*) from reports) >= 1, 'FAIL: report not saved';
   perform check_in((ev->>'event_id')::uuid, '00000000-0000-0000-0000-00000000000d', 'Fry', '{}');
   assert exists (select 1 from participants where event_id = (ev->>'event_id')::uuid and nickname = 'Fry 2'), 'FAIL: duplicate nickname not numbered';
+  assert _interest_score('{Boardgames}', '{Board games}') = 1, 'FAIL: fuzzy spaces';
+  assert _interest_score('{Ski}', '{Skiing}') = 1, 'FAIL: fuzzy contains';
+  assert _interest_score('{Bouldering}', '{Pizza}') = 0, 'FAIL: fuzzy false positive';
   raise notice 'ALL CHECKS PASSED';
 end $$;
 rollback;

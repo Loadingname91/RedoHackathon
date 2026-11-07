@@ -6,6 +6,7 @@ import { rpc } from '../lib/supabase.js'
 import { getSession, clearSession } from '../lib/identity.js'
 import { useEventLive, useRoomGlow, components, confirmedEdges, motionOK } from '../lib/social.js'
 import Safety from '../components/social/Safety.jsx'
+import { syncCheckins } from '../lib/checkins.js'
 import Sky, { SPARK, HALF_L, HALF_R } from '../components/social/Sky.jsx'
 import { Back, Close } from './CheckIn.jsx'
 import '../components/social/social.css'
@@ -23,6 +24,14 @@ const PROMPTS = ['Find something you both like that isn’t your major.', 'Rate 
 const word = (p) => p?.half_word?.split('#')[1] // stored as "<n>#<WORD>#<A|B>"; only the word is ever shown
 
 export default function AtEvent({ param: eventId }) {
+  // Sync with the server before trusting this phone's copy of the check-in.
+  const [synced, setSynced] = useState(null) // null = checking | { hidden } | 'gone'
+  useEffect(() => {
+    let alive = true
+    syncCheckins().then((list) => { if (!alive) return; const c = list.find((x) => x.event_id === eventId); setSynced(c ? { hidden: c.hidden } : 'gone') })
+      .catch(() => alive && setSynced({ hidden: false })) // offline: fall back to this phone's copy
+    return () => { alive = false }
+  }, [eventId])
   const session = getSession(eventId)
   const live = useEventLive(eventId)
   const glow = useRoomGlow(eventId)
@@ -33,6 +42,21 @@ export default function AtEvent({ param: eventId }) {
   const [dismissed, setDismissed] = useState(() => new Set())
   const [sheet, setSheet] = useState(null) // person
   const [safetyFor, setSafetyFor] = useState(null)
+  const [actionErr, setActionErr] = useState('')
+  const [sync, setSync] = useState({ busy: false, at: null, msg: '' })
+  // Sync: re-read the server (who's here, lines, my check-in) on demand, and say what changed.
+  async function syncNow() {
+    const before = new Set(live.people.map((p) => p.id))
+    setSync((x) => ({ ...x, busy: true, msg: '' }))
+    try {
+      const list = await syncCheckins()
+      if (!list.some((c) => c.event_id === eventId)) { location.hash = `#/checkin/${eventId}`; return }
+      const fresh = await live.reload()
+      const added = (fresh?.people ?? []).filter((p) => !before.has(p.id)).length
+      setSync({ busy: false, at: new Date(), msg: `${added ? `${added} new · ` : 'Up to date · '}${fresh?.people?.length ?? 0} here` })
+    } catch (e) { setSync({ busy: false, at: null, msg: `Couldn't sync: ${e.message}` }) }
+  }
+  useEffect(() => { if (synced?.hidden) setLeft('hidden') }, [synced])
   const meId = session?.participant_id
   const me = live.people.find((p) => p.id === meId)
 
@@ -50,25 +74,45 @@ export default function AtEvent({ param: eventId }) {
     }
     prevCount.current = confirmedCount
   }, [confirmedCount])
+  // Your group can reach 3 through someone else's new line (you're the first in the chain): celebrate too,
+  // but only from the home view so it never interrupts a code, scan or prompt in progress.
+  const prevGroup = useRef(myGroup.length)
+  useEffect(() => {
+    if (myGroup.length >= 3 && prevGroup.current < 3 && !named && view === 'home') setView('formed')
+    prevGroup.current = myGroup.length
+  }, [myGroup.length])
 
   if (left === 'left') return <LeftScreen eventId={eventId} title={live.event?.title} />
-  if (!session) { location.hash = `#/checkin/${eventId}`; return null }
+  if (synced === null) return <main className="cu"><p className="cu-col cu-sub" role="status">Checking your check-in…</p></main>
+  if (synced === 'gone' || !session) { location.hash = `#/checkin/${eventId}`; return null }
   if (live.loading) return <main className="cu"><p className="cu-col cu-sub" role="status">Loading the sky…</p></main>
-  if (!me && !left) return <LeftScreen eventId={eventId} title={live.event?.title} expired />
+  if (!me && !left && !synced?.hidden) return <LeftScreen eventId={eventId} title={live.event?.title} expired />
 
   const pending = live.connections.find((c) => (c.a === meId || c.b === meId) && !(c.a_confirmed && c.b_confirmed) && !dismissed.has(c.id))
   const dismiss = (id) => { setDismissed(new Set([...dismissed, id])); setView('home') }
 
+  // Hide keeps you checked in but invisible to others; Leave checks you out. Both are saved on the server.
   async function leaveEvent(kind) {
     if (kind === 'left' && !confirm('Leave this event? Your star and lines here disappear right away. Your constellations stay.')) return
-    try { await rpc('leave_event', { p_id: meId, p_secret: session.secret }) } catch {}
+    setActionErr('')
+    try {
+      if (kind === 'hidden') await rpc('set_hidden', { p_id: meId, p_secret: session.secret, p_hidden: true })
+      else await rpc('leave_event', { p_id: meId, p_secret: session.secret })
+    } catch (e) {
+      if (!/not checked in/.test(e.message)) return setActionErr(`Couldn't ${kind === 'hidden' ? 'hide you' : 'check you out'}: ${e.message}. Try again.`)
+    }
     if (kind === 'left') clearSession(eventId)
     setLeft(kind)
   }
+  async function showMe() {
+    setActionErr('')
+    try { await rpc('set_hidden', { p_id: meId, p_secret: session.secret, p_hidden: false }); setLeft(null) }
+    catch (e) { setActionErr(`Couldn't show you again: ${e.message}`) }
+  }
 
-  const ctx = { live, me, session, eventId, setView, myGroup, named, groups }
+  const ctx = { live, me, session, eventId, setView, myGroup, named, groups, sync, onSync: syncNow }
   let body
-  if (left === 'hidden') body = <Home {...ctx} hidden onShow={() => { clearSession(eventId); location.hash = `#/checkin/${eventId}` }} skyMode={skyMode} setSkyMode={setSkyMode} />
+  if (left === 'hidden') body = <Home {...ctx} hidden onShow={showMe} onLeave={() => leaveEvent('left')} skyMode={skyMode} setSkyMode={setSkyMode} />
   else if (view === 'formed') body = <Formed {...ctx} onLeave={() => leaveEvent('left')} />
   else if (pending && view === 'prompt') body = <Prompt {...ctx} c={pending} onClose={() => dismiss(pending.id)} onBack={() => setView('home')} onSafety={setSafetyFor} />
   else if (pending) body = <Match {...ctx} c={pending} onFound={() => setView('prompt')} onNotNow={() => dismiss(pending.id)} />
@@ -79,6 +123,7 @@ export default function AtEvent({ param: eventId }) {
 
   return (
     <main className="cu">
+      {actionErr && <p role="alert" className="cu-err" style={{ position: 'fixed', left: 16, right: 16, top: 12, zIndex: 70, margin: 0, padding: 12, borderRadius: 12, background: '#2A1220' }}>{actionErr}</p>}
       {glow && <div aria-hidden="true" style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 50,
         background: 'radial-gradient(circle, rgba(245,199,107,.5), rgba(245,199,107,0) 70%)', animation: motionOK() ? 'cu-glow 4s ease-in-out' : 'none' }} />}
       <p className="sr-only" aria-live="polite">{announce}{glow ? ' The room reached its goal. The sky lit up.' : ''}</p>
@@ -91,7 +136,7 @@ export default function AtEvent({ param: eventId }) {
 }
 
 // Design 04 + 16 + 18 · the event's sky with the bottom sheet.
-function Home({ live, me, session, eventId, setView, myGroup, named, hidden, onHide, onShow, onLeave, skyMode, setSkyMode, onSelect }) {
+function Home({ live, me, session, eventId, setView, myGroup, named, hidden, onHide, onShow, onLeave, skyMode, setSkyMode, onSelect, sync, onSync }) {
   const [pairN, myWord, side] = (me?.half_word ?? '').split('#')
   const partner = pairN && live.people.find((p) => p.id !== me.id && p.half_word?.split('#')[0] === pairN && p.half_word.split('#')[2] !== side)
   const findWord = word(partner) ?? session.find_word
@@ -106,7 +151,13 @@ function Home({ live, me, session, eventId, setView, myGroup, named, hidden, onH
         <div className="grow">
           <div className="cu-title">{live.event?.title}</div>
           <p className="cu-small" style={{ fontWeight: 500 }}>{live.event?.building_code} · {hidden ? "you're hidden" : "you're checked in"}</p>
+          <p className="cu-small" role="status" aria-live="polite" style={{ margin: 0 }}>
+            {sync?.busy ? 'Syncing…' : sync?.msg ? `${sync.msg}${sync.at ? ` · ${sync.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}` : ''}` : `${people.length} here · updates live`}</p>
         </div>
+        <button className="cu-ib" onClick={onSync} disabled={sync?.busy} aria-label="Sync: check for new people" title="Sync">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
+            className={sync?.busy ? 'cu-spin' : ''}><path d="M21 12a9 9 0 01-15.5 6.2M3 12A9 9 0 0118.5 5.8M21 4v5h-5M3 20v-5h5" /></svg>
+        </button>
         <a className="cu-pill" href="#/sky">My sky</a>
         {!hidden && <button className="cu-pill" onClick={onLeave}>Leave</button>}
       </div>
@@ -155,6 +206,9 @@ function Home({ live, me, session, eventId, setView, myGroup, named, hidden, onH
             <p className="cu-kicker">Find your half</p>
             <h2 className="cu-h" style={{ fontSize: 26 }}>You're <span className="cu-gold">{myWord || session.my_word}</span>.{' '}
               {findWord ? <>Find <span className="cu-gold">{findWord}</span>.</> : 'Your half is on the way.'}</h2>
+            {findWord && <p className="cu-sub" style={{ margin: 0 }}>
+              Your word is half of a Utah pair. Together you two make <b className="cu-gold">"{side === 'B' ? `${findWord} ${myWord || session.my_word}` : `${myWord || session.my_word} ${findWord}`}"</b>.
+              Whoever holds {findWord} is your icebreaker match: find them and say your word.</p>}
             <p className="cu-sub">{partner
               ? `${partner.nickname} is here${partner.interests?.some((i) => me?.interests?.includes(i)) ? ` and likes ${partner.interests.find((i) => me.interests.includes(i)).toLowerCase()} too` : ''}. Ask around, or head to Star Corner.`
               : 'Your other half arrives with the next person who joins.'}

@@ -19,6 +19,17 @@ create or replace function _pair_words() returns text[][] language sql immutable
                ['MOAB','ARCHES'],['SKI','LIFT'],['TRAX','TRAIN'],['CRIMSON','NIGHT'],['ZION','ANGELS']]
 $$;
 
+-- Fuzzy interest overlap: counts pairs that are the same after tidying, contain each other, or are similar text
+-- (pg_trgm), so "Boardgames" ~ "Board games" and "Ski" ~ "Skiing". shortcut: text similarity only; meaning-level
+-- matching ("climbing" ~ "bouldering") would need embeddings or Claude.
+create extension if not exists pg_trgm with schema extensions;
+create or replace function _interest_score(a text[], b text[]) returns int language sql immutable set search_path = public, extensions as $$
+  select count(*)::int from unnest(coalesce(a,'{}')) x, unnest(coalesce(b,'{}')) y
+   where lower(replace(x,' ','')) = lower(replace(y,' ',''))
+      or (length(x) >= 3 and length(y) >= 3 and (strpos(lower(x), lower(y)) > 0 or strpos(lower(y), lower(x)) > 0))
+      or extensions.similarity(lower(x), lower(y)) >= 0.45
+$$;
+
 -- check_in now also hands out half-words: matches you to someone waiting for their other half,
 -- preferring a shared interest; otherwise you start a new pair and wait.
 create or replace function check_in(p_event uuid, p_device uuid, p_nickname text, p_interests text[],
@@ -49,7 +60,7 @@ begin
                      and split_part(q.half_word, '#', 1) = split_part(p.half_word, '#', 1)
                      and split_part(q.half_word, '#', 3) = 'B')
      and not exists (select 1 from blocks b where (b.blocker = p.device_id and b.blocked = p_device) or (b.blocker = p_device and b.blocked = p.device_id))
-   order by (p.interests && coalesce(p_interests,'{}')) desc, p.created_at
+   order by _interest_score(p.interests, coalesce(p_interests,'{}')) desc, p.created_at
    limit 1;
   if waiting.id is not null then
     i := split_part(waiting.half_word, '#', 1)::int;
