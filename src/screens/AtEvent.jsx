@@ -50,6 +50,13 @@ export default function AtEvent({ param: eventId }) {
     }
     prevCount.current = confirmedCount
   }, [confirmedCount])
+  // Your group can reach 3 through someone else's new line (you're the first in the chain): celebrate too,
+  // but only from the home view so it never interrupts a code, scan or prompt in progress.
+  const prevGroup = useRef(myGroup.length)
+  useEffect(() => {
+    if (myGroup.length >= 3 && prevGroup.current < 3 && !named && view === 'home') setView('formed')
+    prevGroup.current = myGroup.length
+  }, [myGroup.length])
 
   if (left === 'left') return <LeftScreen eventId={eventId} title={live.event?.title} />
   if (!session) { location.hash = `#/checkin/${eventId}`; return null }
