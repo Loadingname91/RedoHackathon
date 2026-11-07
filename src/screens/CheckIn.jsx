@@ -7,6 +7,12 @@ import { SPARK } from '../components/social/Sky.jsx'
 import '../components/social/social.css'
 
 const NAMES = ['Comet', 'Nova', 'Orbit', 'Vega', 'Pulsar', 'Lumen', 'Quill', 'Juniper']
+// Next suggested name after `after` that nobody at this event has; if all are taken the server numbers it ("Nova 2").
+const freeName = (taken, after) => {
+  const at = NAMES.indexOf(after)
+  for (let k = 1; k <= NAMES.length; k++) { const c = NAMES[(at + k) % NAMES.length]; if (!taken.includes(c.toLowerCase())) return c }
+  return NAMES[(at + 1) % NAMES.length]
+}
 const until = (iso) => iso ? new Date(iso).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Denver' }) : null
 
 // Design 03 · Check in.
@@ -20,10 +26,20 @@ export default function CheckIn({ param: eventId }) {
   const [comeToMe, setComeToMe] = useState(!!prefs().comeToMe)
   const [error, setError] = useState(null)
   const [busy, setBusy] = useState(false)
+  const [taken, setTaken] = useState([])
   useEffect(() => { supabase.from('events').select(EVENT_COLS).eq('id', eventId).maybeSingle().then(({ data }) => setEvent(data)) }, [eventId])
+  // Names already used here (except your own earlier check-in), so the random pick doesn't suggest one.
+  useEffect(() => {
+    supabase.from('participants').select('nickname').eq('event_id', eventId).then(({ data }) => {
+      const t = (data ?? []).map((p) => p.nickname.toLowerCase()).filter((n) => n !== existing?.nickname?.toLowerCase())
+      setTaken(t)
+      const free = NAMES.filter((n) => !t.includes(n.toLowerCase()))
+      if (!existing && !prefs().nickname && free.length) setNickname((n) => (t.includes(n.toLowerCase()) ? free[Math.floor(Math.random() * free.length)] : n))
+    })
+  }, [eventId])
 
   const toggle = (i) => setInterests((cur) => cur.includes(i) ? cur.filter((x) => x !== i) : [...cur, i])
-  const shuffle = () => setNickname((n) => NAMES[(NAMES.indexOf(n) + 1) % NAMES.length])
+  const shuffle = () => setNickname((n) => freeName(taken, n))
 
   async function submit(e) {
     e.preventDefault()

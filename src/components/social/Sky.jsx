@@ -1,5 +1,5 @@
 import React from 'react'
-import { components, confirmedEdges } from '../../lib/social.js'
+import { arrange } from '../../lib/sky.js'
 import './social.css'
 
 // The 4-point sparkle star from the design. Half variants are used on the match/prompt screens.
@@ -10,26 +10,11 @@ export const StarIcon = ({ size = 20, fill = 'currentColor' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true"><path d={SPARK} fill={fill} /></svg>
 )
 
-// Groups people: mine first, then other connected groups, then singles. Positions are orbit slots, not where people stand.
-export function arrange(people, connections, meId, w, h) {
-  const groups = components(people.map((p) => p.id), confirmedEdges(connections))
-    .sort((a, b) => (b.includes(meId) - a.includes(meId)) || b.length - a.length)
-  const order = groups.flat()
-  const kind = Object.fromEntries(groups.flatMap((g) => g.map((id) => [id, g.includes(meId) && g.length > 1 ? 'mine' : g.length > 1 ? 'group' : 'single'])))
-  const n = Math.max(order.length, 1)
-  const R1 = Math.min(w, h) * 0.24, R2 = Math.min(w, h) * 0.4
-  const pos = Object.fromEntries(order.map((id, i) => {
-    const ang = (i / n) * Math.PI * 2 - Math.PI / 2
-    const r = i % 2 ? R1 : R2
-    return [id, { x: w / 2 + Math.cos(ang) * r, y: h / 2 + Math.sin(ang) * r }]
-  }))
-  return { pos, kind, groups, R1, R2 }
-}
-
 // One event's sky: planet in the middle, dashed orbits, stars with nicknames, confirmed lines.
 // Never renders clues. With onSelect, each star is a real button (44 px hit area).
 export default function Sky({ people, connections, constellations = [], meId, w = 360, h = 340, big = false, onSelect }) {
-  const { pos, kind, groups, R1, R2 } = arrange(people, connections, meId, w, h)
+  const scale0 = big ? 1.6 : 1
+  const { pos, kind, groups, orbits, fit } = arrange(people, connections, meId, w, h, { gap: 52 * scale0, hub: 30 * scale0 })
   const lines = connections.filter((c) => c.a_confirmed && c.b_confirmed && pos[c.a] && pos[c.b])
   const named = constellations.map((c) => {
     const pts = c.members.map((id) => pos[id]).filter(Boolean)
@@ -38,15 +23,15 @@ export default function Sky({ people, connections, constellations = [], meId, w 
     return { id: c.id, name: c.name, x, y, mine: c.members.includes(meId) }
   }).filter(Boolean)
   const pct = (v, of) => `${(v / of) * 100}%`
-  const scale = big ? 1.6 : 1
+  const scale = scale0 * Math.max(fit, 0.5) // crowded skies shrink stars along with spacing
+  const crowded = fit < 0.7 // no room for every nickname: label only you and your group; the rest stay tappable
   return (
     <div style={{ position: 'relative', width: '100%', aspectRatio: `${w} / ${h}` }}
       role="img" aria-label={`${people.length} people in this sky, ${lines.length} connections, ${groups.filter((g) => g.length > 1).length} groups`}>
       {/* preserveAspectRatio="none": SVG units map to the same % as the HTML stars below, so line ends always land on stars */}
       <svg viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" width="100%" height="100%" aria-hidden="true" style={{ position: 'absolute', inset: 0 }}>
         <defs><filter id="cu-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8" /></filter></defs>
-        <circle cx={w / 2} cy={h / 2} r={R1} fill="none" stroke="#2C3660" strokeDasharray="3 6" />
-        <circle cx={w / 2} cy={h / 2} r={R2} fill="none" stroke="#2C3660" strokeDasharray="3 6" />
+        {orbits.map((r) => <circle key={r} cx={w / 2} cy={h / 2} r={r} fill="none" stroke="#2C3660" strokeDasharray="3 6" />)}
         {lines.map((c) => {
           const mine = kind[c.a] === 'mine'
           return <line key={c.id} className="cu-draw" x1={pos[c.a].x} y1={pos[c.a].y} x2={pos[c.b].x} y2={pos[c.b].y}
@@ -73,7 +58,7 @@ export default function Sky({ people, connections, constellations = [], meId, w 
                 <path d={SPARK} fill={fill} stroke={stroke} strokeWidth="2" strokeLinejoin="round" />
               </svg>
             </span>
-            <span style={{ font: `${me ? 700 : 500} ${big ? 17 : 11}px Inter, sans-serif`, color: me ? '#FFE2A3' : '#C9D0EC', whiteSpace: 'nowrap' }}>{label}</span>
+            {(me || k === 'mine' || !crowded) && <span style={{ font: `${me ? 700 : 500} ${Math.max(10, (big ? 17 : 11) * fit)}px Inter, sans-serif`, color: me ? '#FFE2A3' : '#C9D0EC', whiteSpace: 'nowrap' }}>{label}</span>}
           </>
         )
         // lift by exactly half the star box, so the star's centre sits on its line ends

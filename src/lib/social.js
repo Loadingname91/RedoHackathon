@@ -1,18 +1,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { supabase, PARTICIPANT_COLS, EVENT_COLS } from './supabase.js'
 
-// Groups people joined by confirmed connections. Returns arrays of participant ids.
-export function components(ids, edges) {
-  const parent = new Map(ids.map((id) => [id, id]))
-  const find = (x) => (parent.get(x) === x ? x : (parent.set(x, find(parent.get(x))), parent.get(x)))
-  for (const [a, b] of edges) if (parent.has(a) && parent.has(b)) parent.set(find(a), find(b))
-  const groups = new Map()
-  for (const id of ids) { const r = find(id); groups.set(r, [...(groups.get(r) ?? []), id]) }
-  return [...groups.values()]
-}
-
-export const confirmedEdges = (connections) =>
-  connections.filter((c) => c.a_confirmed && c.b_confirmed).map((c) => [c.a, c.b])
+export { components, confirmedEdges } from './sky.js'
 
 // Live data for one event: refetch on any realtime change; 5 s poll only if the channel drops.
 // shortcut: refetches everything on each change; fine for one room, switch to payload merging for big events.
@@ -60,9 +49,32 @@ export function useRoomGlow(eventId) {
   return glow
 }
 
-export function sendGlow(eventId) {
-  const ch = supabase.channel(`room:${eventId}`)
-  ch.subscribe((status) => { if (status === 'SUBSCRIBED') ch.send({ type: 'broadcast', event: 'glow', payload: {} }).then(() => setTimeout(() => supabase.removeChannel(ch), 1000)) })
+// One-off broadcast on a channel, then leave it.
+function broadcastOnce(topic, event) {
+  const ch = supabase.channel(topic)
+  ch.subscribe((status) => { if (status === 'SUBSCRIBED') ch.send({ type: 'broadcast', event, payload: {} }).then(() => setTimeout(() => supabase.removeChannel(ch), 1000)) })
+}
+export const sendGlow = (eventId) => broadcastOnce(`room:${eventId}`, 'glow')
+
+// Ask-to-connect requests for me. A ping on `nudge:<my id>` means "look again"; it carries no data, since
+// anyone can listen on a channel. Who asked whom is only ever read through my_requests with my secret.
+export const sendNudge = (participantId) => broadcastOnce(`nudge:${participantId}`, 'nudge')
+export function useRequests(session) {
+  const [reqs, setReqs] = useState({ incoming: [], outgoing: [] })
+  const id = session?.participant_id, secret = session?.secret
+  const load = useCallback(async () => {
+    if (!id) return
+    const { data, error } = await supabase.rpc('my_requests', { p_id: id, p_secret: secret })
+    if (!error && data) setReqs(data)
+  }, [id, secret])
+  useEffect(() => {
+    if (!id) return
+    load()
+    const ch = supabase.channel(`nudge:${id}`).on('broadcast', { event: 'nudge' }, load).subscribe()
+    const t = setInterval(load, 15000) // backup in case a ping is missed
+    return () => { clearInterval(t); supabase.removeChannel(ch) }
+  }, [id, load])
+  return { ...reqs, reload: load }
 }
 
 // Stars placed on a ring; stable by join order.

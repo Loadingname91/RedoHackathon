@@ -21,6 +21,10 @@ h1, h2, h3 { font-family: var(--display); margin: 0; }
 .screen { min-height: 100%; padding: 16px; max-width: 520px; margin: 0 auto; }
 .muted { color: var(--muted); }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.cu-description { display: grid; gap: 10px; line-height: 1.55; }
+.cu-description h2 { font-size: 17px; }
+.cu-description p { margin: 0; white-space: pre-wrap; }
+.cu-description-preview { color: var(--muted); font-size: 14px; line-height: 1.4; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 /* Calm mode and reduced motion turn off decoration. */
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }

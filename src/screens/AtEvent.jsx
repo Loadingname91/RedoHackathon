@@ -4,7 +4,7 @@ import jsQR from 'jsqr'
 import confetti from 'canvas-confetti'
 import { rpc } from '../lib/supabase.js'
 import { getSession, clearSession } from '../lib/identity.js'
-import { useEventLive, useRoomGlow, components, confirmedEdges, motionOK } from '../lib/social.js'
+import { useEventLive, useRoomGlow, useRequests, sendNudge, components, confirmedEdges, motionOK } from '../lib/social.js'
 import Safety from '../components/social/Safety.jsx'
 import { syncCheckins } from '../lib/checkins.js'
 import Sky, { SPARK, HALF_L, HALF_R } from '../components/social/Sky.jsx'
@@ -35,6 +35,7 @@ export default function AtEvent({ param: eventId }) {
   const session = getSession(eventId)
   const live = useEventLive(eventId)
   const glow = useRoomGlow(eventId)
+  const reqs = useRequests(session)
   const [view, setView] = useState('home') // home | code | scan | beacon | prompt | formed
   const [skyMode, setSkyMode] = useState('sky')
   const [announce, setAnnounce] = useState('')
@@ -82,6 +83,17 @@ export default function AtEvent({ param: eventId }) {
     prevGroup.current = myGroup.length
   }, [myGroup.length])
 
+  // A new nudge: buzz once and tell screen readers. Only for requests we haven't already alerted on.
+  const alerted = useRef(new Set())
+  useEffect(() => {
+    const fresh = [...reqs.incoming.filter((r) => !alerted.current.has(r.id)).map((r) => [r.id, `${r.nickname} wants to connect.`]),
+      ...reqs.outgoing.filter((r) => r.status === 'accepted' && !alerted.current.has(r.id)).map((r) => [r.id, `${r.nickname} said yes.`])]
+    if (!fresh.length) return
+    fresh.forEach(([id]) => alerted.current.add(id))
+    setAnnounce(fresh.map(([, t]) => t).join(' '))
+    try { navigator.vibrate?.(motionOK() ? [80, 60, 80] : 0) } catch {}
+  }, [reqs.incoming, reqs.outgoing])
+
   if (left === 'left') return <LeftScreen eventId={eventId} title={live.event?.title} />
   if (synced === null) return <main className="cu"><p className="cu-col cu-sub" role="status">Checking your check-in…</p></main>
   if (synced === 'gone' || !session) { location.hash = `#/checkin/${eventId}`; return null }
@@ -110,7 +122,7 @@ export default function AtEvent({ param: eventId }) {
     catch (e) { setActionErr(`Couldn't show you again: ${e.message}`) }
   }
 
-  const ctx = { live, me, session, eventId, setView, myGroup, named, groups, sync, onSync: syncNow }
+  const ctx = { live, me, session, eventId, setView, myGroup, named, groups, sync, onSync: syncNow, reqs }
   let body
   if (left === 'hidden') body = <Home {...ctx} hidden onShow={showMe} onLeave={() => leaveEvent('left')} skyMode={skyMode} setSkyMode={setSkyMode} />
   else if (view === 'formed') body = <Formed {...ctx} onLeave={() => leaveEvent('left')} />
@@ -128,6 +140,7 @@ export default function AtEvent({ param: eventId }) {
         background: 'radial-gradient(circle, rgba(245,199,107,.5), rgba(245,199,107,0) 70%)', animation: motionOK() ? 'cu-glow 4s ease-in-out' : 'none' }} />}
       <p className="sr-only" aria-live="polite">{announce}{glow ? ' The room reached its goal. The sky lit up.' : ''}</p>
       {body}
+      {!left && <Nudges {...ctx} onSafety={setSafetyFor} />}
       {sheet && <PersonSheet {...ctx} person={sheet} onClose={() => setSheet(null)}
         onConnect={() => { setSheet(null); setView('code') }} onSafety={(x) => { setSheet(null); setSafetyFor(x) }} />}
       {safetyFor && <Safety session={session} {...safetyFor} onClose={() => setSafetyFor(null)} />}
@@ -256,8 +269,70 @@ function PeopleList({ people, me, live, myGroup, onSelect }) {
 }
 
 // Design 18 · tap-a-star sheet.
-function PersonSheet({ person, me, live, myGroup, onClose, onConnect, onSafety }) {
+// Nudge banner: someone asked to connect, or someone said yes to you. One at a time, newest last.
+function Nudges({ reqs, session, setView, onSafety }) {
+  const [busy, setBusy] = useState(false)
+  const args = { p_id: session.participant_id, p_secret: session.secret }
+  const yes = reqs.outgoing.find((r) => r.status === 'accepted')
+  const ask = reqs.incoming[0]
+  if (!ask && !yes) return null
+  const act = async (fn, after) => {
+    setBusy(true)
+    try { await fn(); after?.() } catch {} // a failed answer just leaves the nudge up to try again
+    setBusy(false); reqs.reload()
+  }
+  const box = { position: 'fixed', left: 12, right: 12, top: 12, zIndex: 60, maxWidth: 480, margin: '0 auto', padding: 14, borderRadius: 18,
+    background: '#161E3E', border: '1px solid #F5C76B', boxShadow: '0 10px 30px rgba(0,0,0,.45)', display: 'flex', flexDirection: 'column', gap: 10 }
+  const row = { display: 'flex', gap: 8 }
+  if (ask) return (
+    <section role="alertdialog" aria-labelledby="nudge-t" aria-describedby="nudge-d" style={box}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d={SPARK} fill="#FFE2A3" /></svg>
+        <div className="grow">
+          <p id="nudge-t" style={{ margin: 0, font: '700 16px Inter, sans-serif', color: '#FFE9BE' }}>{ask.nickname} wants to connect</p>
+          <p id="nudge-d" className="cu-small" style={{ margin: 0 }}>
+            {[ask.come_to_me && 'They stay put: you walk over', ask.prefers_text && 'They prefer text', 'Say yes and show them your code'].filter(Boolean).join(' · ')}
+            {reqs.incoming.length > 1 && ` · ${reqs.incoming.length - 1} more waiting`}</p>
+        </div>
+      </div>
+      <div style={row}>
+        <button className="cu-goldbtn" style={{ flex: 2, height: 46, minHeight: 46 }} disabled={busy} autoFocus
+          onClick={() => act(() => rpc('respond_request', { ...args, p_req: ask.id, p_accept: true }), () => { sendNudge(ask.from_id); setView('code') })}>Show my code</button>
+        <button className="cu-secondary" style={{ flex: 1, height: 46, minHeight: 46 }} disabled={busy}
+          onClick={() => act(() => rpc('respond_request', { ...args, p_req: ask.id, p_accept: false }))}>Not now</button>
+      </div>
+      <button className="cu-small" style={{ background: 'none', border: 0, color: '#C9D0EC', textDecoration: 'underline', padding: 4, minHeight: 32 }}
+        onClick={() => onSafety({ person: { id: ask.from_id, nickname: ask.nickname } })}>Block or report</button>
+      <p className="cu-small" style={{ margin: 0 }}>Not now is private: they won't be told.</p>
+    </section>
+  )
+  return (
+    <section role="alertdialog" aria-labelledby="nudge-t" style={box}>
+      <p id="nudge-t" style={{ margin: 0, font: '700 16px Inter, sans-serif', color: '#FFE9BE' }}>{yes.nickname} said yes</p>
+      <p className="cu-small" style={{ margin: 0 }}>Find them and type the 4-digit code on their screen.</p>
+      <div style={row}>
+        <button className="cu-goldbtn" style={{ flex: 2, height: 46, minHeight: 46 }} disabled={busy} autoFocus
+          onClick={() => act(() => rpc('clear_request', { ...args, p_req: yes.id }), () => setView('scan'))}>Enter their code</button>
+        <button className="cu-secondary" style={{ flex: 1, height: 46, minHeight: 46 }} disabled={busy}
+          onClick={() => act(() => rpc('clear_request', { ...args, p_req: yes.id }))}>Later</button>
+      </div>
+    </section>
+  )
+}
+
+function PersonSheet({ person, me, live, myGroup, session, reqs, onClose, onConnect, onSafety }) {
   const r = relation(person, me, live, myGroup)
+  const asked = reqs.outgoing.find((q) => q.to_id === person.id)
+  const askedMe = reqs.incoming.find((q) => q.from_id === person.id)
+  const [state, setState] = useState(null) // null | 'sending' | 'sent' | error text
+  async function ask() {
+    setState('sending')
+    try {
+      await rpc('request_connection', { p_id: session.participant_id, p_secret: session.secret, p_other: person.id })
+      sendNudge(person.id); reqs.reload(); setState('sent')
+    } catch (err) { setState(err.message === 'already connected' ? "You're already connecting with them." : err.message) }
+  }
+  const waiting = state === 'sent' || asked?.status === 'pending'
   return (
     <div className="cu-modal" role="dialog" aria-modal="true" aria-labelledby="ps-title" onClick={(e) => e.target === e.currentTarget && onClose()}>
       <section>
@@ -270,7 +345,17 @@ function PersonSheet({ person, me, live, myGroup, onClose, onConnect, onSafety }
           {person.interests.map((i) => <span key={i} className="cu-chip" style={{ display: 'inline-flex', alignItems: 'center', height: 32, minHeight: 32 }}>{i}</span>)}</div>}
         {(person.prefers_text || person.come_to_me) && <p className="cu-small" style={{ fontSize: 13 }}>
           {[person.prefers_text && 'Prefers text', person.come_to_me && 'Come to me: they stay put'].filter(Boolean).join(' · ')}</p>}
-        {r.label !== 'Connected' && <button className="cu-primary" onClick={onConnect}>Connect</button>}
+        {r.label !== 'Connected' && (askedMe
+          ? <p className="cu-sub" style={{ margin: 0 }}>{person.nickname} asked to connect with you. Answer in the banner at the top.</p>
+          : asked?.status === 'accepted'
+            ? <p className="cu-sub" style={{ margin: 0 }}>{person.nickname} said yes. Find them and type the code on their screen.</p>
+            : <>
+                <button className="cu-primary" onClick={ask} disabled={waiting || state === 'sending'}>
+                  {waiting ? 'Asked · waiting for them' : state === 'sending' ? 'Asking…' : 'Ask to connect'}</button>
+                {waiting && <p role="status" className="cu-small" style={{ margin: 0 }}>They'll get a nudge. If they say yes, you'll get one back.</p>}
+                {state && !['sending', 'sent'].includes(state) && <p role="alert" className="cu-err">{state}</p>}
+                <button className="cu-secondary" onClick={onConnect}>We're together: show my code</button>
+              </>)}
         <button className="cu-secondary" onClick={() => onSafety({ person, conn: r.conn })}>Remove, block or report</button>
       </section>
     </div>

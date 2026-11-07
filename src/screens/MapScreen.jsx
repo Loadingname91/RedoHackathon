@@ -11,6 +11,7 @@ import { supabase } from '../lib/supabase.js'
 import { rankEvents, INTERESTS } from '../lib/foryou.js'
 import affinity from '../data/affinity.json'
 import { useAuth } from '../lib/auth.js'
+import { descriptionPreview } from '../lib/eventDescription.js'
 
 // OpenStreetMap tiles (no key). Darkened with a CSS filter in map.css. shortcut: OSM's public server is for light use; switch to a hosted tile provider for real traffic.
 export const TILES = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -165,6 +166,7 @@ export default function MapScreen({ query }) {
 
   // "Show my location": off until tapped. The position stays in this browser; nothing is sent or saved.
   const [you, setYou] = useState(null)
+  const [locOff, setLocOff] = useState(false) // permission denied: show the turn-on prompt
   const watch = useRef(null), youMk = useRef(null), centered = useRef(false)
   const stopLocate = () => {
     if (watch.current != null) navigator.geolocation.clearWatch(watch.current)
@@ -175,10 +177,17 @@ export default function MapScreen({ query }) {
     if (watch.current != null) { if (you && map.current) map.current.setView([you.lat, you.lng], 17); return }
     if (!navigator.geolocation) return setMsg('Location is not available on this device.')
     setMsg('Finding you… Your location stays on this phone.')
-    watch.current = navigator.geolocation.watchPosition(
-      (pos) => setYou({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-      () => { stopLocate(); setMsg('Location is blocked. The map works without it.') },
-      { enableHighAccuracy: true, maximumAge: 10000, timeout: 15000 })
+    const got = (pos) => { setLocOff(false); setYou({ lat: pos.coords.latitude, lng: pos.coords.longitude }) }
+    // iOS Safari: a quick low-accuracy fix first (indoors GPS can take a while), then keep following with GPS.
+    navigator.geolocation.getCurrentPosition(got, () => {}, { enableHighAccuracy: false, maximumAge: 60000, timeout: 20000 })
+    watch.current = navigator.geolocation.watchPosition(got, (err) => {
+      if (err.code === 1) { // permission denied: only this one is a real "blocked"
+        stopLocate(); setLocOff(true)
+        setMsg(/iPhone|iPad/.test(navigator.userAgent)
+          ? 'Location is off for this site. On iPhone: Settings › Privacy & Security › Location Services › Safari Websites › While Using. Then tap the location button again.'
+          : 'Location is blocked for this site. Allow it in your browser settings, then tap the location button again.')
+      } else setMsg('Still finding you… GPS can be slow indoors. The map works without it.') // timeout/unavailable: keep trying
+    }, { enableHighAccuracy: true, maximumAge: 10000, timeout: 30000 })
   }
   useEffect(() => {
     // Lock onto the user's location when the map opens, unless they turned it off before.
@@ -195,9 +204,9 @@ export default function MapScreen({ query }) {
     if (!map.current || fitState.current === 'both') return
     const pts = Object.keys(byBuilding).map((c) => [buildingByCode[c].lat, buildingByCode[c].lng])
     const me = you && map.current.distance([you.lat, you.lng], [CAMPUS.lat, CAMPUS.lng]) < 5000 ? [you.lat, you.lng] : null
-    if (pts.length && me) { fitState.current = 'both'; map.current.fitBounds(L.latLngBounds([...pts, me]), PAD) }
+    // First load: zoom in on you once your location arrives; until then (or without it) show every event.
+    if (me) { fitState.current = 'both'; map.current.setView(me, 17, { animate: false }) }
     else if (pts.length && fitState.current === 'none') { fitState.current = 'events'; map.current.fitBounds(L.latLngBounds(pts), PAD) }
-    else if (me && fitState.current === 'none') { fitState.current = 'you'; map.current.setView(me, 17, { animate: false }) }
   }, [byBuilding, you, view])
   useEffect(() => {
     if (!map.current) return
@@ -259,6 +268,7 @@ export default function MapScreen({ query }) {
           fitMode && freeUntil ? (fit(e, freeUntil) === 'fits' ? 'Fits your gap' : fit(e, freeUntil) === 'clashes' ? 'Clashes with your schedule' : null) : null,
         ].filter(Boolean).join(' · ')}
       </span>
+      {descriptionPreview(e) && <span className="cu-description-preview">{descriptionPreview(e)}</span>}
       {forYou && rankOf[e.id] && <span className="cu-small" style={{ color: '#F5C76B' }}>{rankOf[e.id].score}% match{rankOf[e.id].reasons.length ? ` · ${rankOf[e.id].reasons.join(' · ')}` : ''}</span>}
     </button>
   )
@@ -266,6 +276,18 @@ export default function MapScreen({ query }) {
   return (
     <>
       {view === 'map' && <div ref={mapEl} className="cu-map" role="region" aria-label="Campus map. The list view has the same events." />}
+      {view === 'map' && locOff && (
+        <div className="cu-locoff" role="alert">
+          <strong>Turn on location to see where you are</strong>
+          <span>{/iPhone|iPad/.test(navigator.userAgent)
+            ? 'iPhone: Settings › Privacy & Security › Location Services › Safari Websites › While Using. Also check aA › Website Settings › Location › Allow.'
+            : 'Allow location for this site in your browser settings.'} It stays on your phone.</span>
+          <div style={{ display: 'flex', gap: 8 }}>
+            <button className="primary" onClick={() => { setLocOff(false); toggleLocate() }}>Try again</button>
+            <button onClick={() => setLocOff(false)}>Not now</button>
+          </div>
+        </div>
+      )}
       {view === 'map' && (
         <button className="cu-round cu-locate" onClick={toggleLocate} aria-pressed={!!you}
           aria-label={you ? 'Center on my location' : 'Show my location'} title={you ? 'Center on my location' : 'Show my location'}>
@@ -365,7 +387,7 @@ export default function MapScreen({ query }) {
             {selEv.source === 'campus_connect' && <p className="cu-note" style={{ margin: 0 }}>From Campus Connect. Food and status aren't tracked live until the host claims it.</p>}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
               <a className="btn primary" href={`#/event/${selEv.id}`}>Open event</a>
-              {buildingByCode[selEv.building_code] ? <a className="btn" href={`#/nav/${selEv.id}`}>Directions</a> : <span />}
+              {buildingByCode[selEv.building_code] ? <a className="btn cu-directions" href={`#/nav/${selEv.id}`}><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.7 11.3l-9-9a1 1 0 00-1.4 0l-9 9a1 1 0 000 1.4l9 9a1 1 0 001.4 0l9-9a1 1 0 000-1.4zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>Directions</a> : <span />}
             </div>
           </div>
         </section>

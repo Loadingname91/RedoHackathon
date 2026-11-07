@@ -28,8 +28,21 @@ export default function Projector({ param: eventId }) {
       <section style={{ position: 'relative', flex: '1 1 380px', maxWidth: 460, boxSizing: 'border-box', padding: '48px 40px', background: 'rgba(15,21,48,.88)', borderRight: '1px solid #2C3660', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22, textAlign: 'center' }}>
         {live.event.host && <p style={{ font: '600 15px Inter, sans-serif', color: '#F5C76B', letterSpacing: 1.2, margin: 0, textTransform: 'uppercase' }}>{live.event.host}</p>}
         <h1 style={{ font: "700 38px 'Space Grotesk', sans-serif", lineHeight: 1.1, margin: 0 }}>{live.event.title}</h1>
-        <div style={{ width: 'min(330px, 80%)', aspectRatio: '1', padding: 18, boxSizing: 'border-box', borderRadius: 22, background: '#fff', border: '6px solid #CC0000' }}>
-          {qr && <img src={qr} alt="QR code: scan to join this event" style={{ width: '100%', height: '100%' }} />}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, width: '100%' }}>
+          <div aria-label="Constellation U app screens" style={{ position: 'relative', width: 230, height: 270, flex: '1 1 230px', maxWidth: 250 }}>
+            {[
+              ['half', -7, 0, 40],
+              ['map', 0, 58, 0],
+              ['constellation', 7, 120, 44],
+            ].map(([shot, rotate, left, top]) => (
+              <figure key={shot} style={{ position: 'absolute', width: 112, margin: 0, left, top, padding: 4, borderRadius: 18, background: 'linear-gradient(160deg, #39446e, #101735)', boxShadow: '0 14px 26px rgba(0,0,0,.35)', transform: `rotate(${rotate}deg)` }}>
+                <img src={`/landing/${shot}.jpg`} alt="" style={{ width: '100%', display: 'block', borderRadius: 14 }} />
+              </figure>
+            ))}
+          </div>
+          <div style={{ width: 126, aspectRatio: '1', padding: 9, boxSizing: 'border-box', borderRadius: 15, background: '#fff', border: '4px solid #CC0000', flex: 'none' }}>
+            {qr && <img src={qr} alt="QR code: scan to join this event" style={{ width: '100%', height: '100%' }} />}
+          </div>
         </div>
         <p style={{ font: "700 34px 'Space Grotesk', sans-serif", color: '#FFE2A3', margin: 0 }}>Scan to join the sky</p>
         <p style={{ font: '400 17px Inter, sans-serif', color: '#C9D0EC', lineHeight: 1.45, margin: 0 }}>No GPS. Only people in this room see your star.<br />Joining is optional. Everything here is for everyone.</p>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from './supabase.js'
-import { setUid, setHostSecret, allHostSecrets, setPrefs } from './identity.js'
+import { setUid, setHostSecret, allHostSecrets, setPrefs, clearLocalAppState } from './identity.js'
 
 // Session + role. Roles come from the profiles table; everyone starts as a student.
 // Layout testing only: on the local dev server, localStorage cu.test-role fakes a signed-in, onboarded account so a
@@ -49,10 +49,11 @@ export const signInWithGoogle = () =>
 // Sign out = a clean slate on this browser: session, check-ins, host links and view choice all go, then a full reload
 // so every screen starts from the sign-in page (no stale map from the previous account).
 export const signOut = async () => {
-  try { await supabase.auth.signOut() } catch {} // still clear locally if the network call fails
-  setUid(null)
-  try { for (const k of ['cu.sessions', 'cu.host', 'cu.test-role', 'cu.test-onboarded']) localStorage.removeItem(k); sessionStorage.removeItem('cu.next') } catch {}
-  setPrefs({ role: null, landed: false })
+  try { await supabase.auth.signOut() } catch {}
+  // A global sign-out can fail while offline. This second call clears the
+  // Supabase browser token without needing the network.
+  try { await supabase.auth.signOut({ scope: 'local' }) } catch {}
+  clearLocalAppState()
   location.replace(location.origin + '/')
 }
 // Deletes the account and everything tied to it on the server, then signs out to the sign-in page.

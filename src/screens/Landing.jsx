@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import QRCode from 'qrcode'
 import Icon from '../components/map/icons.jsx'
 import { signInWithGoogle } from '../lib/auth.js'
 import './landing.css'
@@ -23,6 +24,39 @@ const Phone = ({ shot, alt, className = '' }) => (
   <figure className={`lp-phone ${className}`}><img src={img(shot)} alt={alt} loading="lazy" decoding="async" /></figure>
 )
 const CTA = ({ label = 'Continue with Google' }) => <button className="primary lp-cta" onClick={signInWithGoogle}>{label}</button>
+
+function ScanToJoin() {
+  const [qr, setQr] = useState('')
+  const dialog = useRef(null)
+  const joinUrl = `${window.location.origin}/`
+  useEffect(() => {
+    let active = true
+    QRCode.toDataURL(joinUrl, {
+      width: 1024, margin: 4, errorCorrectionLevel: 'M',
+      color: { dark: '#000000', light: '#FFFFFF' },
+    }).then((src) => { if (active) setQr(src) }).catch(() => {})
+    return () => { active = false }
+  }, [joinUrl])
+  return (
+    <section className="lp-join" aria-labelledby="join-h">
+      <h2 id="join-h">Scan to join on your phone</h2>
+      {qr ? <a href={joinUrl} aria-label="Open Constellation U"><img className="lp-join-qr" src={qr} alt="QR code linking to Constellation U" width="1024" height="1024" /></a>
+        : <p role="status">Preparing QR code. You can also open the link below.</p>}
+      <a className="lp-join-link" href={joinUrl}>{window.location.host}</a>
+      <p className="lp-fine">Open your camera, scan the code, then continue with Google.</p>
+      <button type="button" disabled={!qr} onClick={() => dialog.current?.showModal()}>Enlarge for the room</button>
+      <dialog ref={dialog} className="lp-join-dialog" aria-labelledby="join-room-h">
+        <div className="lp-join-room">
+          <h2 id="join-room-h">Scan to join Constellation U</h2>
+          <img className="lp-join-qr" src={qr || undefined} alt="Scan this QR code to open Constellation U and sign in" width="1024" height="1024" />
+          <a className="lp-join-link" href={joinUrl}>{window.location.host}</a>
+          <p>Scan with your camera, then continue with Google.</p>
+          <button type="button" onClick={() => dialog.current?.close()}>Close</button>
+        </div>
+      </dialog>
+    </section>
+  )
+}
 
 function useReveal() {
   const ref = useRef(null)
@@ -70,6 +104,27 @@ function Explainer() {
   )
 }
 
+// The 28-second launch video made with /brag. Plays muted when it scrolls into view, unless the viewer
+// prefers reduced motion or has data saver on; the controls and poster are always there.
+function LaunchVideo() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const v = ref.current; if (!v) return
+    const quiet = matchMedia('(prefers-reduced-motion: reduce)').matches || navigator.connection?.saveData
+    if (quiet || !('IntersectionObserver' in window)) return
+    const io = new IntersectionObserver(([e]) => { e.isIntersecting ? v.play().catch(() => {}) : v.pause() }, { threshold: 0.5 })
+    io.observe(v); return () => io.disconnect()
+  }, [])
+  return (
+    <section className="lp-video lp-reveal" aria-labelledby="v-h">
+      <h2 id="v-h">See it in 28 seconds</h2>
+      <video ref={ref} src="/landing/brag.mp4" poster="/landing/brag-poster.jpg" controls muted loop playsInline preload="none"
+        aria-describedby="v-cap" />
+      <p id="v-cap" className="lp-fine">600+ student orgs at the U, and you still missed the pizza. One live map, a For you ranking that runs on your phone, Claude turning club posts into events, and your “half” matched by what you both like.</p>
+    </section>
+  )
+}
+
 export default function Landing() {
   const ref = useReveal()
   return (
@@ -89,6 +144,10 @@ export default function Landing() {
           <Phone shot="constellation" alt="" className="p3" />
         </div>
       </header>
+
+      <ScanToJoin />
+
+      <LaunchVideo />
 
       <Explainer />
 

@@ -31,3 +31,17 @@ export const hostLink = (eventId, secret) => `${location.origin}/#/host/${eventI
 export const prefs = () => read('cu.prefs', { calm: false, sound: false, stepFree: false, freeUntil: null })
 export const setPrefs = (p) => { write('cu.prefs', { ...prefs(), ...p }); document.documentElement.dataset.calm = prefs().calm ? '1' : '0' }
 export const allSessions = () => read('cu.sessions', {})
+
+// Sign-out must work offline too. Remove only this app's keys (rather than
+// clearing the whole origin) so a stale profile, hosted event, or test session
+// can never reopen after the public home page loads.
+export function clearLocalAppState() {
+  try {
+    for (let i = localStorage.length - 1; i >= 0; i--) {
+      const key = localStorage.key(i)
+      if (key?.startsWith('cu.')) localStorage.removeItem(key)
+    }
+    sessionStorage.removeItem('cu.next')
+  } catch {}
+  delete document.documentElement.dataset.calm
+}

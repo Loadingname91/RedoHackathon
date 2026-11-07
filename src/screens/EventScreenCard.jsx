@@ -5,6 +5,7 @@ import { useEvents, buildingByCode, openCount } from '../components/map/useEvent
 import { statusOf, offerLine, placeOf } from './MapScreen.jsx'
 import { isNow, whenText } from '../lib/geo.js'
 import { supabase, rpc } from '../lib/supabase.js'
+import { cleanAnnouncement, eventDescription } from '../lib/eventDescription.js'
 
 // Access rows in the design's order. Unknown values get an "Ask the host" button.
 const ACCESS = [
@@ -40,6 +41,7 @@ export default function EventScreenCard({ param }) {
   const open = openCount(counts, e.id)
   const access = e.access ?? {}
   const live = isNow(e)
+  const description = eventDescription(e)
 
   const ask = async (ev) => {
     ev.preventDefault()
@@ -49,8 +51,11 @@ export default function EventScreenCard({ param }) {
 
   if (showSource) return (
     <main className="screen" style={{ display: 'grid', gap: 14, alignContent: 'start' }}>
-      <p className="cu-small" style={{ margin: 0, letterSpacing: 1 }}>ORIGINAL ANNOUNCEMENT · {e.source === 'campus_connect' ? 'from Campus Connect' : 'pasted by the host'}</p>
-      <p className="card" style={{ whiteSpace: 'pre-wrap', margin: 0 }}>{e.source_text}</p>
+      <header style={{ display: 'grid', gap: 4 }}>
+        <p className="cu-small" style={{ margin: 0, letterSpacing: 1 }}>ORIGINAL ANNOUNCEMENT · {e.source === 'campus_connect' ? 'from Campus Connect' : 'pasted by the host'}</p>
+        <h1 style={{ fontSize: 24 }}>Announcement details</h1>
+      </header>
+      <article className="card cu-description" aria-label="Original event announcement">{cleanAnnouncement(e.source_text).split('\n').map((line, i) => <p key={i}>{line}</p>)}</article>
       {e.source === 'campus_connect' && (
         <a className="btn primary" href={ccLink(e.source_url) || 'https://campusconnect.utah.edu/'} target="_blank" rel="noopener noreferrer">
           {ccLink(e.source_url) ? 'Open this event on Campus Connect' : 'Find it on Campus Connect'}<span className="sr-only"> (opens in a new tab)</span>
@@ -74,9 +79,23 @@ export default function EventScreenCard({ param }) {
         <h1 style={{ fontSize: 26, lineHeight: 1.15 }}>{e.title}</h1>
         <p className="cu-small" style={{ margin: 0 }}>{e.student_run ? 'Student-run · not a club post' : e.host || 'Host not listed'}</p>
         <p style={{ margin: 0 }}>{placeOf(e)}</p>
+        {/* Directions up front: in-app walking (or step-free) route to the building's entrance */}
+        {b ? (
+          <a className="btn cu-directions" href={`#/nav/${e.id}`} style={{ justifySelf: 'start', marginTop: 4 }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.7 11.3l-9-9a1 1 0 00-1.4 0l-9 9a1 1 0 000 1.4l9 9a1 1 0 001.4 0l9-9a1 1 0 000-1.4zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>
+            Directions
+          </a>
+        ) : <p className="cu-small" style={{ margin: 0 }}>No directions yet: this building isn't on our campus map.</p>}
       </header>
 
       {e.source === 'campus_connect' && <p className="cu-note" style={{ margin: 0 }}>From Campus Connect. Food and status aren't tracked live until the host claims it.</p>}
+
+      {description && (
+        <section className="card cu-description" aria-labelledby="about-h">
+          <h2 id="about-h">About this event</h2>
+          {description.split('\n').map((line, i) => <p key={i}>{line}</p>)}
+        </section>
+      )}
 
       {(e.offerings ?? []).length > 0 && (
         <section className="card" aria-label="What's on offer" style={{ display: 'grid', gap: 10 }}>
