@@ -7,7 +7,8 @@
   color: var(--muted); text-decoration: none; font: 600 12px var(--font); }
 .tabbar a.on { color: var(--gold); }
 .tabbar a:focus-visible { outline: 3px solid var(--gold); outline-offset: -3px; }
-:root[data-tabs="1"] .screen { padding-bottom: calc(16px + var(--tabbar)); }
+/* Space after every page's content so the last button can scroll clear of the bar (pages set their own padding, so don't rely on it). */
+:root[data-tabs="1"] #root::after { content: ''; display: block; height: calc(var(--tabbar) + 8px); }
 :root[data-tabs="1"] .cu-sheet { bottom: var(--tabbar) !important; }
 :root[data-tabs="1"] .cu-list { padding-bottom: calc(32px + var(--tabbar)); }
 :root[data-tabs="1"] .leaflet-bottom { bottom: var(--tabbar); }

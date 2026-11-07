@@ -3,9 +3,16 @@ import { supabase } from './supabase.js'
 import { setUid, setHostSecret, allHostSecrets, setPrefs } from './identity.js'
 
 // Session + role. Roles come from the profiles table; everyone starts as a student.
+// Layout testing only: on the local dev server, localStorage cu.test-role fakes a signed-in, onboarded account so a
+// headless browser can reach every screen. import.meta.env.DEV is false in the Vercel build, so this code is removed there.
+const testRole = () => { if (!import.meta.env.DEV) return null; try { return localStorage.getItem('cu.test-role') } catch { return null } }
+
 export function useAuth() {
-  const [state, setState] = useState({ loading: true, user: null, role: 'student', profile: null })
+  const fake = testRole()
+  const fakeState = () => ({ loading: false, user: { email: 'qa@test.local' }, role: fake, profile: { onboarded: localStorage.getItem('cu.test-onboarded') !== '0' } })
+  const [state, setState] = useState(fake ? fakeState() : { loading: true, user: null, role: 'student', profile: null })
   useEffect(() => {
+    if (fake) { const r = () => setState(fakeState()); addEventListener('cu-auth', r); return () => removeEventListener('cu-auth', r) }
     const load = async (session) => {
       const user = session?.user ?? null
       setUid(user?.id ?? null)
@@ -39,9 +46,10 @@ export function useAuth() {
 export const signInWithGoogle = () =>
   supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: `${location.origin}/` } })
 
-export const signOut = async () => { await supabase.auth.signOut(); setUid(null); setPrefs({ role: null, guest: false }); location.hash = '#/start' }
+export const signOut = async () => { await supabase.auth.signOut(); setUid(null); setPrefs({ role: null, landed: false }); location.hash = '' }
 
 // Where each role lands after signing in.
 export const homeFor = (role) => (role === 'admin' ? '#/admin' : role === 'organizer' ? '#/host' : '#/')
 
 export const refreshAuth = () => dispatchEvent(new Event('cu-auth'))
+export const isTestAuth = () => !!testRole()

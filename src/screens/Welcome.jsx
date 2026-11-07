@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { supabase } from '../lib/supabase.js'
 import { prefs, setPrefs } from '../lib/identity.js'
-import { useAuth, homeFor, refreshAuth } from '../lib/auth.js'
+import { useAuth, homeFor, refreshAuth, isTestAuth } from '../lib/auth.js'
 import AddInterest, { addInterest } from '../components/AddInterest.jsx'
 
 // First sign-in only: promise → your star → comfort → location → home for your role.
@@ -43,7 +43,8 @@ export default function Welcome() {
   const finish = async () => {
     setErr('')
     setPrefs({ nickname: nickname.trim(), interests, ...c, role: role === 'student' ? 'student' : role })
-    const { error } = await supabase.rpc('save_my_profile', { p: { nickname: nickname.trim(), interests, comfort: c, onboarded: true } })
+    const { error } = isTestAuth() ? (localStorage.setItem('cu.test-onboarded', '1'), {}) // dev-only layout tests
+      : await supabase.rpc('save_my_profile', { p: { nickname: nickname.trim(), interests, comfort: c, onboarded: true } })
     if (error) return setErr(`Couldn't save your profile: ${error.message}`)
     refreshAuth() // the app still thinks onboarding isn't done until it reloads the profile
     location.hash = homeFor(role)

@@ -39,19 +39,23 @@ export default function App() {
     return () => removeEventListener('hashchange', on)
   }, [])
   const auth = useAuth()
-  // Sign-in journey on the home page: signed out → start (sign in); first sign-in → welcome (onboarding);
-  // signed in without a chosen view → that role's home. Shared links (event, check-in, host) always open directly.
+  const signedIn = !!auth.user, onboarded = !!auth.profile?.onboarded
+  // Every screen needs sign-in. A link opened while signed out (event QR, check-in, host link) is remembered
+  // and reopened after Google sign-in + onboarding. First sign-in goes through onboarding (welcome).
   useEffect(() => {
-    if (auth.loading || route.name !== '' || !auth.user || !auth.profile?.onboarded || prefs().role) return
-    setPrefs({ role: auth.role }); if (homeFor(auth.role) !== '#/') location.hash = homeFor(auth.role)
-  }, [auth, route.name])
-  const role = prefs().role
-  const name = route.name !== '' ? route.name
-    : auth.loading ? 'loading'
-    : auth.user && !auth.profile?.onboarded ? 'welcome'
-    : !auth.user && !prefs().guest ? 'start' : ''  // signed out: sign-in first unless they chose to look around
+    if (auth.loading) return
+    if (!signedIn || !onboarded) {
+      // remember the link (e.g. a check-in QR) until sign-in + onboarding are done
+      if (route.name && !['start', 'welcome'].includes(route.name)) try { sessionStorage.setItem('cu.next', location.hash) } catch {}
+      return
+    }
+    let next = null; try { next = sessionStorage.getItem('cu.next'); sessionStorage.removeItem('cu.next') } catch {}
+    if (next) { location.hash = next; return }
+    if (route.name === '' && homeFor(auth.role) !== '#/' && !prefs().landed) { setPrefs({ landed: true }); location.hash = homeFor(auth.role) }
+  }, [auth.loading, signedIn, onboarded, route.name])
+  const name = auth.loading ? 'loading' : !signedIn ? 'start' : !onboarded ? 'welcome' : route.name
   // Tab bar on the main screens only; immersive screens (at the event, navigation, projector, check-in) keep the full screen.
-  const tabs = ['', 'event', 'sky', 'host', 'admin', 'micro'].includes(name)
+  const tabs = signedIn && onboarded && ['', 'event', 'sky', 'host', 'admin', 'micro', 'start'].includes(name)
   useEffect(() => { document.documentElement.dataset.tabs = tabs ? '1' : '0' }, [tabs])
   if (name === 'loading') return <p className="screen muted" role="status">Loading…</p>
   const Screen = routes[name] ?? routes['']
@@ -60,7 +64,7 @@ export default function App() {
       <Suspense fallback={<p className="screen muted" role="status">Loading…</p>}>
         <Screen param={route.param} query={route.query} prefs={prefs()} />
       </Suspense>
-      {tabs && <TabBar role={role ?? 'student'} route={{ ...route, name }} />}
+      {tabs && <TabBar role={auth.role} route={{ ...route, name }} />}
     </>
   )
 }
