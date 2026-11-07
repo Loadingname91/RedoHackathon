@@ -1,5 +1,6 @@
 import React, { useEffect, useState, lazy, Suspense } from 'react'
 import { prefs, setPrefs } from './lib/identity.js'
+import { applySeeing } from './screens/MySky.jsx'
 
 // Hash routes: #/path/param?query. Each screen file is owned by one lane (see docs/plan/BUILD_LANES.md).
 const routes = {
@@ -27,6 +28,7 @@ export default function App() {
   const [route, setRoute] = useState(parseHash)
   useEffect(() => {
     setPrefs({}) // apply calm mode on load
+    applySeeing() // text size + high contrast
     const on = () => setRoute(parseHash())
     addEventListener('hashchange', on)
     return () => removeEventListener('hashchange', on)

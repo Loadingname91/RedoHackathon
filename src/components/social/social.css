@@ -63,3 +63,6 @@
 .cu-breathe { animation: cu-breathe 2.4s ease-in-out infinite; }
 .cu-popin { animation: cu-pop .5s ease-out both; }
 @media (prefers-reduced-motion: reduce) { .cu * { animation: none !important; transition: none !important; } }
+/* High contrast (My sky › Access and comfort). */
+:root[data-contrast="1"] .cu { --d-text: #fff; --d-muted: #FFFF66; --d-soft: #fff; --d-line: #fff; --d-btnline: #fff; --d-surf: #000; --d-btn: #000; --d-field: #000; background: #000; }
+:root[data-contrast="1"] .cu .cu-card, :root[data-contrast="1"] .cu .cu-sheet, :root[data-contrast="1"] .cu input, :root[data-contrast="1"] .cu textarea { border-width: 2px; }

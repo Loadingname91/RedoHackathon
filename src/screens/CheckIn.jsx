@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { supabase, rpc, EVENT_COLS } from '../lib/supabase.js'
-import { deviceId, getSession, setSession } from '../lib/identity.js'
+import { deviceId, getSession, setSession, prefs } from '../lib/identity.js'
 import { SPARK } from '../components/social/Sky.jsx'
 import '../components/social/social.css'
 
@@ -15,8 +15,8 @@ export default function CheckIn({ param: eventId }) {
   const [nickname, setNickname] = useState(existing?.nickname ?? NAMES[Math.floor(Math.random() * NAMES.length)])
   const [interests, setInterests] = useState([])
   const [clue, setClue] = useState('')
-  const [prefersText, setPrefersText] = useState(false)
-  const [comeToMe, setComeToMe] = useState(false)
+  const [prefersText, setPrefersText] = useState(!!prefs().prefersText)
+  const [comeToMe, setComeToMe] = useState(!!prefs().comeToMe)
   const [error, setError] = useState(null)
   const [busy, setBusy] = useState(false)
   useEffect(() => { supabase.from('events').select(EVENT_COLS).eq('id', eventId).maybeSingle().then(({ data }) => setEvent(data)) }, [eventId])
