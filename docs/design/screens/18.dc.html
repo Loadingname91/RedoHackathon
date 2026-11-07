@@ -1,0 +1,565 @@
+
+<helmet>
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5515d6b3-7ac2-4ff5-976c-3a1faf611884") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("5515d6b3-7ac2-4ff5-976c-3a1faf611884") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("5515d6b3-7ac2-4ff5-976c-3a1faf611884") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("5515d6b3-7ac2-4ff5-976c-3a1faf611884") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("cf07811a-df02-47a8-927c-ddfbc648da6b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("cf07811a-df02-47a8-927c-ddfbc648da6b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("cf07811a-df02-47a8-927c-ddfbc648da6b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+body{margin:0;background:#0B1020}
+a{color:#F5C76B}a:hover{color:#FFE2A3}
+@keyframes cupulse{0%{transform:scale(.7);opacity:.9}100%{transform:scale(2);opacity:0}}
+@keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes draw{to{stroke-dashoffset:0}}
+.cu-pulse{animation:cupulse 2s ease-out infinite}
+.up{animation:up .3s ease-out both}
+.draw{stroke-dasharray:140;stroke-dashoffset:140;animation:draw .9s ease-out forwards}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}.draw{stroke-dashoffset:0}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: radial-gradient(circle at 50% 42%, #18204A 0%, #0B1020 64%); font-family: Inter, system-ui, sans-serif; color: #E9ECF8">
+
+<div style="position: absolute; left: 0; top: 0; width: 390px; box-sizing: border-box; padding: 14px 16px 0; display: flex; align-items: center; gap: 10px">
+<a href="MapAfter.dc.html" aria-label="Back to map" style="width: 44px; height: 44px; flex: none; border-radius: 22px; background: #161E3E; border: 1px solid #2C3660; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#E9ECF8" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+<div style="flex: 1; min-width: 0">
+<div style="font: 700 16px 'Space Grotesk', sans-serif">Board Game Night</div>
+<div style="font: 500 12px Inter, sans-serif; color: #AEB7DA">Lassonde Studios · you're checked in</div>
+</div>
+<div role="group" aria-label="View" style="display: flex; background: #161E3E; border: 1px solid #2C3660; border-radius: 22px; padding: 3px">
+<button sc-camel-on-click="{{toSky}}" aria-pressed="{{isSky}}" style="height: 38px; min-width: 48px; border: 0; border-radius: 19px; background: {{skyBg}}; color: {{skyFg}}; font: 600 13px Inter, sans-serif">Sky</button>
+<button sc-camel-on-click="{{toList}}" aria-pressed="{{isList}}" style="height: 38px; min-width: 48px; border: 0; border-radius: 19px; background: {{listBg}}; color: {{listFg}}; font: 600 13px Inter, sans-serif">List</button>
+</div>
+</div>
+
+<sc-if value="{{isSky}}" hint-placeholder-val="{{ true }}">
+<div style="position: absolute; left: 16px; top: 72px; width: 358px; font: 500 12px Inter, sans-serif; color: #AEB7DA; text-align: center">Stars orbit the event. Positions aren't where people stand.</div>
+
+<svg width="390" height="600" sc-camel-view-box="0 0 390 600" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<defs><filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur sc-camel-std-deviation="9"></feGaussianBlur></filter></defs>
+<circle cx="195" cy="360" r="100" fill="none" stroke="#2C3660" stroke-dasharray="3 6"></circle>
+<circle cx="195" cy="360" r="165" fill="none" stroke="#2C3660" stroke-dasharray="3 6"></circle>
+<ellipse cx="110" cy="236" rx="66" ry="54" fill="#F5C76B" fill-opacity="0.2" filter="url(#soft)"></ellipse>
+<ellipse cx="286" cy="250" rx="70" ry="58" fill="#9DB8FF" fill-opacity="{{blueOp}}" filter="url(#soft)"></ellipse>
+<sc-for list="{{lines}}" as="l" hint-placeholder-count="6">
+<line class="{{l.cls}}" x1="{{l.x1}}" y1="{{l.y1}}" x2="{{l.x2}}" y2="{{l.y2}}" stroke="{{l.c}}" stroke-width="{{l.w}}" stroke-dasharray="{{l.d}}" stroke-linecap="round"></line>
+</sc-for>
+<circle cx="195" cy="360" r="20" fill="#18214A" stroke="#FF5A5A" stroke-width="2.5"></circle>
+<g transform="translate(183 348)"><path d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z M9 9h.01 M15 15h.01 M15 9h.01 M9 15h.01 M12 12h.01" fill="none" stroke="#FFE2A3" stroke-width="2" stroke-linecap="round"></path></g>
+</svg>
+<span class="cu-pulse" aria-hidden="true" style="position: absolute; left: 175px; top: 340px; width: 36px; height: 36px; border-radius: 50%; border: 2px solid #FF5A5A"></span>
+
+<button sc-camel-on-click="{{pickG1}}" style="position: absolute; left: 14px; top: 104px; width: 190px; min-height: 44px; border: 0; background: transparent; color: #FFE2A3; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center">
+<span style="font: 700 13px 'Space Grotesk', sans-serif">The Unfinished Game Studio</span><span style="font: 500 11px Inter, sans-serif; color: #E8D3A8">3 of 5 here · yours</span>
+</button>
+<button sc-camel-on-click="{{pickG2}}" style="position: absolute; left: 204px; top: 104px; width: 172px; min-height: 44px; border: 0; background: transparent; color: #CFDDFF; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center">
+<span style="font: 700 13px 'Space Grotesk', sans-serif">Pepperoni Pals</span><span style="font: 500 11px Inter, sans-serif; color: #B8C9EE">{{g2sub}}</span>
+</button>
+
+<sc-for list="{{people}}" as="p" hint-placeholder-count="10">
+<button sc-camel-on-click="{{p.pick}}" aria-label="{{p.aria}}" style="position: absolute; left: {{p.bx}}px; top: {{p.by}}px; width: 60px; height: 54px; padding: 0; border: 0; background: transparent; display: flex; flex-direction: column; align-items: center; gap: 1px">
+<svg width="32" height="32" sc-camel-view-box="0 0 32 32" aria-hidden="true" style="overflow: visible">
+<sc-if value="{{p.sel}}" hint-placeholder-val="{{ false }}"><circle cx="16" cy="16" r="17" fill="none" stroke="#FFFFFF" stroke-width="1.5"></circle></sc-if>
+<sc-if value="{{p.you}}" hint-placeholder-val="{{ false }}"><path d="M16 1 A15 15 0 0 0 16 31" fill="none" stroke="#FFE2A3" stroke-width="2"></path><path d="M16 1 A15 15 0 0 1 16 31" fill="none" stroke="{{haloR}}" stroke-width="2" stroke-dasharray="{{haloD}}"></path></sc-if>
+<g transform="translate({{p.off}} {{p.off}}) scale({{p.sc}})"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="{{p.fill}}" stroke="{{p.stroke}}" stroke-width="{{p.sw}}" stroke-dasharray="{{p.dash}}" stroke-linejoin="round"></path></g>
+</svg>
+<span style="font: 600 11px Inter, sans-serif; color: {{p.labelC}}; white-space: nowrap">{{p.label}}</span>
+</button>
+</sc-for>
+</sc-if>
+
+<sc-if value="{{isList}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 0; top: 70px; width: 390px; height: 560px; box-sizing: border-box; padding: 8px 16px 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px">
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="4">
+<section style="display: flex; flex-direction: column; gap: 8px">
+<h2 style="margin: 0; font: 700 14px 'Space Grotesk', sans-serif; color: {{g.c}}">{{g.h}}</h2>
+<sc-for list="{{g.rows}}" as="r" hint-placeholder-count="2">
+<button sc-camel-on-click="{{r.pick}}" style="display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border-radius: 12px; background: #121936; border: 1px solid #252E55; color: #E9ECF8; text-align: left">
+<span style="font: 600 15px Inter, sans-serif">{{r.label}}</span>
+<span style="font: 400 13px Inter, sans-serif; color: #AEB7DA">{{r.listSub}}</span>
+</button>
+</sc-for>
+</section>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{hasMsg}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="position: absolute; left: 16px; top: 548px; width: 358px; box-sizing: border-box; padding: 10px 12px; border-radius: 12px; background: #10263A; border: 1px solid #1F5C6A; color: #D7F5EC; font: 500 13px Inter, sans-serif; line-height: 1.4; display: flex; gap: 8px; align-items: flex-start">
+<span style="flex: 1">{{msg}}</span><button sc-camel-on-click="{{clearMsg}}" aria-label="Dismiss" style="width: 32px; height: 32px; flex: none; border: 0; background: transparent; color: #D7F5EC; font: 700 16px Inter, sans-serif">×</button>
+</div>
+</sc-if>
+
+<sc-if value="{{noSheet}}" hint-placeholder-val="{{ true }}">
+<div style="position: absolute; left: 0; bottom: 0; width: 390px; box-sizing: border-box; padding: 14px 18px 22px; background: #121936; border-top: 1px solid #2C3660; border-radius: 22px 22px 0 0; display: flex; flex-direction: column; gap: 12px">
+<div style="font: 700 16px 'Space Grotesk', sans-serif">Tap a star or a group name</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; font: 500 12px Inter, sans-serif; color: #C9D0EC">
+<span style="display: flex; align-items: center; gap: 5px"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="#F5C76B"></path></svg>Shares a group with you</span>
+<span style="display: flex; align-items: center; gap: 5px"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="none" stroke="#9DB8FF" stroke-width="2"></path></svg>Another group</span>
+<span style="display: flex; align-items: center; gap: 5px"><svg width="10" height="10" sc-camel-view-box="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="#E9ECF8"></path></svg>Open to meet</span>
+<span style="display: flex; align-items: center; gap: 5px"><svg width="18" height="8" sc-camel-view-box="0 0 18 8" aria-hidden="true"><line x1="1" y1="4" x2="17" y2="4" stroke="#F5C76B" stroke-width="2" stroke-dasharray="4 3"></line></svg>Met before</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<a href="Connect.dc.html" style="height: 50px; border-radius: 14px; background: #CC0000; color: #FFFFFF; font: 600 15px Inter, sans-serif; text-decoration: none; display: flex; align-items: center; justify-content: center">Connect</a>
+<a href="MySky.dc.html" style="height: 50px; border-radius: 14px; background: #1C2550; border: 1px solid #36407A; color: #E9ECF8; font: 600 15px Inter, sans-serif; text-decoration: none; display: flex; align-items: center; justify-content: center">My sky</a>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{hasSheet}}" hint-placeholder-val="{{ false }}">
+<div class="up" role="dialog" aria-label="{{sh.title}}" style="position: absolute; left: 0; bottom: 0; width: 390px; max-height: 420px; overflow-y: auto; box-sizing: border-box; padding: 14px 18px 22px; background: #121936; border-top: 1px solid #2C3660; border-radius: 22px 22px 0 0; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="font: 700 22px 'Space Grotesk', sans-serif; color: {{sh.c}}">{{sh.title}}</div>
+<div style="font: 500 13px Inter, sans-serif; color: #C9D0EC">{{sh.sub}}</div>
+</div>
+<button sc-camel-on-click="{{close}}" aria-label="Close" style="width: 44px; height: 44px; flex: none; border-radius: 22px; border: 1px solid #36407A; background: #1C2550; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="#E9ECF8" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<sc-if value="{{sh.hasBadge}}" hint-placeholder-val="{{ false }}"><span style="align-self: flex-start; padding: 5px 10px; border-radius: 12px; background: #10263A; border: 1px solid #1F5C6A; color: #D7F5EC; font: 600 12px Inter, sans-serif">{{sh.badge}}</span></sc-if>
+<sc-for list="{{sh.facts}}" as="f" hint-placeholder-count="2">
+<div style="font: 400 14px Inter, sans-serif; color: #E9ECF8; line-height: 1.45">{{f}}</div>
+</sc-for>
+<sc-if value="{{sh.hasNote}}" hint-placeholder-val="{{ false }}"><div style="padding: 10px 12px; border-radius: 12px; background: #161E3E; border: 1px dashed #5A68A0; font: 500 13px Inter, sans-serif; color: #C9D0EC; line-height: 1.45">{{sh.note}}</div></sc-if>
+<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px">
+<sc-for list="{{sh.actions}}" as="a" hint-placeholder-count="2">
+<sc-if value="{{a.isLink}}" hint-placeholder-val="{{ false }}"><a href="{{a.href}}" style="height: 48px; border-radius: 14px; background: {{a.bg}}; border: 1px solid {{a.bd}}; color: {{a.fg}}; font: 600 15px Inter, sans-serif; text-decoration: none; display: flex; align-items: center; justify-content: center">{{a.label}}</a></sc-if>
+<sc-if value="{{a.isBtn}}" hint-placeholder-val="{{ true }}"><button sc-camel-on-click="{{a.on}}" style="height: 48px; border-radius: 14px; background: {{a.bg}}; border: 1px solid {{a.bd}}; color: {{a.fg}}; font: 600 15px Inter, sans-serif">{{a.label}}</button></sc-if>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{left}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; box-sizing: border-box; padding: 32px; background: rgba(11,16,32,0.96); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center">
+<div style="font: 700 24px 'Space Grotesk', sans-serif">You left Board Game Night</div>
+<div style="font: 400 15px Inter, sans-serif; color: #C9D0EC; line-height: 1.5">Your star is gone from this sky. Your connections and constellations stay.</div>
+<a href="MapAfter.dc.html" style="width: 100%; height: 52px; border-radius: 14px; background: #CC0000; color: #FFFFFF; font: 600 15px Inter, sans-serif; text-decoration: none; display: flex; align-items: center; justify-content: center">Back to the map</a>
+<button sc-camel-on-click="{{rejoin}}" style="width: 100%; height: 48px; border-radius: 14px; background: #1C2550; border: 1px solid #36407A; color: #E9ECF8; font: 600 14px Inter, sans-serif">Check in again</button>
+</div>
+</sc-if>
+</div>
+
+<!--JS-->
+
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const joined = !!st.joined, hidden = !!st.hidden, left = !!st.left;
+    const removed = st.removed || {}, blocked = st.blocked || {};
+    const sel = st.sel || null;
+    const isList = st.view === 'list';
+    const P = [
+      { id: 'me', n: 'Comet', g: 'mine', x: 142, y: 272, ints: 'Games · Pizza', you: true },
+      { id: 'sauce', n: 'Sauce', g: 'mine', x: 76, y: 230, ints: 'Games · Film', handle: 'Keep in touch: Discord sauce_dev. You both chose to share.' },
+      { id: 'nova', n: 'Nova', g: 'mine', x: 120, y: 196, ints: 'Music · Coding', handle: 'Keep in touch: not shared yet. Either of you can offer.' },
+      { id: 'basil', n: 'Basil', g: 'other', x: 252, y: 218, ints: 'Cooking · Music' },
+      { id: 'mari', n: 'Marinara', g: 'other', x: 318, y: 210, ints: 'Film · Skiing' },
+      { id: 'crust', n: 'Crust', g: 'other', x: 324, y: 278, ints: 'Games · Hiking' },
+      { id: 'oreg', n: 'Oregano', g: 'other', x: 258, y: 292, ints: 'Art · Coding', badge: 'Prefers typing first' },
+      { id: 'quill', n: 'Quill', g: 'open', x: 64, y: 442, ints: 'Hiking · Art', badge: 'Quiet chats' },
+      { id: 'pixel', n: 'Pixel', g: 'open', x: 195, y: 500, ints: 'Coding · Games' },
+      { id: 'juni', n: 'Juniper', g: 'open', x: 326, y: 442, ints: 'Music · Film', badge: 'Come to me' }
+    ];
+    const by = {}; P.forEach((p) => { by[p.id] = p; });
+    const vis = P.filter((p) => !blocked[p.id]);
+    const people = vis.map((p) => {
+      let fill = '#E9ECF8', stroke = 'none', sw = 0, dash = 'none', sc = 0.6, labelC = '#C9D0EC';
+      if (p.you) { fill = hidden ? 'none' : '#FFF3D6'; stroke = hidden ? '#8590B8' : 'none'; sw = hidden ? 1.6 : 0; dash = hidden ? '2 2' : 'none'; sc = 1; labelC = '#FFE2A3'; }
+      else if (p.g === 'mine') { fill = '#F5C76B'; sc = 0.85; labelC = '#FFE2A3'; }
+      else if (p.g === 'other') { fill = joined ? '#9DB8FF' : 'none'; stroke = joined ? 'none' : '#9DB8FF'; sw = joined ? 0 : 1.8; sc = 0.85; labelC = '#CFDDFF'; }
+      const off = 16 - 12 * sc;
+      const groupName = p.g === 'mine' ? 'in your constellation' : p.g === 'other' ? 'in Pepperoni Pals' : 'open to meet';
+      return Object.assign({}, p, {
+        bx: p.x - 30, by: p.y - 16, fill, stroke, sw, dash, sc, off, labelC,
+        label: p.you ? 'You' : p.n, sel: sel === p.id,
+        aria: (p.you ? 'You, Comet' : p.n) + ', ' + groupName + (p.badge ? ', ' + p.badge : ''),
+        listSub: p.you ? (hidden ? 'Hidden from everyone here' : 'Visible to people here') : p.ints + (p.badge ? ' · ' + p.badge : ''),
+        pick: () => this.setState({ sel: p.id })
+      });
+    });
+    const L = [];
+    const add = (a, b, c, w, d, cls) => { if (blocked[a] || blocked[b]) return; L.push({ x1: by[a].x, y1: by[a].y, x2: by[b].x, y2: by[b].y, c, w, d, cls: cls || '' }); };
+    if (!removed.sauce) add('me', 'sauce', '#F5C76B', 2, '5 4');
+    add('sauce', 'nova', '#F5C76B', 2, '5 4');
+    if (!removed.nova) add('nova', 'me', '#F5C76B', 2, '5 4');
+    add('basil', 'mari', '#9DB8FF', 1.4, 'none');
+    add('mari', 'crust', '#9DB8FF', 1.4, 'none');
+    add('basil', 'oreg', '#9DB8FF', 1.4, 'none');
+    if (joined) add('me', 'basil', '#9DB8FF', 2.4, 'none', 'draw');
+    const Q = { primary: ['#CC0000', '#CC0000', '#FFFFFF'], quiet: ['#1C2550', '#36407A', '#E9ECF8'], danger: ['transparent', '#8A3B3B', '#FFB4B4'] };
+    const btn = (label, on, k) => ({ label, on, isBtn: true, isLink: false, href: '', bg: Q[k][0], bd: Q[k][1], fg: Q[k][2] });
+    const link = (label, href, k) => ({ label, href, isBtn: false, isLink: true, on: null, bg: Q[k][0], bd: Q[k][1], fg: Q[k][2] });
+    const set = (o) => this.setState(o);
+    const block = (id) => () => set({ blocked: Object.assign({}, blocked, { [id]: true }), sel: null, msg: 'Blocked. You won’t see each other at any event, and they aren’t told.' });
+    let sh = null;
+    if (sel === 'g1') {
+      sh = { title: 'The Unfinished Game Studio', c: '#FFE2A3', sub: 'Your constellation · formed at Pizza & Game Jam Kickoff, Nov 6', facts: ['5 members. Here tonight: you, Sauce and Nova. 2 others aren’t here.', 'Lines are dashed because you met before. Link again tonight to make them solid.'], note: 'Room for 2 more. Constellations stop at 7 so the group stays small enough to actually meet up.', actions: [link('Manage in My sky', 'MySky.dc.html', 'quiet')] };
+    } else if (sel === 'g2') {
+      sh = { title: 'Pepperoni Pals', c: '#CFDDFF', sub: joined ? 'Formed tonight · you joined' : 'Formed tonight · 4 here', facts: [joined ? 'Here: Basil, Marinara, Crust, Oregano and you.' : 'Here: Basil, Marinara, Crust and Oregano.'], note: joined ? 'You joined by linking with Basil. The Unfinished Game Studio is unchanged, and the two groups don’t merge.' : 'To join, link in person with any one member. You keep The Unfinished Game Studio. Nothing merges or gets renamed.', actions: joined ? [link('Manage in My sky', 'MySky.dc.html', 'quiet')] : [] };
+    } else if (sel && by[sel]) {
+      const p = by[sel];
+      if (p.you) {
+        sh = { title: 'Comet (you)', c: '#FFE2A3', sub: p.ints, facts: [hidden ? 'Hidden. Nobody here can see your star.' : 'Visible to people at Board Game Night. Gone when the event ends.', joined ? 'In 2 constellations: The Unfinished Game Studio and Pepperoni Pals.' : 'In 1 constellation: The Unfinished Game Studio.'], actions: [btn(hidden ? 'Show me' : 'Hide me', () => set({ hidden: !hidden, sel: null }), 'quiet'), link('My sky', 'MySky.dc.html', 'quiet'), btn('Leave event', () => set({ left: true, sel: null }), 'danger')] };
+      } else if (p.g === 'mine') {
+        const gone = !!removed[p.id];
+        const other = p.id === 'sauce' ? 'Nova' : 'Sauce';
+        sh = { title: p.n, c: '#FFE2A3', sub: p.ints, facts: [gone ? 'Your line is removed. You stay in the group through ' + other + '.' : 'Connected since Pizza & Game Jam Kickoff, Nov 6.', 'In The Unfinished Game Studio with you.', p.handle], actions: gone ? [btn('Block', block(p.id), 'danger')] : [link('Link again tonight', 'Connect.dc.html', 'primary'), btn('Remove connection', () => set({ removed: Object.assign({}, removed, { [p.id]: true }), sel: null, msg: 'Line removed. ' + p.n + ' isn’t told. You’re still in the group through ' + other + '.' }), 'quiet'), btn('Block', block(p.id), 'danger')] };
+      } else if (p.g === 'other') {
+        const direct = joined && p.id === 'basil';
+        sh = { title: p.n, c: '#CFDDFF', sub: p.ints, badge: p.badge, facts: [joined ? 'In Pepperoni Pals with you.' : 'In Pepperoni Pals, formed tonight.', direct ? 'Connected tonight.' : 'You haven’t linked yet.'], note: joined ? '' : 'Link with ' + p.n + ' and you join Pepperoni Pals. You stay in The Unfinished Game Studio.', actions: direct ? [btn('Block', block(p.id), 'danger')] : joined ? [link('Connect', 'Connect.dc.html', 'primary'), btn('Block', block(p.id), 'danger')] : [btn('Connect with ' + p.n, () => set({ joined: true, sel: null, msg: 'You linked with ' + p.n + ' and joined Pepperoni Pals. You kept The Unfinished Game Studio, so you’re a bridge star now.' }), 'primary'), btn('Block', block(p.id), 'danger')] };
+      } else {
+        sh = { title: p.n, c: '#E9ECF8', sub: p.ints, badge: p.badge, facts: ['Open to meet. Not in a constellation yet.'], note: 'A link with ' + p.n + ' starts as a single line. When a third person links in, it becomes a new constellation.', actions: [link('Connect', 'Connect.dc.html', 'primary'), btn('Block', block(p.id), 'danger')] };
+      }
+    }
+    if (sh) { sh.facts = sh.facts.filter(Boolean); sh.hasBadge = !!sh.badge; sh.hasNote = !!sh.note; }
+    const rowsOf = (g) => people.filter((p) => !p.you && p.g === g);
+    const meRow = people.filter((p) => p.you);
+    const groups = [
+      { h: 'You', c: '#FFE2A3', rows: meRow },
+      { h: 'The Unfinished Game Studio · yours · 3 of 5 here', c: '#FFE2A3', rows: rowsOf('mine') },
+      { h: 'Pepperoni Pals' + (joined ? ' · you joined' : ' · 4 here'), c: '#CFDDFF', rows: rowsOf('other') },
+      { h: 'Open to meet', c: '#E9ECF8', rows: rowsOf('open') }
+    ];
+    return {
+      isSky: !isList, isList, people, lines: L, groups,
+      skyBg: isList ? 'transparent' : '#F5C76B', skyFg: isList ? '#C9D0EC' : '#0B1020',
+      listBg: isList ? '#F5C76B' : 'transparent', listFg: isList ? '#0B1020' : '#C9D0EC',
+      toSky: () => set({ view: 'sky' }), toList: () => set({ view: 'list' }),
+      blueOp: joined ? 0.24 : 0.16, g2sub: joined ? '5 here · you joined' : '4 here · formed tonight',
+      haloR: joined ? '#9DB8FF' : '#FFE2A3', haloD: joined ? '3 3' : 'none',
+      pickG1: () => set({ sel: 'g1' }), pickG2: () => set({ sel: 'g2' }),
+      sh: sh || { title: '', sub: '', c: '#E9ECF8', facts: [], actions: [] }, hasSheet: !!sh, noSheet: !sh,
+      close: () => set({ sel: null }),
+      msg: st.msg || '', hasMsg: !!st.msg && !sh, clearMsg: () => set({ msg: '' }),
+      left, rejoin: () => set({ left: false, hidden: false })
+    };
+  }
+}

@@ -1,0 +1,12 @@
+[
+  {"code":"WEB","names":["Warnock Engineering Building","Warnock","WEB"],"lat":40.7676728,"lng":-111.8452353,"entrance":{"lat":40.7676728,"lng":-111.8452353,"step_free":"unverified"}},
+  {"code":"MEB","names":["Merrill Engineering Building","Merrill","MEB"],"lat":40.7685474,"lng":-111.8461562,"entrance":{"lat":40.7685474,"lng":-111.8461562,"step_free":"unverified"}},
+  {"code":"UNION","names":["A. Ray Olpin University Union","Olpin Union","The Union","Union","UNION"],"lat":40.7648944,"lng":-111.8461408,"entrance":{"lat":40.7648,"lng":-111.8458,"step_free":"unverified"}},
+  {"code":"MLIB","names":["J. Willard Marriott Library","Marriott Library","The Library","MLIB"],"lat":40.7624668,"lng":-111.8461801,"entrance":{"lat":40.7624668,"lng":-111.8461801,"step_free":"unverified"}},
+  {"code":"LS","names":["Lassonde Studios","Lassonde","LS"],"lat":40.764567,"lng":-111.8415134,"entrance":{"lat":40.764567,"lng":-111.8415134,"step_free":"unverified"}},
+  {"code":"SFEBB","names":["Spencer Fox Eccles Business Building","SFEBB","Business Building"],"lat":40.7618073,"lng":-111.8434927,"entrance":{"lat":40.7618073,"lng":-111.8434927,"step_free":"unverified"}},
+  {"code":"KV","names":["Kahlert Village","KV"],"lat":40.7635413,"lng":-111.8379252,"entrance":{"lat":40.7635413,"lng":-111.8379252,"step_free":"unverified"}},
+  {"code":"CSC","names":["Crocker Science Center","Crocker","CSC"],"lat":40.764049,"lng":-111.8511245,"entrance":{"lat":40.764049,"lng":-111.8511245,"step_free":"unverified"}},
+  {"code":"JFB","names":["James Fletcher Building","Fletcher","JFB"],"lat":40.7667317,"lng":-111.8503936,"entrance":{"lat":40.7667317,"lng":-111.8503936,"step_free":"unverified"}},
+  {"code":"SLC","names":["George S. Eccles Student Life Center","Student Life Center","SLC"],"lat":40.7651595,"lng":-111.8379776,"entrance":{"lat":40.7651595,"lng":-111.8379776,"step_free":"unverified"}}
+]

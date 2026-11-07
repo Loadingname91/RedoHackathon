@@ -1,0 +1,7 @@
+.env.local
+.env
+node_modules/
+dist/
+.vercel/
+.DS_Store
+scripts/.host-secrets.json

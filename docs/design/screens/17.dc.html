@@ -1,0 +1,416 @@
+
+<helmet>
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("502f1e55-c8cf-493f-95b3-c19f4dea1a4b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("502f1e55-c8cf-493f-95b3-c19f4dea1a4b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("502f1e55-c8cf-493f-95b3-c19f4dea1a4b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("502f1e55-c8cf-493f-95b3-c19f4dea1a4b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("52063f36-8b01-4bc0-ad2b-39f69499076e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("52063f36-8b01-4bc0-ad2b-39f69499076e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("52063f36-8b01-4bc0-ad2b-39f69499076e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+body{margin:0;background:#0B1020}
+</style>
+</helmet>
+<div style="width: 1200px; height: 844px; box-sizing: border-box; padding: 44px 48px; background: linear-gradient(180deg, #0B1020 0%, #111836 100%); font-family: Inter, system-ui, sans-serif; color: #E9ECF8; display: flex; flex-direction: column; gap: 26px">
+
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font: 700 34px 'Space Grotesk', sans-serif">Events are planets. People are stars.</h1>
+<div style="font: 400 16px Inter, sans-serif; color: #C9D0EC">Two shapes that never swap roles. Every state also has a text label, so nothing relies on color alone.</div>
+</div>
+<div style="padding: 10px 14px; border-radius: 12px; background: #161E3E; border: 1px solid #2C3660; font: 500 13px Inter, sans-serif; color: #C9D0EC; max-width: 300px">Never shown anywhere: photos, real names, connection counts, rankings.</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; flex: 1">
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 22px; border-radius: 20px; background: rgba(18,25,54,0.8); border: 1px solid #252E55">
+<div style="font: 700 18px 'Space Grotesk', sans-serif">Events · planets</div>
+<div style="font: 400 13px Inter, sans-serif; color: #AEB7DA; margin-top: -8px">On the campus map. The icon inside is the main offering.</div>
+
+<div style="display: flex; gap: 14px; align-items: center"><svg width="52" height="52" sc-camel-view-box="0 0 52 52" aria-hidden="true" style="flex: none"><ellipse cx="26" cy="26" rx="24" ry="7.5" fill="none" stroke="#FF5A5A" stroke-opacity="0.6" stroke-width="1.6" transform="rotate(-22 26 26)"></ellipse><circle cx="26" cy="26" r="17" fill="#18214A" stroke="#FF5A5A" stroke-width="2.5"></circle><g transform="translate(16 16) scale(0.8333)"><path d="M4 6c5-3 11-3 16 0L12 21z M9.5 10h.01 M14 12.5h.01 M11.5 15.5h.01" fill="none" stroke="#FFE2A3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg><div><div style="font: 600 15px Inter, sans-serif">Live now</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">Solid red ring, slow pulse</div></div></div>
+
+<div style="display: flex; gap: 14px; align-items: center"><svg width="52" height="52" sc-camel-view-box="0 0 52 52" aria-hidden="true" style="flex: none"><ellipse cx="26" cy="26" rx="24" ry="7.5" fill="none" stroke="#8E9AC0" stroke-opacity="0.6" stroke-width="1.6" transform="rotate(-22 26 26)"></ellipse><circle cx="26" cy="26" r="17" fill="#18214A" stroke="#8E9AC0" stroke-width="2.5" stroke-dasharray="4 3"></circle><g transform="translate(16 16) scale(0.8333)"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z M6 11a6 6 0 0 0 12 0 M12 17v4 M9 21h6" fill="none" stroke="#FFE2A3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg><div><div style="font: 600 15px Inter, sans-serif">Later today</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">Dashed grey ring, no pulse</div></div></div>
+
+<div style="display: flex; gap: 14px; align-items: center"><div style="position: relative; width: 52px; height: 52px; flex: none"><svg width="52" height="52" sc-camel-view-box="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="17" fill="#18214A" stroke="#FF5A5A" stroke-width="2.5"></circle></svg><span style="position: absolute; right: -4px; bottom: 2px; height: 18px; padding: 0 5px; border-radius: 9px; background: #E9ECF8; color: #0B1020; font: 700 11px/18px Inter, sans-serif">14</span></div><div><div style="font: 600 15px Inter, sans-serif">People checked in</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">A number, only once 3+ are there</div></div></div>
+
+<div style="display: flex; gap: 14px; align-items: center"><div style="position: relative; width: 52px; height: 52px; flex: none"><svg width="52" height="52" sc-camel-view-box="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="17" fill="#18214A" stroke="#FF5A5A" stroke-width="2.5"></circle></svg><span style="position: absolute; left: -6px; top: -2px; height: 20px; padding: 0 6px 0 4px; border-radius: 10px; background: #F5C76B; color: #0B1020; font: 700 11px/20px Inter, sans-serif; display: flex; align-items: center; gap: 2px"><svg width="11" height="11" sc-camel-view-box="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="#0B1020"></path></svg>2</span></div><div><div style="font: 600 15px Inter, sans-serif">Your constellation is here</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">Only members who chose to share</div></div></div>
+
+<div style="display: flex; gap: 14px; align-items: center"><div style="position: relative; width: 52px; height: 52px; flex: none"><svg width="52" height="52" sc-camel-view-box="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="17" fill="#18214A" stroke="#8E9AC0" stroke-width="2.5" stroke-dasharray="4 3"></circle></svg><span style="position: absolute; right: -4px; top: -2px; width: 20px; height: 20px; border-radius: 10px; background: #2C3660; border: 1px solid #5A68A0; display: flex; align-items: center; justify-content: center"><svg width="11" height="11" sc-camel-view-box="0 0 24 24" fill="none" stroke="#E9ECF8" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path></svg></span></div><div><div style="font: 600 15px Inter, sans-serif">From Campus Connect</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">Imported. No live status until claimed</div></div></div>
+
+<div style="display: flex; gap: 14px; align-items: center"><div style="position: relative; width: 52px; height: 52px; flex: none"><svg width="52" height="52" sc-camel-view-box="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="17" fill="#18214A" stroke="#FF5A5A" stroke-width="2.5"></circle></svg><span style="position: absolute; left: -6px; top: -2px; width: 22px; height: 22px; border-radius: 11px; background: #F5C76B; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" sc-camel-view-box="0 0 24 24" fill="none" stroke="#0B1020" stroke-width="2.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 4L4 19h16z"></path></svg></span></div><div><div style="font: 600 15px Inter, sans-serif">Your constellation formed here</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">Stays until the event ends</div></div></div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 22px; border-radius: 20px; background: rgba(18,25,54,0.8); border: 1px solid #252E55">
+<div style="font: 700 18px 'Space Grotesk', sans-serif">People · stars</div>
+<div style="font: 400 13px Inter, sans-serif; color: #AEB7DA; margin-top: -8px">Only inside an event you've checked into. Nickname under each.</div>
+
+<div style="display: flex; gap: 14px; align-items: center"><svg width="52" height="52" sc-camel-view-box="0 0 52 52" aria-hidden="true" style="flex: none"><circle cx="26" cy="26" r="20" fill="none" stroke="#FFE2A3" stroke-width="2"></circle><g transform="translate(12 12) scale(1.1667)"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="#FFF3D6"></path></g></svg><div><div style="font: 600 15px Inter, sans-serif">You</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">Brightest star, with a halo ring</div></div></div>
+
+<div style="display: flex; gap: 14px; align-items: center"><svg width="52" height="52" sc-camel-view-box="0 0 52 52" aria-hidden="true" style="flex: none"><g transform="translate(14 14)"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="#F5C76B"></path></g></svg><div><div style="font: 600 15px Inter, sans-serif">In your constellation</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">Filled. Gold for your first group, blue for a second</div></div></div>
+
+<div style="display: flex; gap: 14px; align-items: center"><svg width="52" height="52" sc-camel-view-box="0 0 52 52" aria-hidden="true" style="flex: none"><g transform="translate(14 14)"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="none" stroke="#9DB8FF" stroke-width="1.8" stroke-linejoin="round"></path></g></svg><div><div style="font: 600 15px Inter, sans-serif">In another constellation</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">Hollow outline. A group you're not in</div></div></div>
+
+<div style="display: flex; gap: 14px; align-items: center"><svg width="52" height="52" sc-camel-view-box="0 0 52 52" aria-hidden="true" style="flex: none"><g transform="translate(18 18) scale(0.6667)"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="#E9ECF8"></path></g></svg><div><div style="font: 600 15px Inter, sans-serif">Open to meet</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">Small white star, not linked yet</div></div></div>
+
+<div style="display: flex; gap: 14px; align-items: center"><svg width="52" height="52" sc-camel-view-box="0 0 52 52" aria-hidden="true" style="flex: none"><path d="M26 6 A20 20 0 0 0 26 46" fill="none" stroke="#F5C76B" stroke-width="2.5"></path><path d="M26 6 A20 20 0 0 1 26 46" fill="none" stroke="#9DB8FF" stroke-width="2.5" stroke-dasharray="4 3"></path><g transform="translate(14 14)"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="#F5C76B"></path></g></svg><div><div style="font: 600 15px Inter, sans-serif">Bridge star</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">In two constellations: half gold, half dashed blue</div></div></div>
+
+<div style="display: flex; gap: 14px; align-items: center"><svg width="52" height="52" sc-camel-view-box="0 0 52 52" aria-hidden="true" style="flex: none"><g transform="translate(14 14)"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="none" stroke="#8590B8" stroke-width="1.6" stroke-dasharray="2 2"></path></g></svg><div><div style="font: 600 15px Inter, sans-serif">Hidden (only you see this)</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">Dotted outline. Nobody else sees you</div></div></div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 22px; border-radius: 20px; background: rgba(18,25,54,0.8); border: 1px solid #252E55">
+<div style="font: 700 18px 'Space Grotesk', sans-serif">Connections · groups and lines</div>
+<div style="font: 400 13px Inter, sans-serif; color: #AEB7DA; margin-top: -8px">A group is a soft cloud behind its members, easier to read than thin lines alone.</div>
+
+<svg width="300" height="200" sc-camel-view-box="0 0 300 200" role="img" aria-label="Event planet in the center. Your gold constellation sits in a soft gold cloud on the inner orbit, another blue constellation in a blue cloud, and people open to meet on the outer orbit." style="align-self: center">
+<circle cx="150" cy="104" r="58" fill="none" stroke="#2C3660" stroke-dasharray="3 5"></circle>
+<circle cx="150" cy="104" r="92" fill="none" stroke="#2C3660" stroke-dasharray="3 5"></circle>
+<ellipse cx="96" cy="66" rx="46" ry="30" fill="#F5C76B" fill-opacity="0.14"></ellipse>
+<ellipse cx="206" cy="66" rx="46" ry="30" fill="#9DB8FF" fill-opacity="0.12"></ellipse>
+<g stroke="#F5C76B" stroke-width="2"><line x1="76" y1="56" x2="112" y2="48"></line><line x1="112" y1="48" x2="104" y2="84"></line><line x1="76" y1="56" x2="104" y2="84" stroke-dasharray="4 3"></line></g>
+<g stroke="#9DB8FF" stroke-width="1.4"><line x1="192" y1="50" x2="228" y2="56"></line><line x1="228" y1="56" x2="214" y2="86"></line><line x1="214" y1="86" x2="188" y2="78"></line></g>
+<circle cx="150" cy="104" r="15" fill="#18214A" stroke="#FF5A5A" stroke-width="2.5"></circle>
+<g fill="#F5C76B"><circle cx="76" cy="56" r="5"></circle><circle cx="112" cy="48" r="5"></circle><circle cx="104" cy="84" r="5"></circle></g>
+<g fill="#0B1020" stroke="#9DB8FF" stroke-width="1.6"><circle cx="192" cy="50" r="4.5"></circle><circle cx="228" cy="56" r="4.5"></circle><circle cx="214" cy="86" r="4.5"></circle><circle cx="188" cy="78" r="4.5"></circle></g>
+<g fill="#E9ECF8"><circle cx="70" cy="160" r="3"></circle><circle cx="150" cy="196" r="3"></circle><circle cx="232" cy="160" r="3"></circle></g>
+</svg>
+
+<div style="display: flex; gap: 14px; align-items: center"><svg width="52" height="20" sc-camel-view-box="0 0 52 20" aria-hidden="true" style="flex: none"><line x1="4" y1="10" x2="48" y2="10" stroke="#F5C76B" stroke-width="2"></line></svg><div><div style="font: 600 15px Inter, sans-serif">Met tonight</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">Solid line, draws in like a pen stroke</div></div></div>
+<div style="display: flex; gap: 14px; align-items: center"><svg width="52" height="20" sc-camel-view-box="0 0 52 20" aria-hidden="true" style="flex: none"><line x1="4" y1="10" x2="48" y2="10" stroke="#F5C76B" stroke-width="2" stroke-dasharray="5 4"></line></svg><div><div style="font: 600 15px Inter, sans-serif">Met before, here again</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">Dashed until you link again tonight</div></div></div>
+<div style="display: flex; gap: 14px; align-items: center"><svg width="52" height="20" sc-camel-view-box="0 0 52 20" aria-hidden="true" style="flex: none"><line x1="4" y1="10" x2="48" y2="10" stroke="#FFE2A3" stroke-width="5" stroke-linecap="round"></line></svg><div><div style="font: 600 15px Inter, sans-serif">Met 3+ times</div><div style="font: 400 13px Inter, sans-serif; color: #AEB7DA">Thicker and brighter. Friendship, not a score</div></div></div>
+<div style="padding: 10px 12px; border-radius: 12px; background: #10263A; border: 1px solid #1F5C6A; font: 500 13px Inter, sans-serif; color: #D7F5EC; line-height: 1.45">Where stars sit: in orbits around the event planet, not where people are standing. Inner orbit for groups, outer orbit for people not linked yet.</div>
+</div>
+</div>
+</div>
+
+<!--JS-->
+
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}

@@ -1,0 +1,670 @@
+
+<helmet>
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("2642de99-c170-4c7a-8c09-093d70a9bd30") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("2642de99-c170-4c7a-8c09-093d70a9bd30") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("2642de99-c170-4c7a-8c09-093d70a9bd30") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("2642de99-c170-4c7a-8c09-093d70a9bd30") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("460fc743-8b4d-4ab7-a9e1-6ed9be75198c") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("460fc743-8b4d-4ab7-a9e1-6ed9be75198c") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("460fc743-8b4d-4ab7-a9e1-6ed9be75198c") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+body{margin:0;background:#0B1020}
+a{color:#F5C76B}a:hover{color:#FFE2A3}
+@keyframes cupulse{0%{transform:scale(.7);opacity:.9}100%{transform:scale(2);opacity:0}}
+.cu-pulse{animation:cupulse 1.6s ease-out infinite}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #0B1020; font-family: Inter, system-ui, sans-serif; color: #E9ECF8">
+
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px">
+<dc-import name="CampusMap" variant="jordan" controls-top="{{ctop}}" hint-size="390px,844px"></dc-import>
+</div>
+
+<div style="position: absolute; left: 0; top: 0; width: 390px; box-sizing: border-box; padding: 14px 16px 16px; background: linear-gradient(180deg, #0B1020 70%, rgba(11,16,32,0)); display: flex; align-items: center; justify-content: space-between; gap: 10px">
+<a href="Main.dc.html" aria-label="Constellation U home" style="display: flex; align-items: center; gap: 8px; color: #E9ECF8; text-decoration: none"><svg width="22" height="22" sc-camel-view-box="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="#F5C76B"></path></svg><span style="font: 700 17px 'Space Grotesk', sans-serif">Constellation U</span></a>
+<span style="padding: 8px 12px; border-radius: 16px; background: #161E3E; border: 1px solid #36407A; font: 600 12px Inter, sans-serif; color: #C9D0EC; white-space: nowrap">Hosting: 1 live event</span>
+</div>
+
+<div style="position: absolute; left: 0; bottom: 0; width: 390px; box-sizing: border-box; padding: 10px 16px 22px; background: #121936; border-top: 1px solid #2C3660; border-radius: 22px 22px 0 0; display: flex; flex-direction: column; gap: 12px">
+<div style="width: 40px; height: 4px; border-radius: 2px; background: #3A4570; align-self: center"></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px">
+<div style="font: 700 17px 'Space Grotesk', sans-serif">Pizza &amp; Game Jam Kickoff</div>
+<div style="font: 500 12px Inter, sans-serif; color: #AEB7DA">until 8:30 PM</div>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center">
+<span style="font: 600 14px Inter, sans-serif">Pizza</span>
+<span style="font: 600 13px Inter, sans-serif; color: {{noteColor}}">{{note}}</span>
+</div>
+<div role="group" aria-label="Pizza status" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{btns}}" as="b" hint-placeholder-count="3">
+<button sc-camel-on-click="{{b.pick}}" aria-pressed="{{b.on}}" style="height: 50px; border-radius: 14px; border: 1px solid {{b.bd}}; background: {{b.bg}}; color: {{b.fg}}; font: 600 13px Inter, sans-serif">{{b.label}}</button>
+</sc-for>
+</div>
+<div style="padding: 10px 12px; border-radius: 12px; background: #161E3E; border: 1px solid #2C3660; font: 500 13px Inter, sans-serif; color: #C9D0EC; line-height: 1.4">1 access question: “Will there be captions?” <span style="color: #F5C76B">Answer in the panel</span></div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+<a href="EventScreen.dc.html" style="height: 50px; border-radius: 14px; background: #CC0000; color: #FFFFFF; font: 600 14px Inter, sans-serif; text-decoration: none; display: flex; align-items: center; justify-content: center">Open event screen</a>
+<a href="Organizer.dc.html" style="height: 50px; border-radius: 14px; background: #1C2550; border: 1px solid #36407A; color: #E9ECF8; font: 600 14px Inter, sans-serif; text-decoration: none; display: flex; align-items: center; justify-content: center">Edit event</a>
+</div>
+<div style="font: 400 12px Inter, sans-serif; color: #AEB7DA">Busy? It switches to Finished on its own at 8:30 PM.</div>
+</div>
+</div>
+
+ block \u2014 not a Design Component.");return}N.props&&(h.propsMeta=N.props),N.preview&&(h.preview=N.preview),N.template&&!h.html&&m(p,N.template),N.js&&!h.Logic&&S(p,N.js)}).catch(C=>console.error('[dc-runtime] sibling fetch for "'+p+'" threw:',y,C))}let u=null;function d(p,h){h.tplStale=!1;try{h.tpl=_e(h.html,f)}catch(y){console.error("[dc-runtime] template compile FAILED for",p,y)}}function g(p){const h=o.get(p);h.tplStale&&d(p,h)}function m(p,h){const y=o.get(p);if(y.html=h,p===u){const E=Ye.exec(h)?.[1]??null;(E||!y.htmlStreaming)&&s.setDesignDocMode(E)}y.subs.size===0?y.tplStale=!0:d(p,y),o.bump(p)}function S(p,h){const y=o.get(p),E=y.jsSeq=(y.jsSeq||0)+1;try{const x=Ue(h);if(y.jsSeq!==E)return;typeof x!="function"?y.logicError=p+".dc.html: <script data-dc-script> must define `class Component extends DCLogic`":(y.logicError=null,y.Logic=x)}catch(x){if(y.jsSeq!==E)return;console.error("[dc-runtime] logic class eval FAILED for",p,"\u2014 the template renders with props only.",x),y.logicError=p+": "+(x instanceof Error&&x.message?x.message:String(x))}o.bump(p)}function v(p,h,y){const E=o.get(p);h==="html"?E.htmlStreaming=!!y:E.jsStreaming=!!y;let x=!1;for(const R in o.entries){const M=o.entries[R];if(M&&(M.htmlStreaming||M.jsStreaming)){x=!0;break}}t.documentElement.classList.toggle("sc-dc-streaming",x),o.bump(p)}function b(p,h,y,E){if(E&&(o.get(p).fetched=!0),h==="html")v(p,"html",!!E),m(p,y);else if(h==="js")v(p,"js",!!E),E||S(p,y);else if(h==="props"){const{props:x,preview:R}=B(y),M=o.get(p);M.propsMeta=x??void 0,M.preview=R,o.bump(p)}}function k(p,h){o.get(p).propOverrides=h&&typeof h=="object"?{...h}:null,o.bump(p)}function w(p,h){if(!h)return;const y=o.get(p);h.props&&(y.propsMeta=h.props),h.preview&&(y.preview=h.preview),h.template&&m(p,h.template),h.js&&S(p,h.js)}return{registry:o,getDC:a.getDC,updateHtml:m,updateJs:S,dcUpdate:b,setProps:k,seekKeyframes:c,keyframesPlayhead:()=>l,adoptParsed:w,setRootName:p=>{u=p},markFetched:p=>{o.get(p).fetched=!0},annotatedTemplate:p=>{g(p);const h=o.get(p);return h.tpl&&h.tpl.__annotated||null},templateSource:p=>o.get(p).html||null,StreamableLogic:I}}function fn(t=6e4,n=Date.now){const e=new Map,o=r=>{const s=e.get(r);return s===void 0?!1:n()-s>t?(e.delete(r),!1):!0};return{push(r,s,i){i!=="dc-model"&&(s?e.set(r,n()):e.delete(r))},live(r){if(r!==void 0)return o(r);for(const s of[...e.keys()])if(o(s))return!0;return!1}}}var Nt="[dc] Something in this page tried to replace one of the Design runtime's functions, most likely a second copy of the runtime. It was stopped so that edits keep showing here. If the page loads support.js or a copy of it a second time, remove the extra script tag or <x-import>.";function dn(t){const n=t.__dcHostRuntime===!0;try{delete t.__dcHostRuntime}catch{}return n}function pn(t,n,e,o=()=>!1){for(const[r,s]of Object.entries(n)){if(e&&r.startsWith("__dc")){let i=s;const a=()=>i;try{Object.defineProperty(t,r,{configurable:!1,enumerable:!0,get:a,set:f=>{if(!o())throw new TypeError(Nt);i=f}})}catch{}if(Object.getOwnPropertyDescriptor(t,r)?.get===a)continue}Object.assign(t,{[r]:s})}}function mn(){const t=document.createElement("style");t.textContent="x-dc{display:none!important}",document.head.appendChild(t)}function Rt(t,n){return new Promise((e,o)=>{const r=document.createElement("script");r.src=t,n&&(r.integrity=n,r.crossOrigin="anonymous"),r.async=!1,r.onload=()=>e(),r.onerror=()=>o(new Error(`failed to load ${t}`)),document.head.appendChild(r)})}function hn(){const t=window;if(t.React&&t.ReactDOM)return Promise.resolve();const n=X(We,$e),e=X(qe,He);return Promise.all([Rt(n.src,n.integrity),Rt(e.src,e.integrity)]).then(()=>{})}var gn=dn(window);function _n(){const t=window.__dcRuntimeMode==="omelette",n=un(document,{omelette:t});let e="Root",o=!1,r=!1;const s=document.createElement("style");s.textContent=Dt,document.head.prepend(s);const i=()=>{if(window.parent===window)return;const c=n.registry.entries[e];try{window.parent.postMessage({type:"__dc_booted",rootName:e,mounted:o,propsMeta:c&&c.propsMeta||null,preview:c&&c.preview||null,tellsErrors:!0},"*")}catch{}},a=fn();window.parent!==window&&Ie(je(c=>{try{const _={type:"__dc_render_errors",errors:c};window.parent.postMessage(_,"*")}catch{}},c=>{setTimeout(c,200)},()=>a.live()));const f={__dcUpdate:(c,_,u,d,g)=>{a.push(c,d,g),n.dcUpdate(c,_,u,d),c===e&&!d&&_==="props"&&i()},__dcStreaming:c=>a.live(c),__dcSetProps:(c,_)=>n.setProps(c,_),__dcSeekKeyframes:c=>n.seekKeyframes(c),__dcKeyframesPlayhead:()=>n.keyframesPlayhead(),__dcRootName:()=>e,__dcAnnotatedTemplate:c=>n.annotatedTemplate(c),__dcTemplateSource:c=>n.templateSource(c),__dcBoot:()=>{const c=Ut(n,document);c!=null&&(e=c,o=!0),i(),ze()},__dcRegistry:n.registry.entries,getDC:c=>n.getDC(c),DCLogic:n.StreamableLogic,StreamableLogic:n.StreamableLogic};pn(window,{...f,__dcContentKeyed:!0},gn,()=>r&&!o);const l=()=>{try{f.__dcBoot()}finally{r=!0}};document.readyState!=="loading"?l():document.addEventListener("DOMContentLoaded",l)}mn(),hn().then(_n).catch(t=>{throw t instanceof Error&&t.message===Nt?console.error(t.message):console.error("[dc] failed to load React or boot:",t),t})})();
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Campus map</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div role="application" aria-label="Campus map. Drag to move, pinch or use the zoom buttons. The list view has the same events." onPointerDown="{{down}}" onPointerMove="{{move}}" onPointerUp="{{up}}" onPointerCancel="{{up}}" onPointerLeave="{{up}}" onWheel="{{wheel}}" onDoubleClick="{{dbl}}" style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #0A0F1F; font-family: Inter, system-ui, sans-serif; color: #E9ECF8; touch-action: none; cursor: grab; user-select: none">
+
+<div style="position: absolute; left: 0; top: 0; width: 900px; height: 1000px; transform-origin: 0 0; transform: translate({{tx}}px, {{ty}}px) scale({{z}})">
+<svg width="900" height="1000" viewBox="0 0 900 1000" aria-hidden="true">
+<rect x="0" y="0" width="900" height="1000" fill="#0B1122"></rect>
+<g fill="none" stroke="#141B36" stroke-width="1">
+<path d="M862 0 C850 180 872 360 856 540 C846 700 866 860 858 1000"></path>
+<path d="M874 0 C864 200 884 380 870 560 C862 720 880 880 872 1000"></path>
+<path d="M886 0 C878 220 896 400 884 580 C878 740 894 900 888 1000"></path>
+</g>
+<g fill="#0E1D21">
+<path d="M136 380 C136 352 170 338 200 338 C232 338 266 352 266 380 C266 408 232 422 200 422 C168 422 136 408 136 380 Z"></path>
+<path d="M352 528 C360 518 488 516 500 528 C510 540 506 584 494 592 C470 604 378 602 360 592 C348 582 346 540 352 528 Z"></path>
+<path d="M560 452 C580 446 650 448 668 458 C676 476 672 506 660 514 C632 520 582 518 566 510 C556 494 554 466 560 452 Z"></path>
+<path d="M600 280 C630 272 660 276 664 292 C666 312 640 330 610 326 C590 322 586 290 600 280 Z"></path>
+</g>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<g stroke="#121931" stroke-width="10">
+<path d="M40 0 V1000"></path><path d="M40 120 C300 92 600 72 790 82"></path><path d="M40 612 C300 600 560 622 790 602"></path>
+<path d="M790 30 C778 300 802 600 790 1000"></path><path d="M40 932 C300 944 600 938 884 922"></path>
+</g>
+<g stroke="#1E284D" stroke-width="6">
+<path d="M40 0 V1000"></path><path d="M40 120 C300 92 600 72 790 82"></path><path d="M40 612 C300 600 560 622 790 602"></path>
+<path d="M790 30 C778 300 802 600 790 1000"></path><path d="M40 932 C300 944 600 938 884 922"></path>
+</g>
+<ellipse cx="200" cy="380" rx="96" ry="60" stroke="#1A2346" stroke-width="4"></ellipse>
+<g stroke="#18203F" stroke-width="3">
+<path d="M296 380 C340 360 370 300 420 290"></path><path d="M40 300 C90 296 110 290 130 300"></path>
+<path d="M484 470 C520 470 540 450 552 420"></path><path d="M652 405 C700 400 760 410 790 400"></path>
+<path d="M568 712 C580 760 600 800 620 930"></path>
+</g>
+<g stroke="#2A3562" stroke-width="1.2" stroke-dasharray="3 4">
+<path d="M296 380 L425 472 L602 405 L686 245"></path><path d="M425 514 L568 650"></path><path d="M602 440 L725 475 L790 470"></path>
+</g>
+</g>
+<path d="M40 952 C300 964 600 958 868 942 L868 0" fill="none" stroke="#B83A3A" stroke-width="2" stroke-dasharray="8 5"></path>
+<g fill="#0B1122" stroke="#E07070" stroke-width="2"><circle cx="330" cy="960" r="4.5"></circle><circle cx="620" cy="956" r="4.5"></circle><circle cx="868" cy="640" r="4.5"></circle></g>
+<g fill="#141A34">
+<rect x="240" y="196" width="60" height="40" rx="3"></rect><rect x="330" y="246" width="70" height="36" rx="3"></rect>
+<rect x="420" y="300" width="60" height="50" rx="3"></rect><rect x="250" y="500" width="70" height="50" rx="3"></rect>
+<rect x="690" y="300" width="60" height="50" rx="3"></rect><rect x="330" y="680" width="90" height="50" rx="3"></rect>
+<rect x="680" y="690" width="70" height="60" rx="3"></rect><rect x="110" y="470" width="60" height="60" rx="3"></rect>
+<rect x="620" y="780" width="80" height="50" rx="3"></rect><rect x="420" y="760" width="70" height="44" rx="3"></rect>
+</g>
+<ellipse cx="233" cy="823" rx="94" ry="50" fill="#060913"></ellipse>
+<ellipse cx="230" cy="820" rx="92" ry="48" fill="#182044" stroke="#26305A" stroke-width="0.8"></ellipse>
+<ellipse cx="230" cy="820" rx="58" ry="26" fill="#0E1D21"></ellipse>
+<g fill="#060913" transform="translate(3 3)">
+<path d="M130 280 h80 v18 h-28 v26 h-52 z"></path>
+<path d="M284 358 h46 v44 h-16 v-10 h-14 v10 h-16 z"></path>
+<path d="M366 432 h118 v80 h-118 z"></path>
+<path d="M552 372 h100 v40 h-20 v26 h-60 v-26 h-20 z"></path>
+<path d="M506 192 h98 v24 h-40 v32 h-58 z"></path>
+<path d="M642 188 h70 l18 18 v38 h-88 z"></path>
+<path d="M692 442 h66 v50 l-16 16 h-50 z"></path>
+<path d="M806 332 h22 v96 h-22 z M834 332 h22 v96 h-22 z M828 372 h6 v16 h-6 z"></path>
+<path d="M522 652 h92 v60 h-60 a32 32 0 0 1 -32 -32 z"></path>
+</g>
+<g fill="#182044" stroke="#26305A" stroke-width="0.8" stroke-linejoin="round">
+<path d="M130 280 h80 v18 h-28 v26 h-52 z"></path>
+<path d="M284 358 h46 v44 h-16 v-10 h-14 v10 h-16 z"></path>
+<path d="M366 432 h118 v80 h-118 z"></path>
+<path d="M552 372 h100 v40 h-20 v26 h-60 v-26 h-20 z"></path>
+<path d="M506 192 h98 v24 h-40 v32 h-58 z"></path>
+<path d="M642 188 h70 l18 18 v38 h-88 z"></path>
+<path d="M692 442 h66 v50 l-16 16 h-50 z"></path>
+<path d="M806 332 h22 v96 h-22 z M834 332 h22 v96 h-22 z M828 372 h6 v16 h-6 z"></path>
+<path d="M522 652 h92 v60 h-60 a32 32 0 0 1 -32 -32 z"></path>
+</g>
+<rect x="400" y="455" width="50" height="34" rx="2" fill="#0E1D21"></rect>
+</svg>
+</div>
+
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; pointer-events: none; background: radial-gradient(ellipse at 50% 46%, rgba(10,15,31,0) 55%, rgba(6,9,20,0.75) 100%)"></div>
+
+<sc-for list="{{roads}}" as="r" hint-placeholder-count="6">
+<div style="position: absolute; left: {{r.x}}px; top: {{r.y}}px; transform: translate(-50%, -50%) rotate({{r.rot}}deg); font: 600 9px Inter, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; color: {{r.c}}; white-space: nowrap; pointer-events: none">{{r.t}}</div>
+</sc-for>
+
+<sc-for list="{{labels}}" as="l" hint-placeholder-count="9">
+<div style="position: absolute; left: {{l.x}}px; top: {{l.y}}px; transform: translateX(-50%); font: 600 9.5px Inter, sans-serif; letter-spacing: 0.9px; text-transform: uppercase; color: #8692BE; white-space: nowrap; pointer-events: none; text-shadow: 0 1px 3px #0A0F1F">{{l.t}}</div>
+</sc-for>
+
+<sc-if value="{{loc}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: {{locX}}px; top: {{locY}}px; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: #4C8DFF; border: 2px solid #FFFFFF; box-shadow: 0 0 0 8px rgba(76,141,255,0.2); pointer-events: none"></div>
+<div style="position: absolute; left: {{locX}}px; top: {{locY}}px; margin-top: 14px; transform: translateX(-50%); padding: 2px 7px; border-radius: 8px; background: rgba(15,26,58,0.92); font: 600 10px Inter, sans-serif; color: #CFE0FF; white-space: nowrap; pointer-events: none">You · on this phone only</div>
+</sc-if>
+
+<sc-for list="{{marks}}" as="m" hint-placeholder-count="7">
+<button onClick="{{m.pick}}" onPointerDown="{{stop}}" onDoubleClick="{{stop}}" aria-label="{{m.aria}}" aria-pressed="{{m.sel}}" style="position: absolute; left: {{m.px}}px; top: {{m.py}}px; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; opacity: {{m.op}}; transform: scale({{m.sc}}); cursor: pointer">
+<sc-if value="{{m.live}}" hint-placeholder-val="{{ true }}"><span class="cu-pulse" style="position: absolute; left: 10px; top: 10px; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #FF5A5A"></span></sc-if>
+<svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true" style="position: absolute; left: 0; top: 0; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6)) drop-shadow(0 0 6px {{m.glow}})">
+<ellipse cx="22" cy="22" rx="19" ry="5.5" fill="none" stroke="{{m.ring}}" stroke-opacity="0.55" stroke-width="1.3" transform="rotate(-22 22 22)"></ellipse>
+<circle cx="22" cy="22" r="12.5" fill="{{m.fill}}" stroke="{{m.ring}}" stroke-width="2" stroke-dasharray="{{m.dash}}"></circle>
+<g transform="translate(15 15) scale(0.5833)"><path d="{{m.icon}}" fill="none" stroke="#FFE2A3" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"></path></g>
+</svg>
+<sc-if value="{{m.hasCount}}" hint-placeholder-val="{{ true }}"><span style="position: absolute; right: -2px; bottom: 3px; min-width: 16px; height: 15px; padding: 0 4px; box-sizing: border-box; border-radius: 8px; background: #E9ECF8; color: #0B1020; font: 700 9.5px/15px Inter, sans-serif; text-align: center">{{m.count}}</span></sc-if>
+<sc-if value="{{m.hasMine}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: -2px; top: 2px; height: 16px; padding: 0 5px 0 3px; border-radius: 8px; background: #F5C76B; color: #0B1020; font: 700 9.5px/16px Inter, sans-serif; display: flex; align-items: center; gap: 1px"><svg width="9" height="9" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="#0B1020"></path></svg>{{m.mine}}</span></sc-if>
+<sc-if value="{{m.formed}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: -1px; top: 2px; width: 16px; height: 16px; border-radius: 8px; background: #F5C76B; display: flex; align-items: center; justify-content: center"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#0B1020" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M12 4L4 19h16z"></path></svg></span></sc-if>
+<sc-if value="{{m.imported}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; right: -1px; top: 2px; width: 15px; height: 15px; border-radius: 8px; background: #2C3660; border: 1px solid #5A68A0; display: flex; align-items: center; justify-content: center"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#E9ECF8" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path></svg></span></sc-if>
+</button>
+<sc-if value="{{m.showPill}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: {{m.pillX}}px; top: {{m.pillY}}px; height: 22px; padding: 0 9px; border-radius: 11px; background: {{m.pillBg}}; border: 1px solid {{m.pillBd}}; color: {{m.pillFg}}; font: 600 11px/20px Inter, sans-serif; white-space: nowrap; opacity: {{m.pillOp}}; pointer-events: none; box-shadow: 0 2px 8px rgba(0,0,0,0.4)">{{m.pill}}</div>
+</sc-if>
+</sc-for>
+
+<div onPointerDown="{{stop}}" onDoubleClick="{{stop}}" style="position: absolute; right: 12px; top: {{ctop}}px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-direction: column; border-radius: 14px; background: rgba(18,25,54,0.92); border: 1px solid #2C3660; box-shadow: 0 4px 14px rgba(0,0,0,0.35); overflow: hidden">
+<button onClick="{{zin}}" aria-label="Zoom in" style="width: 44px; height: 44px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E9ECF8" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+<div style="height: 1px; margin: 0 10px; background: #2C3660"></div>
+<button onClick="{{zout}}" aria-label="Zoom out" style="width: 44px; height: 44px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E9ECF8" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg></button>
+</div>
+<button onClick="{{reset}}" aria-label="Show all of campus" style="width: 44px; height: 44px; border-radius: 22px; border: 1px solid #2C3660; background: rgba(18,25,54,0.92); box-shadow: 0 4px 14px rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E9ECF8" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"></path></svg></button>
+<button onClick="{{locate}}" aria-label="Show where I am, on this phone only" aria-pressed="{{loc}}" style="width: 44px; height: 44px; border-radius: 22px; border: 1px solid {{locBd}}; background: rgba(18,25,54,0.92); box-shadow: 0 4px 14px rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="{{locFill}}" stroke="{{locFg}}" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8z"></path></svg></button>
+</div>
+</div>
+
+<!--JS-->
+
+class Component extends DCLogic {
+  renderVals() {
+    const status = (this.state && this.state.s) || 'Available';
+    const colors = { 'Available': '#7FE0C4', 'Running low': '#FFB45C', 'Finished': '#C9D0EC' };
+    const btns = ['Available', 'Running low', 'Finished'].map((l) => {
+      const on = status === l;
+      return { label: l, on, bd: on ? '#F5C76B' : '#36407A', bg: on ? '#2A2A3E' : '#1C2550', fg: on ? '#FFE2A3' : '#C9D0EC', pick: () => this.setState({ s: l }) };
+    });
+    return {
+      ctop: 140, btns,
+      note: status === 'Available' ? 'Available · updated 2 min ago' : status + ' · updated just now',
+      noteColor: colors[status]
+    };
+  }
+}
+
+
+class Component extends DCLogic {
+  _cur() {
+    const st = this.state || {};
+    return { tx: st.tx ?? -127, ty: st.ty ?? 20, z: st.z ?? 0.7 };
+  }
+  _clamp(tx, ty, z) {
+    const w = 900 * z, h = 1000 * z;
+    const ctx = Math.min(80, Math.max(390 - w - 80, tx));
+    const cty = Math.min(160, Math.max(844 - h - 240, ty));
+    return { tx: ctx, ty: cty, z };
+  }
+  _zoomAt(f, px, py) {
+    const s = this._cur();
+    const z2 = Math.min(2.8, Math.max(0.55, s.z * f));
+    const k = z2 / s.z;
+    this.setState(this._clamp(px - (px - s.tx) * k, py - (py - s.ty) * k, z2));
+  }
+  _local(e) {
+    const r = e.currentTarget.getBoundingClientRect();
+    const k = r.width / 390 || 1;
+    return { x: (e.clientX - r.left) / k, y: (e.clientY - r.top) / k, k, r };
+  }
+  _down(e) {
+    this.pts = this.pts || {};
+    const L = this._local(e);
+    this.geo = { k: L.k, left: L.r.left, top: L.r.top };
+    this.pts[e.pointerId] = { x: e.clientX, y: e.clientY };
+  }
+  _move(e) {
+    const p = this.pts && this.pts[e.pointerId];
+    if (!p) return;
+    const k = (this.geo && this.geo.k) || 1;
+    const ids = Object.keys(this.pts);
+    if (ids.length === 1) {
+      const dx = (e.clientX - p.x) / k, dy = (e.clientY - p.y) / k;
+      p.x = e.clientX; p.y = e.clientY;
+      const s = this._cur();
+      this.setState(this._clamp(s.tx + dx, s.ty + dy, s.z));
+    } else {
+      const oid = ids.find((i) => String(i) !== String(e.pointerId));
+      const o = this.pts[oid];
+      const d0 = Math.hypot(p.x - o.x, p.y - o.y);
+      p.x = e.clientX; p.y = e.clientY;
+      const d1 = Math.hypot(p.x - o.x, p.y - o.y);
+      if (d0 > 0) this._zoomAt(d1 / d0, ((p.x + o.x) / 2 - this.geo.left) / k, ((p.y + o.y) / 2 - this.geo.top) / k);
+    }
+  }
+  renderVals() {
+    const st = this.state || {};
+    const s = this._cur();
+    const z = s.z, tx = s.tx, ty = s.ty;
+    const variant = this.props.variant ?? 'browse';
+    const fit = !!this.props.fit;
+    const filter = this.props.filter ?? 'All';
+    const selected = this.props.selected ?? st.sel ?? null;
+    const ICON = {
+      pizza: 'M4 6c5-3 11-3 16 0L12 21z M9.5 10h.01 M14 12.5h.01 M11.5 15.5h.01',
+      music: 'M9 18V6l10-2v12 M9 18a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0 M19 16a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0',
+      dice: 'M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z M9 9h.01 M15 15h.01 M15 9h.01 M9 15h.01 M12 12h.01',
+      mic: 'M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z M6 11a6 6 0 0 0 12 0 M12 17v4 M9 21h6',
+      gift: 'M4 9h16v4H4z M5 13h14v8H5z M12 9v12 M12 9c-2-4-6-4-6-1s6 1 6 1c2-4 6-4 6-1s-6 1-6 1',
+      scope: 'M3 14l12-6 2 4-12 6z M15 8l3-1.5 2 4-3 1.5 M9 17l-2 4 M11 16l2 5',
+      book: 'M4 19V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2 M8 7h7'
+    };
+    const EV = [
+      { id: 'e1', b: [686, 215], icon: 'pizza', title: 'Pizza & Game Jam Kickoff', short: 'Game Jam · Now', host: 'Night Owl Game Dev Club', place: 'Warnock Engineering (WEB) · Room 1230', time: 'Now · until 8:30 PM', live: true, count: 14, tags: ['Now', 'Open to meet', 'Food', 'Games', 'Swag', 'Step-free'], offers: [{ t: 'Pizza', s: 'Available · 2 min ago', c: '#7FE0C4' }, { t: 'Stickers', s: 'Running low · 6 min ago', c: '#FFB45C' }], access: 'Step-free north door, elevator. Lively and loud.', href: 'EventCard.dc.html', fitText: 'Fits your 45-min gap', clash: false, formedHere: true },
+      { id: 'e2', b: [602, 405], icon: 'music', title: 'Open Mic Night', short: 'Open Mic · Now', host: 'Acoustic Society', place: 'Union · Ballroom', time: 'Now · until 10 PM', live: true, count: 9, tags: ['Now', 'Open to meet', 'Music', 'Food', 'Step-free'], offers: [{ t: 'Snacks', s: 'Advertised', c: '#C9D0EC' }], access: 'Step-free. Live captions on the screen.', fitText: 'Fits, 30 min', clash: false },
+      { id: 'e3', b: [725, 475], icon: 'dice', title: 'Board Game Night', short: 'Board Games · Now', host: 'Tabletop Guild', place: 'Lassonde Studios · Room 140', time: 'Now · until 11 PM', live: true, count: 11, mine: 2, tags: ['Now', 'Open to meet', 'Games', 'Food', 'Step-free', 'Quiet'], offers: [{ t: 'Cocoa', s: 'Available · 5 min ago', c: '#7FE0C4' }], access: 'Step-free. Quiet side room.', href: 'EventSky.dc.html' },
+      { id: 'e4', b: [425, 472], icon: 'mic', title: 'Careers in Space Talk', short: 'Space Talk · 9 PM', host: 'Astro Club', place: 'Marriott Library · Gould Auditorium', time: 'Tonight, 9:00 PM', live: false, count: 0, tags: ['Later today', 'Speaker', 'Step-free', 'Quiet'], offers: [], access: 'Step-free. ASL interpreter requested.', fitText: 'Clashes with CS 3500', clash: true },
+      { id: 'e5', b: [568, 682], icon: 'gift', title: 'Sticker Swap', short: 'Sticker Swap · Now', host: 'Design Collective', place: 'SFEBB · Atrium', time: 'Now · until 9 PM', live: true, count: 5, tags: ['Now', 'Swag'], offers: [{ t: 'Stickers', s: 'Running low · 1 min ago', c: '#FFB45C' }], access: 'Unknown. The host has not said.' },
+      { id: 'e6', b: [170, 301], icon: 'scope', title: 'Rooftop Telescope Night', short: 'Telescopes · 9:30', host: 'Astronomy Society', place: 'Crocker Science Center · Roof deck', time: 'Tonight, 9:30 PM', live: false, count: 0, imported: true, tags: ['Later today'], offers: [], access: 'Roof deck reached by stairs only.', fitText: 'Clashes with MATH 2210', clash: true },
+      { id: 'e7', b: [831, 380], icon: 'book', title: 'Late-night Study Jam', short: 'Study Jam · 10 PM', host: 'Residence Hall Council', place: 'Kahlert Village · Common room', time: 'Tonight, 10:00 PM', live: false, count: 0, imported: true, tags: ['Later today', 'Food'], offers: [{ t: 'Snacks', s: 'Advertised', c: '#C9D0EC' }], access: 'Unknown. Imported events often leave this out.' }
+    ];
+    const visible = EV.filter((ev) => filter === 'All' || ev.tags.includes(filter));
+    const hasMark = {};
+    const marks = visible.map((ev) => {
+      hasMark[ev.id] = true;
+      const sx = ev.b[0] * z + tx, sy = ev.b[1] * z + ty;
+      const sel = selected === ev.id;
+      let op = 1, pill = ev.short, showPill = sel || z >= 1.2, pillBg = 'rgba(14,20,44,0.94)', pillBd = '#2C3660', pillFg = '#E9ECF8', pillOp = 1;
+      if (variant === 'sam' && fit) {
+        if (ev.clash) { op = 0.32; pill = ev.fitText; showPill = true; pillOp = 0.85; }
+        else if (ev.fitText) { pill = ev.fitText; showPill = true; pillBg = '#F5C76B'; pillBd = '#F5C76B'; pillFg = '#0B1020'; }
+        else op = 0.7;
+      }
+      if (variant === 'jordan') {
+        if (ev.id === 'e1') { pill = 'Your event · LIVE'; showPill = true; pillBg = '#CC0000'; pillBd = '#CC0000'; pillFg = '#FFFFFF'; }
+        else op = 0.5;
+      }
+      const ring = ev.live ? '#FF5A5A' : '#8E9AC0';
+      const data = Object.assign({}, ev, { icon: undefined });
+      return {
+        px: sx - 22, py: sy - 22, pillX: sx + 20, pillY: sy - 11, pill, showPill, pillBg, pillBd, pillFg, pillOp,
+        ring, glow: sel ? '#F5C76B' : 'transparent',
+        fill: sel ? '#2A2A4E' : '#141C40', dash: ev.live ? 'none' : '3 2.5',
+        icon: ICON[ev.icon], op, sc: sel ? 1.2 : (ev.live ? 1 : 0.88), sel,
+        live: ev.live, count: ev.count, hasCount: ev.count >= 3,
+        mine: ev.mine || 0, hasMine: variant === 'maya' && !!ev.mine,
+        formed: variant === 'maya' && !!ev.formedHere,
+        imported: !!ev.imported,
+        aria: ev.title + ', ' + ev.place + ', ' + ev.time + (ev.count >= 3 ? ', ' + ev.count + ' people here' : '') + (ev.imported ? ', imported from Campus Connect' : ''),
+        pick: () => {
+          if (this.props.onSelect) this.props.onSelect(data); else this.setState({ sel: ev.id });
+          if (sy > 560 || sy < 200 || sx < 40 || sx > 330) this.setState(this._clamp(195 - ev.b[0] * z, 380 - ev.b[1] * z, z));
+        }
+      };
+    });
+    const B = [
+      ['e6', 170, 301, 324, 'Crocker', 'Crocker Science Center'], [null, 307, 380, 402, 'Park', 'Park Building'], ['e4', 425, 472, 512, 'Library', 'Marriott Library'],
+      ['e2', 602, 405, 438, 'Union', 'A. Ray Olpin Union'], [null, 555, 219, 248, 'MEB', 'Merrill Engineering'], ['e1', 686, 215, 244, 'WEB', 'Warnock Engineering'],
+      ['e3', 725, 475, 508, 'Lassonde', 'Lassonde Studios'], ['e7', 831, 380, 428, 'Kahlert', 'Kahlert Village'], ['e5', 568, 682, 712, 'SFEBB', 'Eccles Business']
+    ];
+    const labels = z < 0.9 ? [] : B.map((b) => {
+      const marked = b[0] && hasMark[b[0]];
+      return { x: b[1] * z + tx, y: marked ? b[2] * z + ty + 20 : b[3] * z + ty + 4, t: z >= 1.5 ? b[5] : b[4] };
+    });
+    const R = [
+      [52, 520, 90, 'University St', '#525E8A'], [430, 84, -3, 'N Campus Dr', '#525E8A'], [300, 598, 1, 'Campus Center Dr', '#525E8A'],
+      [802, 780, 90, 'Central Campus Dr', '#525E8A'], [480, 974, -1, 'TRAX Red Line', '#C25A5A'], [230, 822, 0, 'Rice-Eccles Stadium', '#4E6A68']
+    ];
+    const roads = z < 0.8 ? [] : R.map((r) => ({ x: r[0] * z + tx, y: r[1] * z + ty, rot: r[2], t: r[3], c: r[4] }));
+    const ctop = this.props.controlsTop ?? 330;
+    const loc = !!st.loc;
+    return {
+      tx, ty, z, marks, labels, roads, ctop,
+      loc, locX: 430 * z + tx, locY: 560 * z + ty,
+      locBd: loc ? '#4C8DFF' : '#2C3660', locFg: loc ? '#4C8DFF' : '#E9ECF8', locFill: loc ? '#4C8DFF' : 'none',
+      down: (e) => this._down(e), move: (e) => this._move(e),
+      up: (e) => { if (this.pts) delete this.pts[e.pointerId]; },
+      wheel: (e) => { const L = this._local(e); this._zoomAt(Math.exp(-e.deltaY * 0.0015), L.x, L.y); },
+      dbl: (e) => { const L = this._local(e); this._zoomAt(1.6, L.x, L.y); },
+      stop: (e) => e.stopPropagation(),
+      zin: () => this._zoomAt(1.4, 195, 400), zout: () => this._zoomAt(1 / 1.4, 195, 400),
+      reset: () => this.setState({ tx: -127, ty: 20, z: 0.7 }),
+      locate: () => this.setState({ loc: !loc })
+    };
+  }
+}

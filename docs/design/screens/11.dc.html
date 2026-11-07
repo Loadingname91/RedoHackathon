@@ -1,0 +1,484 @@
+
+<helmet>
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("f83b760f-5cc0-42ec-b16f-47ea84acc808") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("f83b760f-5cc0-42ec-b16f-47ea84acc808") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("f83b760f-5cc0-42ec-b16f-47ea84acc808") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("f83b760f-5cc0-42ec-b16f-47ea84acc808") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("392b994e-63be-4cd6-93bd-6965550b1436") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("392b994e-63be-4cd6-93bd-6965550b1436") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C_k3HqUtEw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("392b994e-63be-4cd6-93bd-6965550b1436") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+body{margin:0;background:#0B1020}
+a{color:#F5C76B}a:hover{color:#FFE2A3}
+@keyframes stepin{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+@keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.4);opacity:0}}
+.stepin{animation:stepin .35s ease-out both}
+.pulse{animation:pulse 1.4s ease-out infinite}
+textarea::placeholder,input::placeholder{color:#8590B8}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 900px; box-sizing: border-box; padding: 32px 40px 48px; background: linear-gradient(180deg, #0B1020 0%, #111836 100%); font-family: Inter, system-ui, sans-serif; color: #E9ECF8; display: flex; flex-direction: column; gap: 24px">
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between">
+<div style="display: flex; align-items: center; gap: 10px"><svg width="28" height="28" sc-camel-view-box="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="#F5C76B"></path></svg><span style="font: 700 24px 'Space Grotesk', sans-serif">Organizer panel</span></div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+<span style="padding: 8px 14px; border-radius: 18px; background: #161E3E; border: 1px solid #2C3660; font: 600 13px Inter, sans-serif; color: #C9D0EC">Hosting: 1 live event</span>
+<a href="EventScreen.dc.html" style="height: 44px; padding: 0 18px; border-radius: 14px; background: #CC0000; color: #FFFFFF; font: 600 14px Inter, sans-serif; text-decoration: none; display: flex; align-items: center">Open event screen</a>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="font: 600 13px Inter, sans-serif; color: #AEB7DA; letter-spacing: 0.6px">1 · PASTE ONCE</div>
+<label for="paste" style="font: 400 14px Inter, sans-serif; color: #C9D0EC">Paste your Instagram caption, Discord post or flyer text</label>
+<textarea id="paste" value="{{text}}" sc-camel-on-change="{{setText}}" style="height: 210px; box-sizing: border-box; padding: 16px; border-radius: 16px; border: 1px solid #36407A; background: #0F1530; color: #E9ECF8; font: 400 15px Inter, sans-serif; line-height: 1.5; resize: vertical"></textarea>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+<button sc-camel-on-click="{{read}}" style="height: 50px; padding: 0 22px; border-radius: 14px; border: 0; background: #CC0000; color: #FFFFFF; font: 600 15px Inter, sans-serif">Read it</button>
+<span style="font: 400 12px Inter, sans-serif; color: #AEB7DA">Pasted text is treated as data only. Nothing goes live until you publish.</span>
+</div>
+
+<div style="margin-top: 8px; font: 600 13px Inter, sans-serif; color: #AEB7DA; letter-spacing: 0.6px">AGENT STEPS</div>
+<div role="list" aria-live="polite" style="display: flex; flex-direction: column; gap: 8px; min-height: 250px">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="6">
+<div role="listitem" class="stepin" style="display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 12px; background: {{s.bg}}; border: 1px solid {{s.bd}}">
+<span style="width: 22px; height: 22px; border-radius: 50%; background: {{s.dot}}; color: #0B1020; font: 700 13px Inter, sans-serif; display: flex; align-items: center; justify-content: center; flex: none">{{s.mark}}</span>
+<span style="font: 500 14px Inter, sans-serif; color: {{s.fg}}">{{s.text}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="font: 600 13px Inter, sans-serif; color: #AEB7DA; letter-spacing: 0.6px">2 · REVIEW, FIX ONLY WHAT'S AMBER</div>
+<div style="padding: 20px; border-radius: 18px; background: #121936; border: 1px solid #2C3660; display: flex; flex-direction: column; gap: 14px">
+<sc-for list="{{fields}}" as="f" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between"><label for="{{f.id}}" style="font: 600 13px Inter, sans-serif; color: #C9D0EC">{{f.label}}</label><span style="font: 600 12px Inter, sans-serif; color: #FFB45C">{{f.flag}}</span></div>
+<input id="{{f.id}}" value="{{f.value}}" placeholder="{{f.ph}}" style="height: 46px; box-sizing: border-box; padding: 0 14px; border-radius: 12px; border: 1.5px solid {{f.bd}}; background: {{f.bg}}; color: #E9ECF8; font: 500 15px Inter, sans-serif">
+</div>
+</sc-for>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{offers}}" as="o" hint-placeholder-count="3">
+<span style="padding: 7px 12px; border-radius: 16px; background: #2A2A3E; border: 1px solid #F5C76B; color: #FFE2A3; font: 600 13px Inter, sans-serif">{{o}}</span>
+</sc-for>
+</div>
+<sc-if value="{{canPublish}}" hint-placeholder-val="{{ true }}">
+<button sc-camel-on-click="{{publish}}" style="height: 54px; border-radius: 16px; border: 0; background: #CC0000; color: #FFFFFF; font: 600 16px Inter, sans-serif">Publish to the map</button>
+</sc-if>
+<sc-if value="{{waiting}}" hint-placeholder-val="{{ false }}">
+<div style="height: 54px; border-radius: 16px; border: 1px dashed #36407A; color: #8590B8; font: 500 14px Inter, sans-serif; display: flex; align-items: center; justify-content: center">Publish unlocks after the agent reads your post</div>
+</sc-if>
+</div>
+
+<sc-if value="{{published}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="padding: 16px; border-radius: 16px; background: #10263A; border: 1px solid #1F5C6A; display: flex; align-items: center; gap: 14px">
+<div style="position: relative; width: 44px; height: 44px; flex: none; display: flex; align-items: center; justify-content: center">
+<span class="pulse" style="position: absolute; left: 6px; top: 6px; width: 32px; height: 32px; border-radius: 50%; border: 2px solid #FF5A5A"></span>
+<svg width="44" height="44" sc-camel-view-box="0 0 52 52" aria-hidden="true"><ellipse cx="26" cy="26" rx="24" ry="7.5" fill="none" stroke="#FF5A5A" stroke-opacity="0.6" stroke-width="1.6" transform="rotate(-22 26 26)"></ellipse><circle cx="26" cy="26" r="17" fill="#18214A" stroke="#FF5A5A" stroke-width="2.5"></circle><g transform="translate(16 16) scale(0.8333)"><path d="M4 6c5-3 11-3 16 0L12 21z M9.5 10h.01 M14 12.5h.01 M11.5 15.5h.01" fill="none" stroke="#FFE2A3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+</div>
+<div style="flex: 1"><div style="font: 700 16px 'Space Grotesk', sans-serif; color: #D7F5EC">Your event is a planet on WEB</div><div style="font: 400 13px Inter, sans-serif; color: #B7E8DA">Students can see it now.</div></div>
+<a href="Main.dc.html" style="height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid #1F5C6A; color: #D7F5EC; font: 600 13px Inter, sans-serif; text-decoration: none; display: flex; align-items: center">See map</a>
+</div>
+</sc-if>
+
+<div style="font: 600 13px Inter, sans-serif; color: #AEB7DA; letter-spacing: 0.6px; margin-top: 6px">3 · LIVE OFFERING STATUS</div>
+<div style="padding: 18px 20px; border-radius: 18px; background: #121936; border: 1px solid #2C3660; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="font: 600 16px Inter, sans-serif">Pizza</span><span style="font: 600 13px Inter, sans-serif; color: #7FE0C4">{{statusNote}}</span></div>
+<div role="group" aria-label="Pizza status" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{statuses}}" as="t" hint-placeholder-count="4">
+<button sc-camel-on-click="{{t.pick}}" aria-pressed="{{t.on}}" style="flex: 1 1 110px; height: 48px; border-radius: 12px; border: 1px solid {{t.bd}}; background: {{t.bg}}; color: {{t.fg}}; font: 600 14px Inter, sans-serif">{{t.label}}</button>
+</sc-for>
+</div>
+<div style="font: 400 12px Inter, sans-serif; color: #AEB7DA">Switches to Finished on its own at 8:30 PM, when the event ends.</div>
+</div>
+</div>
+</div>
+</div>
+
+<!--JS-->
+
+class Component extends DCLogic {
+  componentWillUnmount() { (this.tms || []).forEach(clearTimeout); }
+  renderVals() {
+    const st = this.state || {};
+    const text = st.text ?? 'GAME JAM KICKOFF tonight!! 6:30 in WEB. We’ve got pizza (while it lasts), stickers and a pile of board games. Come solo, leave with a team. See you there';
+    const n = st.n || 0;
+    const status = st.status || 'Available';
+    const published = !!st.published;
+    const all = [
+      { text: 'Read the post', warn: false },
+      { text: 'Found offerings: pizza, stickers, games', warn: false },
+      { text: 'Matched building: WEB (from the campus list)', warn: false },
+      { text: 'Time found: 6:30 PM', warn: false },
+      { text: 'Room missing, please add it', warn: true },
+      { text: 'Ready for review', warn: false }
+    ];
+    const steps = all.slice(0, n).map((s) => ({
+      text: s.text,
+      mark: s.warn ? '!' : '✓',
+      dot: s.warn ? '#FFB45C' : '#7FE0C4',
+      bg: s.warn ? '#2E2415' : '#0F1530',
+      bd: s.warn ? '#8A5A1F' : '#252E55',
+      fg: s.warn ? '#FFD9A3' : '#E9ECF8'
+    }));
+    const done = n >= 6;
+    const amber = (id, label, value, ph) => ({ id, label, value, ph, flag: 'Check this', bd: '#FFB45C', bg: '#2E2415' });
+    const ok = (id, label, value) => ({ id, label, value, ph: '', flag: '', bd: '#36407A', bg: '#0F1530' });
+    const fields = [
+      ok('f1', 'Title', 'Pizza & Game Jam Kickoff'),
+      ok('f2', 'Host', 'Night Owl Game Dev Club'),
+      ok('f3', 'Building', 'Warnock Engineering (WEB)'),
+      amber('f4', 'Room', '', 'e.g. 1230'),
+      ok('f5', 'Start', 'Tonight, 6:30 PM'),
+      amber('f6', 'End', '8:30 PM (guessed)', '')
+    ];
+    const names = ['Advertised', 'Available', 'Running low', 'Finished'];
+    const statuses = names.map((l) => {
+      const on = status === l;
+      return { label: l, on, bd: on ? '#F5C76B' : '#36407A', bg: on ? '#2A2A3E' : '#1C2550', fg: on ? '#FFE2A3' : '#C9D0EC', pick: () => this.setState({ status: l }) };
+    });
+    return {
+      text, setText: (e) => this.setState({ text: e.target.value }),
+      read: () => {
+        (this.tms || []).forEach(clearTimeout);
+        this.tms = [];
+        this.setState({ n: 0, published: false });
+        for (let i = 1; i <= 6; i++) this.tms.push(setTimeout(() => this.setState({ n: i }), i * 650));
+      },
+      steps, fields: done ? fields : fields.map((f) => ({ ...f, value: '', flag: '', bd: '#36407A', bg: '#0F1530', ph: 'Waiting for the agent' })),
+      offers: done ? ['Pizza', 'Stickers', 'Games'] : [],
+      canPublish: done && !published, waiting: !done && !published, published,
+      publish: () => this.setState({ published: true }),
+      statuses, statusNote: status === 'Available' ? 'Updated 2 min ago' : 'Updated just now'
+    };
+  }
+}

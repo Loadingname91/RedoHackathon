@@ -1,0 +1,42 @@
+Events are planets. People are stars.
+Two shapes that never swap roles. Every state also has a text label, so nothing relies on color alone.
+Never shown anywhere: photos, real names, connection counts, rankings.
+Events · planets
+On the campus map. The icon inside is the main offering.
+Live now
+Solid red ring, slow pulse
+Later today
+Dashed grey ring, no pulse
+14
+People checked in
+A number, only once 3+ are there
+2
+Your constellation is here
+Only members who chose to share
+From Campus Connect
+Imported. No live status until claimed
+Your constellation formed here
+Stays until the event ends
+People · stars
+Only inside an event you've checked into. Nickname under each.
+You
+Brightest star, with a halo ring
+In your constellation
+Filled. Gold for your first group, blue for a second
+In another constellation
+Hollow outline. A group you're not in
+Open to meet
+Small white star, not linked yet
+Bridge star
+In two constellations: half gold, half dashed blue
+Hidden (only you see this)
+Dotted outline. Nobody else sees you
+Connections · groups and lines
+A group is a soft cloud behind its members, easier to read than thin lines alone.
+Met tonight
+Solid line, draws in like a pen stroke
+Met before, here again
+Dashed until you link again tonight
+Met 3+ times
+Thicker and brighter. Friendship, not a score
+Where stars sit: in orbits around the event planet, not where people are standing. Inner orbit for groups, outer orbit for people not linked yet.

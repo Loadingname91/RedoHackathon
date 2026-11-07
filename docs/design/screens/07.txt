@@ -1,0 +1,15 @@
+Say hi, then both say yes
+Fry + Sauce
+Comet and Sauce are both checked in at WEB
+YOUR SHARED PROMPT
+Shuffle
+{{prompt}}
+Your answer together
+Optional. Only you two see it.
+You {{youMark}}
+Sauce {{themMark}}
+A line only appears when you both confirm. That's what stops anyone being linked without saying yes.
+Confirm connection
+Decline, no hard feelings
+Waiting for Sauce to confirm…
+Draw our line

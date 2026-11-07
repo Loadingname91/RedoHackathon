@@ -1,0 +1,25 @@
+Access and comfort
+Saved on this phone only
+PREVIEW · HOW A MATCH SEES YOU
+Comet
+Games · Pizza
+{{b}}
+No badges shown
+Seeing
+{{s.label}}
+{{t.label}}
+{{t.sub}}
+Motion and sound
+{{t.label}}
+{{t.sub}}
+Finding your match
+Pick any that work for you. Your match gets the same cues.
+{{f.label}}
+{{f.sub}}
+Comfort badges
+Shown on your star only to people at the same event. Preferences, never diagnoses. All optional.
+{{b.label}}
+Events
+{{t.label}}
+{{t.sub}}
+When access info is unknown, the event card offers "Ask the host", an anonymous question the organizer sees in their panel.

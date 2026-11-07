@@ -1,0 +1,24 @@
+Organizer panel
+Hosting: 1 live event
+Open event screen
+1 · PASTE ONCE
+Paste your Instagram caption, Discord post or flyer text
+Read it
+Pasted text is treated as data only. Nothing goes live until you publish.
+AGENT STEPS
+{{s.mark}}
+{{s.text}}
+2 · REVIEW, FIX ONLY WHAT'S AMBER
+{{f.label}}
+{{f.flag}}
+{{o}}
+Publish to the map
+Publish unlocks after the agent reads your post
+Your event is a planet on WEB
+Students can see it now.
+See map
+3 · LIVE OFFERING STATUS
+Pizza
+{{statusNote}}
+{{t.label}}
+Switches to Finished on its own at 8:30 PM, when the event ends.

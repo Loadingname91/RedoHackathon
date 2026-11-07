@@ -1,0 +1,33 @@
+Board Game Night
+Lassonde Studios · you're checked in
+Sky
+List
+Stars orbit the event. Positions aren't where people stand.
+The Unfinished Game Studio
+3 of 5 here · yours
+Pepperoni Pals
+{{g2sub}}
+{{p.label}}
+{{g.h}}
+{{r.label}}
+{{r.listSub}}
+{{msg}}
+×
+Tap a star or a group name
+Shares a group with you
+Another group
+Open to meet
+Met before
+Connect
+My sky
+{{sh.title}}
+{{sh.sub}}
+{{sh.badge}}
+{{f}}
+{{sh.note}}
+{{a.label}}
+{{a.label}}
+You left Board Game Night
+Your star is gone from this sky. Your connections and constellations stay.
+Back to the map
+Check in again

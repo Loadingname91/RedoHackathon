@@ -1,0 +1,16 @@
+Student-run · not a club post
+You've earned hosting
+Three confirmed connections unlock small events of your own. Only you see your count.
+Title
+Building
+Marriott Library
+Union
+WEB
+Crocker Science
+Time
+Public campus buildings only. The exact room is shown after you accept an RSVP.
+Who can see it
+{{o.label}}
+{{o.sub}}
+Posted. A star appears on Marriott Library for: {{who}}.
+Post my micro-event

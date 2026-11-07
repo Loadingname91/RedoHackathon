@@ -1,0 +1,24 @@
+My sky
+Only you can see this page
+{{ciTitle}}
+{{ciSub}}
+Leave event
+People you've met
+Closer rings mean you've met more often. Color shows which group you share.
+Constellations ({{gCount}})
+{{g.name}}
+{{g.sub}}
+{{g.size}}
+{{m}}
+Tell this group when I'm at an event
+Leave constellation
+You'll leave the group and its sky. Your one-to-one lines stay unless you remove them. Nobody is notified.
+Keep
+Leave
+{{leftMsg}}
+Undo
+Connections ({{cCount}})
+{{c.n}}
+{{c.met}}
+Remove
+Removing a connection deletes that line for both of you. They aren't told.

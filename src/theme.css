@@ -1,0 +1,27 @@
+/* Design tokens. Contrast-checked on --bg: --text 15:1, --muted 7.6:1, --gold 11:1, --coral 5.4:1.
+   Crimson is for button backgrounds only (white text on it = 5.9:1); never crimson text on navy. */
+:root {
+  --bg: #0B1020; --surface: #141A2E; --surface-2: #1C2440; --line: #2A3352;
+  --text: #EEF0F7; --muted: #A3ABC4; --gold: #F5C451; --coral: #FF7A7A;
+  --crimson: #CC0000; --ok: #5FD39A; --warn: #F2A93B;
+  --radius: 16px; --tap: 44px;
+  --font: 'Inter', system-ui, sans-serif; --display: 'Space Grotesk', 'Inter', sans-serif;
+}
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; height: 100%; background: var(--bg); color: var(--text); font-family: var(--font); }
+button, a.btn { min-height: var(--tap); border-radius: 12px; border: 1px solid var(--line); background: var(--surface-2);
+  color: var(--text); font: 600 16px var(--font); padding: 0 16px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+button.primary, a.btn.primary { background: var(--crimson); border-color: var(--crimson); color: #fff; }
+button.gold { background: var(--gold); border-color: var(--gold); color: #1a1405; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+input, textarea, select { min-height: var(--tap); background: var(--surface); color: var(--text); border: 1px solid var(--line);
+  border-radius: 12px; padding: 10px 12px; font: 16px var(--font); width: 100%; }
+label { color: var(--muted); font-size: 14px; display: block; margin-bottom: 6px; }
+h1, h2, h3 { font-family: var(--display); margin: 0; }
+.screen { min-height: 100%; padding: 16px; max-width: 520px; margin: 0 auto; }
+.muted { color: var(--muted); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+/* Calm mode and reduced motion turn off decoration. */
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+:root[data-calm="1"] *, :root[data-calm="1"] *::before { animation: none !important; transition: none !important; }

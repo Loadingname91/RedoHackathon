@@ -1,0 +1,14 @@
+NIGHT OWL GAME DEV CLUB
+Pizza & Game Jam Kickoff
+Scan to join the sky
+No GPS. Only people in this room see your star.
+Joining is optional. The pizza is for everyone.
+Star Corner: by the projector
+The sky over WEB
+{{here}} people here · nicknames only
+{{s.n}}
+The Unfinished Game Studio
+Pepperoni Pals
+{{goalText}}
+{{goalNote}}
+Demo: add a link
