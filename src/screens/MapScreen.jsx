@@ -120,9 +120,9 @@ export default function MapScreen({ query }) {
     if (watch.current != null) navigator.geolocation.clearWatch(watch.current)
     watch.current = null; centered.current = false; setYou(null)
   }
+  // Like Google Maps: location stays on; the button re-centers on you (or retries if it was blocked).
   const toggleLocate = () => {
-    if (watch.current != null) { stopLocate(); setPrefs({ locate: false }); setMsg('Location off.'); return }
-    setPrefs({ locate: true })
+    if (watch.current != null) { if (you && map.current) map.current.setView([you.lat, you.lng], 17); return }
     if (!navigator.geolocation) return setMsg('Location is not available on this device.')
     setMsg('Finding you… Your location stays on this phone.')
     watch.current = navigator.geolocation.watchPosition(
@@ -132,7 +132,7 @@ export default function MapScreen({ query }) {
   }
   useEffect(() => {
     // Lock onto the user's location when the map opens, unless they turned it off before.
-    if (prefs().locate !== false && navigator.geolocation) toggleLocate()
+    if (navigator.geolocation) toggleLocate()
     return () => { if (watch.current != null) navigator.geolocation.clearWatch(watch.current) }
   }, [])
 
@@ -216,7 +216,7 @@ export default function MapScreen({ query }) {
       {view === 'map' && <div ref={mapEl} className="cu-map" role="region" aria-label="Campus map. The list view has the same events." />}
       {view === 'map' && (
         <button className="cu-round cu-locate" onClick={toggleLocate} aria-pressed={!!you}
-          aria-label={you ? 'Stop showing my location' : 'Show my location'} title={you ? 'Stop showing my location' : 'Show my location'}>
+          aria-label={you ? 'Center on my location' : 'Show my location'} title={you ? 'Center on my location' : 'Show my location'}>
           <Icon name="locate" />
         </button>
       )}
