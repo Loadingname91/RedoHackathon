@@ -69,3 +69,7 @@
 .cu-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex: none; }
 .cu-note { padding: 10px 12px; border-radius: 12px; background: #161E3E; border: 1px dashed #5A68A0; font-size: 13px; color: #C9D0EC; }
 .cu-small { font-size: 13px; color: #C9D0EC; }
+
+/* Show-my-location button: floats on the map's right edge, above the sheet and tab bar. */
+.cu-locate { position: fixed; right: 12px; top: 136px; z-index: 550; color: var(--text); }
+.cu-locate[aria-pressed="true"] { color: #4C8DFF; border-color: #4C8DFF; }

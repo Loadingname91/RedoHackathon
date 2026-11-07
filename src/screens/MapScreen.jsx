@@ -110,8 +110,34 @@ export default function MapScreen({ query }) {
     L.tileLayer(TILES, { attribution: ATTRIBUTION, maxZoom: 19 }).addTo(map.current)
     L.control.zoom({ position: 'topright' }).addTo(map.current)
     layer.current = L.layerGroup().addTo(map.current)
-    return () => { map.current.remove(); map.current = null; layer.current = null }
+    return () => { map.current.remove(); map.current = null; layer.current = null; youMk.current = null }
   }, [view])
+
+  // "Show my location": off until tapped. The position stays in this browser; nothing is sent or saved.
+  const [you, setYou] = useState(null)
+  const watch = useRef(null), youMk = useRef(null), centered = useRef(false)
+  const stopLocate = () => {
+    if (watch.current != null) navigator.geolocation.clearWatch(watch.current)
+    watch.current = null; centered.current = false; setYou(null)
+  }
+  const toggleLocate = () => {
+    if (watch.current != null) { stopLocate(); setMsg('Location off.'); return }
+    if (!navigator.geolocation) return setMsg('Location is not available on this device.')
+    setMsg('Finding you… Your location stays on this phone.')
+    watch.current = navigator.geolocation.watchPosition(
+      (pos) => setYou({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+      () => { stopLocate(); setMsg('Location is blocked. The map works without it.') },
+      { enableHighAccuracy: true, maximumAge: 10000, timeout: 15000 })
+  }
+  useEffect(() => () => { if (watch.current != null) navigator.geolocation.clearWatch(watch.current) }, [])
+  useEffect(() => {
+    if (!map.current) return
+    if (!you) { youMk.current?.remove(); youMk.current = null; return }
+    const ll = [you.lat, you.lng]
+    if (!youMk.current) youMk.current = L.marker(ll, { icon: L.divIcon({ className: '', html: '<div class="cu-you"></div>', iconSize: [18, 18] }), keyboard: false, interactive: false, title: 'You are here' }).addTo(map.current)
+    else youMk.current.setLatLng(ll)
+    if (!centered.current) { centered.current = true; map.current.setView(ll, 17); setMsg('Showing your location. Only on this phone.') }
+  }, [you, view])
 
   useEffect(() => {
     if (!layer.current) return
@@ -165,6 +191,12 @@ export default function MapScreen({ query }) {
   return (
     <>
       {view === 'map' && <div ref={mapEl} className="cu-map" role="region" aria-label="Campus map. The list view has the same events." />}
+      {view === 'map' && (
+        <button className="cu-round cu-locate" onClick={toggleLocate} aria-pressed={!!you}
+          aria-label={you ? 'Stop showing my location' : 'Show my location'} title={you ? 'Stop showing my location' : 'Show my location'}>
+          <Icon name="locate" />
+        </button>
+      )}
 
       <header className="cu-top">
         <div className="cu-row" style={{ justifyContent: 'space-between' }}>
@@ -215,7 +247,7 @@ export default function MapScreen({ query }) {
               <a className="btn" href="#/host/new">Host an event</a>
             </div>
             {msg && <p role="status" className="cu-small" style={{ margin: 0 }}>{msg}</p>}
-            <div className="cu-row cu-small"><Icon name="locate" size={16} />No GPS. Nobody sees you unless you check in.
+            <div className="cu-row cu-small"><Icon name="locate" size={16} />Your location never leaves this phone. Nobody sees you unless you check in.
               <button className="cu-chip" style={{ marginLeft: 'auto' }} onClick={() => setLegend(true)}>What the shapes mean</button></div>
           </div>
         </section>
