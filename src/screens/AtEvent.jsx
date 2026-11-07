@@ -43,6 +43,19 @@ export default function AtEvent({ param: eventId }) {
   const [sheet, setSheet] = useState(null) // person
   const [safetyFor, setSafetyFor] = useState(null)
   const [actionErr, setActionErr] = useState('')
+  const [sync, setSync] = useState({ busy: false, at: null, msg: '' })
+  // Sync: re-read the server (who's here, lines, my check-in) on demand, and say what changed.
+  async function syncNow() {
+    const before = new Set(live.people.map((p) => p.id))
+    setSync((x) => ({ ...x, busy: true, msg: '' }))
+    try {
+      const list = await syncCheckins()
+      if (!list.some((c) => c.event_id === eventId)) { location.hash = `#/checkin/${eventId}`; return }
+      const fresh = await live.reload()
+      const added = (fresh?.people ?? []).filter((p) => !before.has(p.id)).length
+      setSync({ busy: false, at: new Date(), msg: `${added ? `${added} new · ` : 'Up to date · '}${fresh?.people?.length ?? 0} here` })
+    } catch (e) { setSync({ busy: false, at: null, msg: `Couldn't sync: ${e.message}` }) }
+  }
   useEffect(() => { if (synced?.hidden) setLeft('hidden') }, [synced])
   const meId = session?.participant_id
   const me = live.people.find((p) => p.id === meId)
@@ -97,7 +110,7 @@ export default function AtEvent({ param: eventId }) {
     catch (e) { setActionErr(`Couldn't show you again: ${e.message}`) }
   }
 
-  const ctx = { live, me, session, eventId, setView, myGroup, named, groups }
+  const ctx = { live, me, session, eventId, setView, myGroup, named, groups, sync, onSync: syncNow }
   let body
   if (left === 'hidden') body = <Home {...ctx} hidden onShow={showMe} onLeave={() => leaveEvent('left')} skyMode={skyMode} setSkyMode={setSkyMode} />
   else if (view === 'formed') body = <Formed {...ctx} onLeave={() => leaveEvent('left')} />
@@ -123,7 +136,7 @@ export default function AtEvent({ param: eventId }) {
 }
 
 // Design 04 + 16 + 18 · the event's sky with the bottom sheet.
-function Home({ live, me, session, eventId, setView, myGroup, named, hidden, onHide, onShow, onLeave, skyMode, setSkyMode, onSelect }) {
+function Home({ live, me, session, eventId, setView, myGroup, named, hidden, onHide, onShow, onLeave, skyMode, setSkyMode, onSelect, sync, onSync }) {
   const [pairN, myWord, side] = (me?.half_word ?? '').split('#')
   const partner = pairN && live.people.find((p) => p.id !== me.id && p.half_word?.split('#')[0] === pairN && p.half_word.split('#')[2] !== side)
   const findWord = word(partner) ?? session.find_word
@@ -138,7 +151,13 @@ function Home({ live, me, session, eventId, setView, myGroup, named, hidden, onH
         <div className="grow">
           <div className="cu-title">{live.event?.title}</div>
           <p className="cu-small" style={{ fontWeight: 500 }}>{live.event?.building_code} · {hidden ? "you're hidden" : "you're checked in"}</p>
+          <p className="cu-small" role="status" aria-live="polite" style={{ margin: 0 }}>
+            {sync?.busy ? 'Syncing…' : sync?.msg ? `${sync.msg}${sync.at ? ` · ${sync.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}` : ''}` : `${people.length} here · updates live`}</p>
         </div>
+        <button className="cu-ib" onClick={onSync} disabled={sync?.busy} aria-label="Sync: check for new people" title="Sync">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
+            className={sync?.busy ? 'cu-spin' : ''}><path d="M21 12a9 9 0 01-15.5 6.2M3 12A9 9 0 0118.5 5.8M21 4v5h-5M3 20v-5h5" /></svg>
+        </button>
         <a className="cu-pill" href="#/sky">My sky</a>
         {!hidden && <button className="cu-pill" onClick={onLeave}>Leave</button>}
       </div>

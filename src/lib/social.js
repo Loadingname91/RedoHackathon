@@ -27,7 +27,9 @@ export function useEventLive(eventId) {
       supabase.from('constellations').select('id,event_id,name,members,created_at').eq('event_id', eventId),
     ])
     const error = ev.error || ppl.error || con.error || cst.error
-    setData({ event: ev.data, people: ppl.data ?? [], connections: con.data ?? [], constellations: cst.data ?? [], loading: false, error: error?.message ?? null })
+    const next = { event: ev.data, people: ppl.data ?? [], connections: con.data ?? [], constellations: cst.data ?? [], loading: false, error: error?.message ?? null }
+    setData(next)
+    return next // Sync uses this to say what changed
   }, [eventId])
 
   useEffect(() => {
