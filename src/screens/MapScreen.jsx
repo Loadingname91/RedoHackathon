@@ -121,7 +121,8 @@ export default function MapScreen({ query }) {
     watch.current = null; centered.current = false; setYou(null)
   }
   const toggleLocate = () => {
-    if (watch.current != null) { stopLocate(); setMsg('Location off.'); return }
+    if (watch.current != null) { stopLocate(); setPrefs({ locate: false }); setMsg('Location off.'); return }
+    setPrefs({ locate: true })
     if (!navigator.geolocation) return setMsg('Location is not available on this device.')
     setMsg('Finding you… Your location stays on this phone.')
     watch.current = navigator.geolocation.watchPosition(
@@ -129,14 +130,36 @@ export default function MapScreen({ query }) {
       () => { stopLocate(); setMsg('Location is blocked. The map works without it.') },
       { enableHighAccuracy: true, maximumAge: 10000, timeout: 15000 })
   }
-  useEffect(() => () => { if (watch.current != null) navigator.geolocation.clearWatch(watch.current) }, [])
+  useEffect(() => {
+    // Lock onto the user's location when the map opens, unless they turned it off before.
+    if (prefs().locate !== false && navigator.geolocation) toggleLocate()
+    return () => { if (watch.current != null) navigator.geolocation.clearWatch(watch.current) }
+  }, [])
+
+  // Start zoomed out to show every event; once location arrives, show you and the events together.
+  // fitState: none → events/you → both. Once both events and your location are known, stop moving the map.
+  const fitState = useRef('none')
+  const PAD = { paddingTopLeft: [24, 150], paddingBottomRight: [24, 300], maxZoom: 17, animate: false } // an animated move would be dropped if the next fit lands mid-animation
+  useEffect(() => { fitState.current = 'none' }, [view]) // map is rebuilt when switching back from List
+  useEffect(() => {
+    if (!map.current || fitState.current === 'both') return
+    const pts = Object.keys(byBuilding).map((c) => [buildingByCode[c].lat, buildingByCode[c].lng])
+    const me = you && map.current.distance([you.lat, you.lng], [CAMPUS.lat, CAMPUS.lng]) < 5000 ? [you.lat, you.lng] : null
+    if (pts.length && me) { fitState.current = 'both'; map.current.fitBounds(L.latLngBounds([...pts, me]), PAD) }
+    else if (pts.length && fitState.current === 'none') { fitState.current = 'events'; map.current.fitBounds(L.latLngBounds(pts), PAD) }
+    else if (me && fitState.current === 'none') { fitState.current = 'you'; map.current.setView(me, 17, { animate: false }) }
+  }, [byBuilding, you, view])
   useEffect(() => {
     if (!map.current) return
     if (!you) { youMk.current?.remove(); youMk.current = null; return }
     const ll = [you.lat, you.lng]
     if (!youMk.current) youMk.current = L.marker(ll, { icon: L.divIcon({ className: '', html: '<div class="cu-you"></div>', iconSize: [18, 18] }), keyboard: false, interactive: false, title: 'You are here' }).addTo(map.current)
     else youMk.current.setLatLng(ll)
-    if (!centered.current) { centered.current = true; map.current.setView(ll, 17); setMsg('Showing your location. Only on this phone.') }
+    if (!centered.current) {
+      centered.current = true
+      const onCampus = map.current.distance(ll, [CAMPUS.lat, CAMPUS.lng]) < 5000
+      setMsg(onCampus ? 'Showing your location. Only on this phone.' : "You're off campus, so the map stays on campus. Your location stays on this phone.")
+    }
   }, [you, view])
 
   useEffect(() => {
