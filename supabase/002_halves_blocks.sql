@@ -31,6 +31,10 @@ begin
   if e.id is null then raise exception 'no such event'; end if;
   if p_device is null then raise exception 'device id required'; end if;
   delete from participants where event_id = p_event and device_id = p_device;
+  -- two people with the same nickname at one event would be confusing: the second becomes "Nova 2"
+  if exists (select 1 from participants where event_id = p_event and lower(nickname) = lower(p_nickname)) then
+    p_nickname := left(p_nickname, 20) || ' ' || (select count(*) + 1 from participants where event_id = p_event and lower(split_part(nickname, ' ', 1)) = lower(split_part(p_nickname, ' ', 1)));
+  end if;
   insert into participants (event_id, device_id, nickname, interests, clue, prefers_text, come_to_me, expires_at)
   values (p_event, p_device, p_nickname, coalesce(p_interests,'{}'), p_clue, p_prefers_text, p_come_to_me,
           least(coalesce(e.end_at, now() + interval '3 hours'), now() + interval '6 hours'))
@@ -57,7 +61,7 @@ begin
       from participants where event_id = p_event and half_word like '%#%' and id <> pid;
     update participants set half_word = i || '#' || pw[i][1] || '#A' where id = pid;
   end if;
-  return jsonb_build_object('participant_id', pid, 'secret', s,
+  return jsonb_build_object('participant_id', pid, 'secret', s, 'nickname', p_nickname,
     'my_word', (select split_part(half_word, '#', 2) from participants where id = pid),
     'find_word', case when waiting.id is not null then pw[i][1] else pw[i][2] end,
     'partner_waiting', waiting.id is not null);

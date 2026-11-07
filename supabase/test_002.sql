@@ -16,6 +16,8 @@ begin
   exception when others then if sqlerrm like 'FAIL%' then raise; end if; end;
   perform report_person((c->>'participant_id')::uuid, (c->>'secret')::uuid, (a->>'participant_id')::uuid, 'test');
   assert (select count(*) from reports) >= 1, 'FAIL: report not saved';
+  perform check_in((ev->>'event_id')::uuid, '00000000-0000-0000-0000-00000000000d', 'Fry', '{}');
+  assert exists (select 1 from participants where event_id = (ev->>'event_id')::uuid and nickname = 'Fry 2'), 'FAIL: duplicate nickname not numbered';
   raise notice 'ALL CHECKS PASSED';
 end $$;
 rollback;

@@ -33,7 +33,7 @@ export default function CheckIn({ param: eventId }) {
         p_event: eventId, p_device: deviceId(), p_nickname: nickname.trim().slice(0, 24), p_interests: interests,
         p_clue: clue.trim() || null, p_prefers_text: prefersText, p_come_to_me: comeToMe,
       })
-      setSession(eventId, { ...r, nickname: nickname.trim() })
+      setSession(eventId, { ...r, nickname: r.nickname ?? nickname.trim() })
       location.hash = `#/at/${eventId}`
     } catch (err) { setError(err.message); setBusy(false) }
   }
