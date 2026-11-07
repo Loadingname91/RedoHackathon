@@ -72,16 +72,47 @@ try {
     }
     console.log(`added ${PAST.length} past events with ${ratings} ratings`)
 
-    // 2) People at the event(s) on right now: counts, stars, Find-your-half pairs, a few lines and constellations.
+    // 2) A busy campus around WEB: events on now and tomorrow, times relative to when this runs.
+    const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Denver' })
+    const tomorrow = (h) => new Date(new Date(`${today}T${String(h).padStart(2, '0')}:00:00-07:00`).getTime() + 86400e3) // shortcut: -07:00 is MST; use -06:00 in summer
+    const fromNow = (h) => new Date(Date.now() + h * 3600e3)
+    const o = (type, text, status = 'available') => ({ type, text, status, updated_at: new Date().toISOString() })
+    const STEP = { step_free: 'yes', captions_asl: 'unknown', quiet_space: 'unknown', sensory: 'moderate' }
+    const NEAR = [ // title, host, building, room, start, end, offerings, access
+      ['Late Night Hack Session', 'ACM @ U', 'WEB', 'L101', fromNow(-2), fromNow(3), [o('workshop', 'Mentors on hand'), o('food', 'Pizza', 'running_low')], STEP],
+      ['Robotics Club Build Night', 'Robotics Club', 'WEB', '1250', fromNow(-1), fromNow(2), [o('workshop', 'Soldering station'), o('prizes', 'Best bot wins a Pi')], STEP],
+      ['Game Dev Playtest Party', 'Game Dev Guild', 'WEB', '1230', fromNow(-0.5), fromNow(2.5), [o('games', 'Student-made games'), o('food', 'Snacks'), o('prizes', 'Raffle')], {}],
+      ['3D Printing Open Lab', 'Makerspace', 'MEB', '2325', fromNow(-1), fromNow(2), [o('workshop', 'Print your own keychain'), o('swag', 'Free filament samples')], STEP],
+      ['Midnight Pancakes', 'Union Programming Council', 'UNION', 'Ballroom', fromNow(-0.5), fromNow(2.5), [o('food', 'Pancakes'), o('music', 'DJ')], { ...STEP, sensory: 'loud' }],
+      ['Midnight Movie: Sundance Shorts', 'Film Studies Society', 'JFB', '102', fromNow(0.5), fromNow(2.5), [o('speaker', 'Director Q&A'), o('food', 'Popcorn', 'advertised')], {}],
+      ['Late Night Startup Grind', 'Lassonde Entrepreneurs', 'LS', 'Garage', fromNow(-1.5), fromNow(1.5), [o('networking', 'Find a cofounder'), o('workshop', 'Pitch feedback')], STEP],
+      ['WiC Coffee Chat', 'Women in Computing', 'WEB', '2230', tomorrow(9), tomorrow(10), [o('food', 'Coffee + donuts', 'advertised'), o('networking', 'Meet upperclassmen', 'advertised')], STEP],
+      ['CS 3500 Study Jam', 'CS Tutoring Center', 'WEB', 'L104', tomorrow(10), tomorrow(13), [o('workshop', 'TAs answer questions', 'advertised')], { ...STEP, quiet_space: 'yes', sensory: 'quiet' }],
+      ['Engineering Career Mixer', 'College of Engineering', 'MEB', 'Atrium', tomorrow(11), tomorrow(13), [o('networking', '15 employers', 'advertised'), o('swag', 'Company swag', 'advertised'), o('food', 'Lunch', 'advertised')], STEP],
+      ['Founders Pitch Practice', 'Lassonde Entrepreneurs', 'LS', 'Studio 1', tomorrow(13), tomorrow(15), [o('speaker', 'Alumni judges', 'advertised'), o('networking', 'Investors', 'advertised')], STEP],
+      ['Ski Bus Sign-up + Swag', 'U Ski & Board Club', 'UNION', 'Lobby', tomorrow(12), tomorrow(14), [o('swag', 'Free beanies', 'advertised'), o('networking', 'Find a ride', 'advertised')], STEP],
+      ['Karaoke Night', 'Union Programming Council', 'UNION', 'Crimson View', tomorrow(19), tomorrow(22), [o('music', 'Karaoke', 'advertised'), o('prizes', 'Best duet', 'advertised')], { ...STEP, sensory: 'loud' }],
+      ['Finals Prep Quiet Study', 'Marriott Library', 'MLIB', 'Level 4', tomorrow(9), tomorrow(17), [o('food', 'Free tea', 'advertised')], { ...STEP, quiet_space: 'yes', sensory: 'quiet' }],
+    ]
+    for (const [title, host, building, room, start, end, offerings, access] of NEAR) {
+      const { rows: [e] } = await q(`insert into events (title, host, start_at, end_at, building_code, room, offerings, access, source_text, source)
+        values ($1,$2,$3,$4,$5,$6,$7,$8,$9,'host') returning id`, [title, host, start, end, building, room, JSON.stringify(offerings), JSON.stringify(access), TAG])
+      await q(`insert into event_secrets values ($1, gen_random_uuid())`, [e.id])
+    }
+    console.log(`added ${NEAR.length} events around WEB (on now and tomorrow)`)
+
+    // 3) People at every event on right now: counts, stars, Find-your-half pairs. Lines + constellations at the first real one.
     const { rows: live } = await q(`select id, title from events where start_at <= now() and coalesce(end_at, start_at + interval '2 hours') > now()
-      and coalesce(source_text,'') not like '[synthetic]%' order by start_at`)
-    for (const ev of live) {
-      const here = pick(rand, students, 14)
+      order by (coalesce(source_text,'') like '[synthetic]%'), start_at`)
+    const crowd = pick(rand, students, students.length) // each fake student is at only one event
+    for (const [n, ev] of live.entries()) {
+      const here = crowd.splice(0, n === 0 ? 14 : 5 + Math.floor(rand() * 12))
       const pids = []
       for (const [k, st] of here.entries()) {
         const { rows: [r] } = await q(`select check_in($1,$2,$3,$4) r`, [ev.id, st.device, NICKS[k % NICKS.length], st.interests])
         pids.push({ id: r.r.participant_id, device: st.device })
       }
+      if (n > 0) { console.log(`checked ${here.length} synthetic students in to "${ev.title}"`); continue }
       // Two triangles of confirmed connections, each named as a constellation.
       for (const [g, name] of [[0, 'Pizza Triangle'], [3, 'Delicate Arch']]) {
         const tri = pids.slice(g, g + 3)
