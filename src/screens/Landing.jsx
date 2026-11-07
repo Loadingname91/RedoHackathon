@@ -14,7 +14,7 @@ const SCENES = [
   { shot: 'match', who: 'Maya · at the event', t: '0:30', title: 'Find your half',
     body: 'Check in with a nickname and get half of a Utah word pair. Someone here holds the other half. Both phones show the same color, so you can spot each other.' },
   { shot: 'constellation', who: 'Jordan · club officer', t: '0:45', title: 'Three lines, one constellation',
-    body: 'When you both say yes, a line connects your stars. Three of you form a constellation you name together, and it stays in My sky after tonight.' },
+    body: 'When you both say yes, a line connects your stars. Three of you form a constellation you name together, and it stays in My sky after the event.' },
 ]
 const GALLERY = [['map', 'Campus map'], ['event', 'Event details'], ['checkin', 'Check in'], ['half', 'Find your half'], ['code', 'Your star code'],
   ['match', 'Match found'], ['prompt', 'Say hi, both confirm'], ['constellation', 'Constellation formed'], ['mysky', 'My sky'], ['legend', 'Map legend']]
@@ -78,8 +78,8 @@ export default function Landing() {
       <header className="lp-hero">
         <div className="lp-hero-copy">
           <p className="lp-brand"><Icon name="star" size={18} /> Constellation U · University of Utah</p>
-          <h1>Free food, live music and <span className="lp-glow">your people</span>. One campus map.</h1>
-          <p className="lp-lead">See everything happening at the U tonight, walk there, and meet someone new when you arrive. No group chats to join. No followers to count.</p>
+          <h1>Free food, live events, networking and <span className="lp-glow">your people</span>. One campus map.</h1>
+          <p className="lp-lead">See what’s happening at the U right now, later today and all week, from all-day fairs to late-night jams. Walk there, and meet someone new when you arrive. No group chats to join. No followers to count.</p>
           <CTA />
           <p className="lp-fine">Sign in with Google. Other students only ever see the nickname you pick.</p>
         </div>
@@ -197,7 +197,7 @@ export default function Landing() {
       </section>
 
       <footer className="lp-foot lp-reveal">
-        <h2>Tonight’s sky is waiting.</h2>
+        <h2>Your sky is waiting.</h2>
         <CTA label="Get started with Google" />
         <p className="lp-fine">Made at Crimson Hacks 2026 · Redo × UtahSec · Map data © OpenStreetMap contributors</p>
       </footer>
