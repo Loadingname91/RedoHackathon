@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { useAuth, signInWithGoogle, signOut, homeFor, deleteAccount } from '../lib/auth.js'
+import { useAuth, signOut, homeFor, deleteAccount } from '../lib/auth.js'
+import Landing from './Landing.jsx'
 
 // Signed out: the sign-in screen (every page needs an account). Signed in: the Account page.
 const ROLE_TEXT = {
@@ -13,22 +14,7 @@ export default function Start() {
   const [delErr, setDelErr] = useState('')
   if (loading) return <p className="screen muted" role="status">Checking your account…</p>
 
-  if (!user) return (
-    <main className="screen" style={{ display: 'grid', gap: 18, alignContent: 'start', paddingTop: 48 }}>
-      <header style={{ display: 'grid', gap: 6 }}>
-        <h1 style={{ fontSize: 30 }}>Constellation U</h1>
-        <p className="muted" style={{ margin: 0 }}>Follow what's happening. Find your people.</p>
-      </header>
-      <div className="card" style={{ display: 'grid', gap: 12 }}>
-        <button className="primary" onClick={signInWithGoogle}>
-          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3zM12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22zM6.4 14a6 6 0 0 1 0-3.9V7.4H3.1a10 10 0 0 0 0 9.1L6.4 14zM12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10C7.2 7.8 9.4 6 12 6z"/></svg>
-          Continue with Google
-        </button>
-        <p className="muted" style={{ fontSize: 14, margin: 0 }}>Everyone starts as a student. Other people only ever see the nickname you pick, never your name or email.</p>
-      </div>
-      <p className="muted" style={{ fontSize: 14, margin: 0 }}>Opened a link to an event? You'll go straight back to it after signing in.</p>
-    </main>
-  )
+  if (!user) return <Landing /> // signed out: the public landing page with Google sign-in
 
   return (
     <main className="screen" style={{ display: 'grid', gap: 16, alignContent: 'start', paddingTop: 28 }}>
