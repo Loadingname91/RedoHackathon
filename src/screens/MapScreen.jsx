@@ -5,7 +5,7 @@ import '../components/map/map.css'
 import Icon, { OFFERING_LABEL, ICON_PATHS } from '../components/map/icons.jsx'
 import { useEvents, buildingByCode, openCount } from '../components/map/useEvents.js'
 import { busyFromIcs, gapFrom } from '../components/map/schedule.js'
-import { CAMPUS, fmtTime, isNow, isLaterToday, fit, whenText } from '../lib/geo.js'
+import { CAMPUS, endOf, fmtTime, isNow, isLaterToday, fit, whenText } from '../lib/geo.js'
 import { prefs, setPrefs, deviceId } from '../lib/identity.js'
 import { supabase } from '../lib/supabase.js'
 import { rankEvents, INTERESTS } from '../lib/foryou.js'
@@ -77,7 +77,9 @@ function useMyConstellations() {
 }
 
 export default function MapScreen({ query }) {
-  const { events, counts, error } = useEvents()
+  const { events: all, counts, error } = useEvents()
+  // Ended events stay in the database (feedback and event pages need them) but leave the map.
+  const events = useMemo(() => all && all.filter((e) => !e.start_at || endOf(e) > new Date()), [all])
   const [filter, setFilter] = useState('All')
   const [view, setView] = useState('map')
   const [sel, setSel] = useState(null)        // event id
