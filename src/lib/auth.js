@@ -36,7 +36,7 @@ export function useAuth() {
 export const signInWithGoogle = () =>
   supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: `${location.origin}/` } })
 
-export const signOut = async () => { await supabase.auth.signOut(); setUid(null); setPrefs({ role: null }); location.hash = '#/start' }
+export const signOut = async () => { await supabase.auth.signOut(); setUid(null); setPrefs({ role: null, guest: false }); location.hash = '#/start' }
 
 // Where each role lands after signing in.
 export const homeFor = (role) => (role === 'admin' ? '#/admin' : role === 'organizer' ? '#/host' : '#/')

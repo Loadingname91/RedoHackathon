@@ -11,7 +11,7 @@ const ALLOWED = { student: ['student'], organizer: ['student', 'organizer'], adm
 
 export default function Start() {
   const { loading, user, role } = useAuth()
-  const pick = (r) => { setPrefs({ role: r.id }); location.hash = r.to }
+  const pick = (r) => { setPrefs({ role: r.id, guest: !user }); location.hash = r.to } // guest = chose to look around without signing in
   const roles = ROLES.filter((r) => ALLOWED[role]?.includes(r.id))
   return (
     <main className="screen" style={{ display: 'grid', gap: 16, alignContent: 'start', paddingTop: 40 }}>

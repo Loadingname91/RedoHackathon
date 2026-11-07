@@ -49,7 +49,7 @@ export default function App() {
   const name = route.name !== '' ? route.name
     : auth.loading ? 'loading'
     : auth.user && !auth.profile?.onboarded ? 'welcome'
-    : !role && !auth.user ? 'start' : ''
+    : !auth.user && !prefs().guest ? 'start' : ''  // signed out: sign-in first unless they chose to look around
   // Tab bar on the main screens only; immersive screens (at the event, navigation, projector, check-in) keep the full screen.
   const tabs = ['', 'event', 'sky', 'host', 'admin', 'micro'].includes(name)
   useEffect(() => { document.documentElement.dataset.tabs = tabs ? '1' : '0' }, [tabs])
