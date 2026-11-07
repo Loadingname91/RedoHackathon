@@ -6,3 +6,5 @@ dist/
 .DS_Store
 scripts/.host-secrets.json
 scripts/.admin-secret.txt
+.tools/
+.claude/
