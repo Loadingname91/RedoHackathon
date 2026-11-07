@@ -105,11 +105,21 @@ export default function Navigate({ param }) {
     setBusy(true)
     navigator.geolocation.getCurrentPosition(
       (p) => { setBusy(false); setStart({ lat: p.coords.latitude, lng: p.coords.longitude, gps: true }) },
-      () => { setBusy(false); setErr('Location permission was blocked. Pick a building to start from instead.') },
-      { enableHighAccuracy: true, timeout: 10000 })
+      (err) => { setBusy(false); setErr(err.code === 1
+        ? (/iPhone|iPad/.test(navigator.userAgent) ? 'Location is off for this site. On iPhone: Settings › Privacy & Security › Location Services › Safari Websites › While Using. Or pick a building to start from.' : 'Location permission was blocked. Pick a building to start from instead.')
+        : 'Couldn’t get a GPS fix (often slow indoors). Try again, or pick a building to start from.') },
+      { enableHighAccuracy: true, maximumAge: 60000, timeout: 25000 })
   }
   const fromBuilding = (code) => { const s = buildingByCode[code]; if (s) setStart({ lat: s.entrance.lat, lng: s.entrance.lng, code }) }
   const toggleStepFree = () => { setPrefs({ stepFree: !stepFree }); setStepFree(!stepFree) }
+  // Tap an event → walking directions right away: start from your location as soon as the event is known.
+  // If location is off or slow, the screen below still offers "Use my location" or a starting building.
+  const autoStarted = useRef(false)
+  useEffect(() => {
+    if (autoStarted.current || !e || !b || start) return
+    autoStarted.current = true
+    useGps()
+  }, [e?.id, b?.code])
 
   if (!events) return <main className="screen"><p role="status" className="muted">Loading…</p></main>
   if (!e || !b) return <main className="screen"><p>We don't have a map location for this event.</p><a className="btn" href={e ? `#/event/${e.id}` : '#/'}>Back</a></main>
@@ -122,7 +132,7 @@ export default function Navigate({ param }) {
     <main className="screen" style={{ display: 'grid', gap: 16, alignContent: 'start' }}>
       <a className="btn" href={`#/event/${e.id}`} style={{ justifySelf: 'start' }}><Icon name="back" />Event</a>
       <h1 style={{ fontSize: 24 }}>Get to {b.names[0]}</h1>
-      <p style={{ margin: 0 }}>To show the route from where you are, we need your location.</p>
+      <p style={{ margin: 0 }}>{busy ? 'Finding you to start walking directions…' : 'To show the walking route from where you are, we need your location.'}</p>
       <p className="card" style={{ margin: 0 }}>Your location is used only to find your route. It stays on your phone except for the route request, and it's never stored.</p>
       <button className="primary" onClick={useGps} disabled={busy}><Icon name="locate" />{busy ? 'Finding you…' : 'Use my location'}</button>
       <label htmlFor="startb">Or start from a building</label>

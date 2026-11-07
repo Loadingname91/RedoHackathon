@@ -42,14 +42,15 @@ export default function Sky({ people, connections, constellations = [], meId, w 
   return (
     <div style={{ position: 'relative', width: '100%', aspectRatio: `${w} / ${h}` }}
       role="img" aria-label={`${people.length} people in this sky, ${lines.length} connections, ${groups.filter((g) => g.length > 1).length} groups`}>
-      <svg viewBox={`0 0 ${w} ${h}`} width="100%" height="100%" aria-hidden="true" style={{ position: 'absolute', inset: 0 }}>
+      {/* preserveAspectRatio="none": SVG units map to the same % as the HTML stars below, so line ends always land on stars */}
+      <svg viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" width="100%" height="100%" aria-hidden="true" style={{ position: 'absolute', inset: 0 }}>
         <defs><filter id="cu-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8" /></filter></defs>
         <circle cx={w / 2} cy={h / 2} r={R1} fill="none" stroke="#2C3660" strokeDasharray="3 6" />
         <circle cx={w / 2} cy={h / 2} r={R2} fill="none" stroke="#2C3660" strokeDasharray="3 6" />
         {lines.map((c) => {
           const mine = kind[c.a] === 'mine'
           return <line key={c.id} className="cu-draw" x1={pos[c.a].x} y1={pos[c.a].y} x2={pos[c.b].x} y2={pos[c.b].y}
-            stroke={mine ? '#FFE2A3' : '#9DB8FF'} strokeOpacity={mine ? 1 : 0.85} strokeWidth={(mine ? 2 : 1.4) * scale} strokeLinecap="round"
+            stroke={mine ? '#FFE2A3' : '#9DB8FF'} strokeOpacity={mine ? 1 : 0.85} strokeWidth={(mine ? 2 : 1.4) * scale} strokeLinecap="round" vectorEffect="non-scaling-stroke"
             style={mine ? { filter: 'drop-shadow(0 0 6px #F5C76B)' } : undefined} />
         })}
         {/* the event planet */}
@@ -75,11 +76,12 @@ export default function Sky({ people, connections, constellations = [], meId, w 
             <span style={{ font: `${me ? 700 : 500} ${big ? 17 : 11}px Inter, sans-serif`, color: me ? '#FFE2A3' : '#C9D0EC', whiteSpace: 'nowrap' }}>{label}</span>
           </>
         )
-        const style = { position: 'absolute', left: pct(at.x, w), top: pct(at.y, h), transform: 'translate(-50%, -22px)',
+        // lift by exactly half the star box, so the star's centre sits on its line ends
+        const style = { position: 'absolute', left: pct(at.x, w), top: pct(at.y, h), transform: `translate(-50%, -${Math.max(z, 30) / 2}px)`,
           display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }
         return onSelect
           ? <button key={p.id} onClick={() => onSelect(p)} aria-label={`${label}. Options`}
-              style={{ ...style, minWidth: 44, minHeight: 44, padding: 0, background: 'none', border: 0, borderRadius: 12 }}>{body}</button>
+              style={{ ...style, minWidth: 44, minHeight: 44, padding: 0, background: 'none', border: 0, borderRadius: 12, justifyContent: 'flex-start' }}>{body}</button>
           : <div key={p.id} style={style}>{body}</div>
       })}
       {named.map((c) => (

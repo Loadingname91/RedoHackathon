@@ -53,6 +53,10 @@ export const fmtDistance = (m) => m < 1000 ? `${Math.round(m)} m` : `${(m / 1000
 // Card/sheet time line in the design's words: "Now · until 8:30 PM", "Tonight, 9:00 PM", else day + time.
 export function whenText(e, now = new Date()) {
   if (!e.start_at) return 'Time on the announcement'
+  // All-day events (fairs, exhibits, drives): 10+ hours or a whole calendar day.
+  const allDay = e.end_at && new Date(e.end_at) - new Date(e.start_at) >= 10 * 3600e3
+  if (allDay && isNow(e, now)) return `All day · until ${fmtTime(e.end_at)}`
+  if (allDay) return `All day · ${new Date(e.start_at).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'America/Denver' })}`
   if (isNow(e, now)) return e.end_at ? `Now · until ${fmtTime(e.end_at)}` : 'Now'
   if (isLaterToday(e, now)) return `${new Date(e.start_at).getHours() >= 17 ? 'Tonight' : 'Today'}, ${fmtTime(e.start_at)}`
   return fmtRange(e)

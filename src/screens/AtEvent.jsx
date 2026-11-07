@@ -556,18 +556,21 @@ function Formed({ live, me, session, myGroup, named, setView, onLeave }) {
           <h1 className="cu-h">{name.trim() || 'Unnamed, for now'}</h1>
         </div>
         <div style={{ position: 'relative', width: '100%', aspectRatio: '350 / 320' }} role="img" aria-label={`Constellation of ${members.map((m) => m.nickname).join(', ')}`}>
-          <svg viewBox="0 0 350 320" width="100%" height="100%" aria-hidden="true" style={{ position: 'absolute', inset: 0 }}>
+          <svg viewBox="0 0 350 320" preserveAspectRatio="none" width="100%" height="100%" aria-hidden="true" style={{ position: 'absolute', inset: 0 }}>
             <g stroke="#FFE2A3" strokeWidth="2" strokeLinecap="round" style={{ filter: 'drop-shadow(0 0 6px #F5C76B)' }}>
               {live.connections.filter((c) => c.a_confirmed && c.b_confirmed && myGroup.includes(c.a) && myGroup.includes(c.b)).map((c, i) => {
                 const A = pts.find((q) => q.p.id === c.a), B = pts.find((q) => q.p.id === c.b)
-                return A && B && <line key={c.id} className="cu-draw" style={{ animationDelay: `${0.5 + i * 0.5}s` }} x1={A.x} y1={A.y} x2={B.x} y2={B.y} />
+                return A && B && <line key={c.id} className="cu-draw" style={{ animationDelay: `${0.5 + i * 0.5}s` }} x1={A.x} y1={A.y} x2={B.x} y2={B.y} vectorEffect="non-scaling-stroke" />
               })}
             </g>
           </svg>
           {pts.map(({ p, x, y }, i) => (
-            <div key={p.id} className="cu-popin" style={{ position: 'absolute', left: `${(x / 350) * 100}%`, top: `${(y / 320) * 100}%`, transform: 'translate(-50%, -18px)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, animationDelay: `${i * 0.2}s` }}>
+            // outer div centres the star on its point; the pop-in animation lives on the inner div so it can't undo that
+            <div key={p.id} style={{ position: 'absolute', left: `${(x / 350) * 100}%`, top: `${(y / 320) * 100}%`, transform: 'translate(-50%, -18px)' }}>
+            <div className="cu-popin" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, animationDelay: `${i * 0.2}s` }}>
               <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" style={{ filter: 'drop-shadow(0 0 10px #F5C76B)' }}><path d={SPARK} fill={p.id === me.id ? '#FFF3D6' : '#FFE2A3'} /></svg>
               <span style={{ font: '600 13px Inter, sans-serif', color: '#FFE9BE' }}>{p.id === me.id ? `${p.nickname} (you)` : p.nickname}</span>
+            </div>
             </div>
           ))}
         </div>
@@ -575,7 +578,7 @@ function Formed({ live, me, session, myGroup, named, setView, onLeave }) {
           <label htmlFor="cname">Name your constellation</label>
           <input id="cname" required maxLength={40} value={name} onChange={(e) => { setName(e.target.value); setSaved(false) }} placeholder={`Something only you ${members.length} get`}
             style={{ width: '100%', border: '1px solid #F5C76B', color: '#FFE9BE', font: "600 17px 'Space Grotesk', sans-serif" }} disabled={!!named} />
-          <p className="cu-small" style={{ marginTop: 6 }}>It stays on the {live.event?.building_code} sky for tonight's event. Nicknames only.</p>
+          <p className="cu-small" style={{ marginTop: 6 }}>It stays on the {live.event?.building_code} sky for this event. Nicknames only.</p>
         </div>
         {!named && !saved && <button className="cu-primary" disabled={!name.trim()}>Name it</button>}
         {error && <p role="alert" className="cu-err">{error}</p>}
@@ -620,7 +623,7 @@ function LeftScreen({ eventId, title, expired }) {
         <p className="cu-sub">{expired ? 'Your check-in ended or you left the event.' : 'Your star is gone from this sky. Your connections and constellations stay.'}</p>
         <a className="cu-goldbtn" href="#/" style={{ maxWidth: 320 }}>Back to the map</a>
         <a className="cu-secondary" href={`#/checkin/${eventId}`} style={{ maxWidth: 320 }}>Check in again</a>
-        {!expired && <a href={`#/feedback/${eventId}`} style={{ color: '#F5C76B', minHeight: 44, display: 'inline-flex', alignItems: 'center' }}>Rate tonight</a>}
+        {!expired && <a href={`#/feedback/${eventId}`} style={{ color: '#F5C76B', minHeight: 44, display: 'inline-flex', alignItems: 'center' }}>Rate this event</a>}
       </div>
     </main>
   )

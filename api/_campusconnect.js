@@ -20,14 +20,19 @@ export async function fetchFeed() {
 }
 
 // Longest building name found in the text wins ("Warnock Engineering Building" beats "Warnock").
+// Full names match in any case ("warnock engineering building"); building codes only in capitals ("WEB 1230"),
+// so "check our web page" or "art night" never lands on WEB or ART. Longest match wins.
+const esc = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 export function matchBuilding(text, buildings) {
-  const t = ` ${String(text ?? '').toLowerCase()} `
+  const raw = ` ${String(text ?? '')} `, t = raw.toLowerCase()
   let best = null, len = 0
-  for (const b of buildings) for (const n of b.names ?? []) {
-    const name = n.toLowerCase()
-    if (name.length < 3 || name.length <= len) continue
-    const re = new RegExp(`[^a-z0-9]${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[^a-z0-9]`)
-    if (re.test(t)) { best = b.code; len = name.length }
+  for (const b of buildings) {
+    for (const n of b.names ?? []) {
+      const name = n.toLowerCase()
+      if (name.length < 4 || name.length <= len) continue
+      if (new RegExp(`[^a-z0-9]${esc(name)}[^a-z0-9]`).test(t)) { best = b.code; len = name.length }
+    }
+    if (b.code.length > len && new RegExp(`[^A-Za-z0-9]${esc(b.code)}[^A-Za-z0-9]`).test(raw)) { best = b.code; len = b.code.length }
   }
   return best
 }
@@ -49,8 +54,8 @@ export function matchOfferings(text) {
 
 const key = (e) => e.uid + (e.recurrenceId ? `|${e.recurrenceId.toString()}` : '')
 
-// Next `days` days of in-person events. Returns {candidates, skipped}; each skip has a plain-English reason.
-export function pickEvents(events, buildings, { days = 7, now = Date.now() } = {}) {
+// Next `days` days (two weeks) of in-person events. Returns {candidates, skipped}; each skip has a plain-English reason.
+export function pickEvents(events, buildings, { days = 14, now = Date.now() } = {}) {
   const end = now + days * 864e5, seenTitles = new Set(), skipped = [], candidates = []
   const inWindow = events.filter((e) => { const t = e.startDate?.toJSDate().getTime(); return t > now && t < end })
     .sort((a, b) => a.startDate.toJSDate() - b.startDate.toJSDate())

@@ -8,6 +8,8 @@ import { busyFromIcs, gapFrom } from '../components/map/schedule.js'
 import { CAMPUS, fmtTime, isNow, isLaterToday, fit, whenText } from '../lib/geo.js'
 import { prefs, setPrefs, deviceId } from '../lib/identity.js'
 import { supabase } from '../lib/supabase.js'
+import { rankEvents, INTERESTS } from '../lib/foryou.js'
+import affinity from '../data/affinity.json'
 import { useAuth } from '../lib/auth.js'
 
 // OpenStreetMap tiles (no key). Darkened with a CSS filter in map.css. shortcut: OSM's public server is for light use; switch to a hosted tile provider for real traffic.
@@ -15,7 +17,7 @@ export const TILES = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
 export const ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 
 // Design 01 chips: one filter at a time.
-const CHIPS = ['All', 'Now', 'Later today', 'Open to meet', 'Food', 'Swag', 'Music', 'Games', 'Speaker', 'Step-free', 'Quiet']
+const CHIPS = ['All', 'For you', 'Now', 'Later today', 'Open to meet', 'Food', 'Swag', 'Music', 'Games', 'Speaker', 'Step-free', 'Quiet']
 const STATUS = { advertised: ['Advertised', '#C9D0EC'], available: ['Available', '#7FE0C4'], running_low: ['Running low', '#FFB45C'], finished: ['Finished', '#8E9AC0'] }
 export const statusOf = (o) => STATUS[o.status] ?? ['Advertised', '#C9D0EC']
 const ago = (iso) => { if (!iso) return ''; const m = Math.round((Date.now() - new Date(iso)) / 60000); return m < 1 ? ' · just now' : m < 60 ? ` · ${m} min ago` : '' }
@@ -24,7 +26,7 @@ export const placeOf = (e) => `${buildingByCode[e.building_code]?.names[0] ?? 'L
 
 const has = (e, type) => (e.offerings ?? []).some((o) => o.type === type && o.status !== 'finished')
 function matches(e, f, counts) {
-  if (f === 'All') return true
+  if (f === 'All' || f === 'For you') return true
   if (f === 'Now') return isNow(e)
   if (f === 'Later today') return isLaterToday(e)
   if (f === 'Open to meet') return openCount(counts, e.id) > 0
@@ -127,12 +129,21 @@ export default function MapScreen({ query }) {
   const [legend, setLegend] = useState(false)
   const [msg, setMsg] = useState('')
   const [sky, setSky] = useState(null)
+  const [interests, setInterests] = useState(prefs().interests ?? [])
   const mine = useMyConstellations()
   const mapEl = useRef(null), map = useRef(null), layer = useRef(null)
 
   useEffect(() => { supabase.rpc('my_sky', { p_device: deviceId() }).then(({ data }) => setSky(data)) }, [])
 
-  const shown = useMemo(() => (events ?? []).filter((e) => matches(e, filter, counts) && (!fitMode || !stepFree || e.access?.step_free === 'yes')), [events, filter, counts, fitMode, stepFree])
+  // For you: ranked on this phone by the model in affinity.json.
+  const ranked = useMemo(() => rankEvents(events ?? [], { interests, weights: affinity.weights, freeUntil }, counts), [events, interests, freeUntil, counts])
+  const rankOf = useMemo(() => Object.fromEntries(ranked.map((x, i) => [x.e.id, { n: i + 1, ...x.r }])), [ranked])
+  const toggleInterest = (i) => {
+    const next = interests.includes(i) ? interests.filter((x) => x !== i) : interests.length < 3 ? [...interests, i] : interests
+    setInterests(next); setPrefs({ interests: next })
+  }
+  const forYou = filter === 'For you'
+  const shown = useMemo(() => (forYou ? ranked.map((x) => x.e) : events ?? []).filter((e) => matches(e, filter, counts) && (!fitMode || !stepFree || e.access?.step_free === 'yes')), [events, ranked, forYou, filter, counts, fitMode, stepFree])
   const byBuilding = useMemo(() => {
     const g = {}
     for (const e of shown) if (buildingByCode[e.building_code]) (g[e.building_code] ??= []).push(e)
@@ -154,6 +165,7 @@ export default function MapScreen({ query }) {
 
   // "Show my location": off until tapped. The position stays in this browser; nothing is sent or saved.
   const [you, setYou] = useState(null)
+  const [locOff, setLocOff] = useState(false) // permission denied: show the turn-on prompt
   const watch = useRef(null), youMk = useRef(null), centered = useRef(false)
   const stopLocate = () => {
     if (watch.current != null) navigator.geolocation.clearWatch(watch.current)
@@ -164,10 +176,17 @@ export default function MapScreen({ query }) {
     if (watch.current != null) { if (you && map.current) map.current.setView([you.lat, you.lng], 17); return }
     if (!navigator.geolocation) return setMsg('Location is not available on this device.')
     setMsg('Finding you… Your location stays on this phone.')
-    watch.current = navigator.geolocation.watchPosition(
-      (pos) => setYou({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-      () => { stopLocate(); setMsg('Location is blocked. The map works without it.') },
-      { enableHighAccuracy: true, maximumAge: 10000, timeout: 15000 })
+    const got = (pos) => { setLocOff(false); setYou({ lat: pos.coords.latitude, lng: pos.coords.longitude }) }
+    // iOS Safari: a quick low-accuracy fix first (indoors GPS can take a while), then keep following with GPS.
+    navigator.geolocation.getCurrentPosition(got, () => {}, { enableHighAccuracy: false, maximumAge: 60000, timeout: 20000 })
+    watch.current = navigator.geolocation.watchPosition(got, (err) => {
+      if (err.code === 1) { // permission denied: only this one is a real "blocked"
+        stopLocate(); setLocOff(true)
+        setMsg(/iPhone|iPad/.test(navigator.userAgent)
+          ? 'Location is off for this site. On iPhone: Settings › Privacy & Security › Location Services › Safari Websites › While Using. Then tap the location button again.'
+          : 'Location is blocked for this site. Allow it in your browser settings, then tap the location button again.')
+      } else setMsg('Still finding you… GPS can be slow indoors. The map works without it.') // timeout/unavailable: keep trying
+    }, { enableHighAccuracy: true, maximumAge: 10000, timeout: 30000 })
   }
   useEffect(() => {
     // Lock onto the user's location when the map opens, unless they turned it off before.
@@ -184,9 +203,9 @@ export default function MapScreen({ query }) {
     if (!map.current || fitState.current === 'both') return
     const pts = Object.keys(byBuilding).map((c) => [buildingByCode[c].lat, buildingByCode[c].lng])
     const me = you && map.current.distance([you.lat, you.lng], [CAMPUS.lat, CAMPUS.lng]) < 5000 ? [you.lat, you.lng] : null
-    if (pts.length && me) { fitState.current = 'both'; map.current.fitBounds(L.latLngBounds([...pts, me]), PAD) }
+    // First load: zoom in on you once your location arrives; until then (or without it) show every event.
+    if (me) { fitState.current = 'both'; map.current.setView(me, 17, { animate: false }) }
     else if (pts.length && fitState.current === 'none') { fitState.current = 'events'; map.current.fitBounds(L.latLngBounds(pts), PAD) }
-    else if (me && fitState.current === 'none') { fitState.current = 'you'; map.current.setView(me, 17, { animate: false }) }
   }, [byBuilding, you, view])
   useEffect(() => {
     if (!map.current) return
@@ -206,17 +225,18 @@ export default function MapScreen({ query }) {
     layer.current.clearLayers()
     for (const [code, list] of Object.entries(byBuilding)) {
       const b = buildingByCode[code]
-      const e = list.find((x) => isNow(x)) ?? list[0]
+      const e = forYou ? list[0] : list.find((x) => isNow(x)) ?? list[0]
+      const top = forYou && rankOf[e.id]?.n <= 3 ? `#${rankOf[e.id].n} for you` : null
       const f = fitMode && !showAll ? fit(e, freeUntil) : null
       const n = list.reduce((s, x) => s + openCount(counts, x.id), 0)
       const m = list.map((x) => mine[x.id]).find(Boolean)
       const label = `${e.title}, ${b.names[0]}, ${whenText(e)}${list.length > 1 ? `, and ${list.length - 1} more` : ''}${n ? `, ${n} people here` : ''}${e.source === 'campus_connect' ? ', imported from Campus Connect' : ''}${f === 'clashes' ? ', clashes with your schedule' : f === 'fits' ? ', fits your gap' : ''}`
       L.marker([b.lat, b.lng], {
         title: label, alt: label, keyboard: true,
-        icon: L.divIcon({ className: '', iconSize: [44, 44], html: planetHtml({ e, n, mine: m?.size, sel: list.some((x) => x.id === sel), dim: f === 'clashes', pill: f === 'clashes' ? 'Clashes' : f === 'fits' ? 'Fits your gap' : null, pillFits: f === 'fits', label }) }),
+        icon: L.divIcon({ className: '', iconSize: [44, 44], html: planetHtml({ e, n, mine: m?.size, sel: list.some((x) => x.id === sel), dim: f === 'clashes', pill: top ?? (f === 'clashes' ? 'Clashes' : f === 'fits' ? 'Fits your gap' : null), pillFits: !!top || f === 'fits', label }) }),
       }).on('click', () => (list.length === 1 ? (setSheet(null), setSel(e.id)) : (setSel(null), setSheet(code)))).addTo(layer.current)
     }
-  }, [byBuilding, counts, freeUntil, fitMode, showAll, view, sel, mine])
+  }, [byBuilding, counts, freeUntil, fitMode, showAll, view, sel, mine, forYou, rankOf])
 
   const setFree = (date) => { const iso = date ? date.toISOString() : null; setPrefs({ freeUntil: iso }); setFreeUntil(iso) }
   const onTime = (v) => { if (!v) return setFree(null); const d = new Date(); const [h, mm] = v.split(':'); d.setHours(+h, +mm, 0, 0); setFree(d) }
@@ -247,12 +267,25 @@ export default function MapScreen({ query }) {
           fitMode && freeUntil ? (fit(e, freeUntil) === 'fits' ? 'Fits your gap' : fit(e, freeUntil) === 'clashes' ? 'Clashes with your schedule' : null) : null,
         ].filter(Boolean).join(' · ')}
       </span>
+      {forYou && rankOf[e.id] && <span className="cu-small" style={{ color: '#F5C76B' }}>{rankOf[e.id].score}% match{rankOf[e.id].reasons.length ? ` · ${rankOf[e.id].reasons.join(' · ')}` : ''}</span>}
     </button>
   )
 
   return (
     <>
       {view === 'map' && <div ref={mapEl} className="cu-map" role="region" aria-label="Campus map. The list view has the same events." />}
+      {view === 'map' && locOff && (
+        <div className="cu-locoff" role="alert">
+          <strong>Turn on location to see where you are</strong>
+          <span>{/iPhone|iPad/.test(navigator.userAgent)
+            ? 'iPhone: Settings › Privacy & Security › Location Services › Safari Websites › While Using. Also check aA › Website Settings › Location › Allow.'
+            : 'Allow location for this site in your browser settings.'} It stays on your phone.</span>
+          <div style={{ display: 'flex', gap: 8 }}>
+            <button className="primary" onClick={() => { setLocOff(false); toggleLocate() }}>Try again</button>
+            <button onClick={() => setLocOff(false)}>Not now</button>
+          </div>
+        </div>
+      )}
       {view === 'map' && (
         <button className="cu-round cu-locate" onClick={toggleLocate} aria-pressed={!!you}
           aria-label={you ? 'Center on my location' : 'Show my location'} title={you ? 'Center on my location' : 'Show my location'}>
@@ -301,6 +334,21 @@ export default function MapScreen({ query }) {
               <h2 style={{ fontSize: 16 }}>{events ? `${onNow} event${onNow === 1 ? '' : 's'} on now · ${later} later` : 'Loading events…'}</h2>
               <span className="cu-small">Tap a planet</span>
             </div>
+            {forYou && (
+              <>
+                <div className="cu-chips" role="group" aria-label="Your interests, up to 3">
+                  {INTERESTS.map((i) => <button key={i} className="cu-chip" aria-pressed={interests.includes(i)} onClick={() => toggleInterest(i)}>{i}</button>)}
+                </div>
+                {ranked[0] ? (
+                  <a className="card" href={`#/event/${ranked[0].e.id}`} style={{ color: 'var(--text)', textDecoration: 'none', borderColor: '#F5C76B' }}>
+                    <strong>Top pick: {ranked[0].e.title}</strong>
+                    <p className="cu-small" style={{ margin: '4px 0 0' }}>{ranked[0].r.score}% match · {placeOf(ranked[0].e)} · {whenText(ranked[0].e)}</p>
+                    {ranked[0].r.reasons.length > 0 && <p className="cu-small" style={{ margin: '4px 0 0', color: '#F5C76B' }}>Why: {ranked[0].r.reasons.join(' · ')}</p>}
+                  </a>
+                ) : events && <p className="cu-small" style={{ margin: 0 }}>No upcoming events to rank.</p>}
+                <p className="cu-small" style={{ margin: 0 }}>{interests.length ? '' : 'Pick interests to personalize. '}Ranked on this phone by a model trained on {affinity.ratings.toLocaleString()} synthetic event ratings. Your picks never leave this phone.</p>
+              </>
+            )}
             <div className="cu-actions">
               <label className="btn primary" style={{ margin: 0, color: '#fff', cursor: 'pointer' }}>Scan event QR
                 <input type="file" accept="image/*" capture="environment" className="sr-only" onChange={(e) => e.target.files[0] && onScan(e.target.files[0])} />
@@ -337,7 +385,7 @@ export default function MapScreen({ query }) {
             {selEv.source === 'campus_connect' && <p className="cu-note" style={{ margin: 0 }}>From Campus Connect. Food and status aren't tracked live until the host claims it.</p>}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
               <a className="btn primary" href={`#/event/${selEv.id}`}>Open event</a>
-              {buildingByCode[selEv.building_code] ? <a className="btn" href={`#/nav/${selEv.id}`}>Directions</a> : <span />}
+              {buildingByCode[selEv.building_code] ? <a className="btn cu-directions" href={`#/nav/${selEv.id}`}><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.7 11.3l-9-9a1 1 0 00-1.4 0l-9 9a1 1 0 000 1.4l9 9a1 1 0 001.4 0l9-9a1 1 0 000-1.4zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>Directions</a> : <span />}
             </div>
           </div>
         </section>

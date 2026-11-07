@@ -1,12 +1,3636 @@
 [
-  {"code":"WEB","names":["Warnock Engineering Building","Warnock","WEB"],"lat":40.7676728,"lng":-111.8452353,"entrance":{"lat":40.7676728,"lng":-111.8452353,"step_free":"unverified"}},
-  {"code":"MEB","names":["Merrill Engineering Building","Merrill","MEB"],"lat":40.7685474,"lng":-111.8461562,"entrance":{"lat":40.7685474,"lng":-111.8461562,"step_free":"unverified"}},
-  {"code":"UNION","names":["A. Ray Olpin University Union","Olpin Union","The Union","Union","UNION"],"lat":40.7648944,"lng":-111.8461408,"entrance":{"lat":40.7648,"lng":-111.8458,"step_free":"unverified"}},
-  {"code":"MLIB","names":["J. Willard Marriott Library","Marriott Library","The Library","MLIB"],"lat":40.7624668,"lng":-111.8461801,"entrance":{"lat":40.7624668,"lng":-111.8461801,"step_free":"unverified"}},
-  {"code":"LS","names":["Lassonde Studios","Lassonde","LS"],"lat":40.764567,"lng":-111.8415134,"entrance":{"lat":40.764567,"lng":-111.8415134,"step_free":"unverified"}},
-  {"code":"SFEBB","names":["Spencer Fox Eccles Business Building","SFEBB","Business Building"],"lat":40.7618073,"lng":-111.8434927,"entrance":{"lat":40.7618073,"lng":-111.8434927,"step_free":"unverified"}},
-  {"code":"KV","names":["Kahlert Village","KV"],"lat":40.7635413,"lng":-111.8379252,"entrance":{"lat":40.7635413,"lng":-111.8379252,"step_free":"unverified"}},
-  {"code":"CSC","names":["Crocker Science Center","Crocker","CSC"],"lat":40.764049,"lng":-111.8511245,"entrance":{"lat":40.764049,"lng":-111.8511245,"step_free":"unverified"}},
-  {"code":"JFB","names":["James Fletcher Building","Fletcher","JFB"],"lat":40.7667317,"lng":-111.8503936,"entrance":{"lat":40.7667317,"lng":-111.8503936,"step_free":"unverified"}},
-  {"code":"SLC","names":["George S. Eccles Student Life Center","Student Life Center","SLC"],"lat":40.7651595,"lng":-111.8379776,"entrance":{"lat":40.7651595,"lng":-111.8379776,"step_free":"unverified"}}
+ {
+  "code": "WEB",
+  "names": [
+   "Warnock Engineering Building",
+   "Warnock"
+  ],
+  "lat": 40.7676728,
+  "lng": -111.8452353,
+  "entrance": {
+   "lat": 40.7676728,
+   "lng": -111.8452353,
+   "step_free": "unverified"
+  }
+ },
+ {
+  "code": "MEB",
+  "names": [
+   "Merrill Engineering Building",
+   "Merrill"
+  ],
+  "lat": 40.7685474,
+  "lng": -111.8461562,
+  "entrance": {
+   "lat": 40.7685474,
+   "lng": -111.8461562,
+   "step_free": "unverified"
+  }
+ },
+ {
+  "code": "UNION",
+  "names": [
+   "A. Ray Olpin University Union",
+   "Olpin Union",
+   "The Union",
+   "Union"
+  ],
+  "lat": 40.7648944,
+  "lng": -111.8461408,
+  "entrance": {
+   "lat": 40.7648,
+   "lng": -111.8458,
+   "step_free": "unverified"
+  }
+ },
+ {
+  "code": "MLIB",
+  "names": [
+   "J. Willard Marriott Library",
+   "Marriott Library",
+   "The Library"
+  ],
+  "lat": 40.7624668,
+  "lng": -111.8461801,
+  "entrance": {
+   "lat": 40.7624668,
+   "lng": -111.8461801,
+   "step_free": "unverified"
+  }
+ },
+ {
+  "code": "LS",
+  "names": [
+   "Lassonde Studios",
+   "Lassonde"
+  ],
+  "lat": 40.764567,
+  "lng": -111.8415134,
+  "entrance": {
+   "lat": 40.764567,
+   "lng": -111.8415134,
+   "step_free": "unverified"
+  }
+ },
+ {
+  "code": "SFEBB",
+  "names": [
+   "Spencer Fox Eccles Business Building",
+   "Business Building"
+  ],
+  "lat": 40.7618073,
+  "lng": -111.8434927,
+  "entrance": {
+   "lat": 40.7618073,
+   "lng": -111.8434927,
+   "step_free": "unverified"
+  }
+ },
+ {
+  "code": "KV",
+  "names": [
+   "Kahlert Village"
+  ],
+  "lat": 40.7635413,
+  "lng": -111.8379252,
+  "entrance": {
+   "lat": 40.7635413,
+   "lng": -111.8379252,
+   "step_free": "unverified"
+  }
+ },
+ {
+  "code": "CSC",
+  "names": [
+   "Crocker Science Center",
+   "Crocker"
+  ],
+  "lat": 40.764049,
+  "lng": -111.8511245,
+  "entrance": {
+   "lat": 40.764049,
+   "lng": -111.8511245,
+   "step_free": "unverified"
+  }
+ },
+ {
+  "code": "JFB",
+  "names": [
+   "James Fletcher Building",
+   "Fletcher"
+  ],
+  "lat": 40.7667317,
+  "lng": -111.8503936,
+  "entrance": {
+   "lat": 40.7667317,
+   "lng": -111.8503936,
+   "step_free": "unverified"
+  }
+ },
+ {
+  "code": "SLC",
+  "names": [
+   "George S. Eccles Student Life Center",
+   "Student Life Center"
+  ],
+  "lat": 40.7651595,
+  "lng": -111.8379776,
+  "entrance": {
+   "lat": 40.7651595,
+   "lng": -111.8379776,
+   "step_free": "unverified"
+  }
+ },
+ {
+  "code": "1B",
+  "names": [
+   "1100 B"
+  ],
+  "lat": 40.7536207,
+  "lng": -111.8280832,
+  "entrance": {
+   "lat": 40.7536207,
+   "lng": -111.8280832,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "1C",
+  "names": [
+   "1100 C"
+  ],
+  "lat": 40.7535563,
+  "lng": -111.827516,
+  "entrance": {
+   "lat": 40.7535563,
+   "lng": -111.827516,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "2CG",
+  "names": [
+   "295 Chipeta Garage"
+  ],
+  "lat": 40.7645538,
+  "lng": -111.8258218,
+  "entrance": {
+   "lat": 40.7645538,
+   "lng": -111.8258218,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "3CG",
+  "names": [
+   "303 Chipeta Garage"
+  ],
+  "lat": 40.7640254,
+  "lng": -111.8260374,
+  "entrance": {
+   "lat": 40.7640254,
+   "lng": -111.8260374,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "4B2",
+  "names": [
+   "419 Building"
+  ],
+  "lat": 40.7593678,
+  "lng": -111.8279274,
+  "entrance": {
+   "lat": 40.7593678,
+   "lng": -111.8279274,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "4B",
+  "names": [
+   "421 Building"
+  ],
+  "lat": 40.7589326,
+  "lng": -111.8282953,
+  "entrance": {
+   "lat": 40.7589326,
+   "lng": -111.8282953,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "4B3",
+  "names": [
+   "423 Building"
+  ],
+  "lat": 40.7586703,
+  "lng": -111.8277007,
+  "entrance": {
+   "lat": 40.7586703,
+   "lng": -111.8277007,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "6K",
+  "names": [
+   "650 Komas"
+  ],
+  "lat": 40.7545145,
+  "lng": -111.8292151,
+  "entrance": {
+   "lat": 40.7545145,
+   "lng": -111.8292151,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "AL5",
+  "names": [
+   "ARUP Laboratories - 560"
+  ],
+  "lat": 40.7563076,
+  "lng": -111.8298588,
+  "entrance": {
+   "lat": 40.7563076,
+   "lng": -111.8298588,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "AL52",
+  "names": [
+   "ARUP Laboratories - 585"
+  ],
+  "lat": 40.7564321,
+  "lng": -111.8288237,
+  "entrance": {
+   "lat": 40.7564321,
+   "lng": -111.8288237,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "AL6",
+  "names": [
+   "ARUP Laboratories - 606"
+  ],
+  "lat": 40.7560306,
+  "lng": -111.8282859,
+  "entrance": {
+   "lat": 40.7560306,
+   "lng": -111.8282859,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "ALCF",
+  "names": [
+   "ARUP Laboratories - Central Facility"
+  ],
+  "lat": 40.7579881,
+  "lng": -111.8248029,
+  "entrance": {
+   "lat": 40.7579881,
+   "lng": -111.8248029,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "ACC",
+  "names": [
+   "Acute Care Complex"
+  ],
+  "lat": 40.7706664,
+  "lng": -111.8369223,
+  "entrance": {
+   "lat": 40.7706664,
+   "lng": -111.8369223,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "AEB",
+  "names": [
+   "Alfred Emery Building"
+  ],
+  "lat": 40.7641711,
+  "lng": -111.8500567,
+  "entrance": {
+   "lat": 40.7641711,
+   "lng": -111.8500567,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "ASB",
+  "names": [
+   "Aline Wilmont Skaggs Biology Building"
+  ],
+  "lat": 40.7637264,
+  "lng": -111.8487092,
+  "entrance": {
+   "lat": 40.7637264,
+   "lng": -111.8487092,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FD615",
+  "names": [
+   "Alliance House"
+  ],
+  "lat": 40.7646278,
+  "lng": -111.8322358,
+  "entrance": {
+   "lat": 40.7646278,
+   "lng": -111.8322358,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "ALUMNI",
+  "names": [
+   "Alumni House"
+  ],
+  "lat": 40.7658967,
+  "lng": -111.8436602,
+  "entrance": {
+   "lat": 40.7658967,
+   "lng": -111.8436602,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "ACCG",
+  "names": [
+   "Ambulatory Care Garage"
+  ],
+  "lat": 40.7704413,
+  "lng": -111.8411251,
+  "entrance": {
+   "lat": 40.7704413,
+   "lng": -111.8411251,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "AIRC",
+  "names": [
+   "American Indian Resource Center"
+  ],
+  "lat": 40.7649609,
+  "lng": -111.835621,
+  "entrance": {
+   "lat": 40.7649609,
+   "lng": -111.835621,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "ARCH",
+  "names": [
+   "Architecture Building"
+  ],
+  "lat": 40.7611251,
+  "lng": -111.8445641,
+  "entrance": {
+   "lat": 40.7611251,
+   "lng": -111.8445641,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "ART",
+  "names": [
+   "Art Building"
+  ],
+  "lat": 40.7609039,
+  "lng": -111.8449319,
+  "entrance": {
+   "lat": 40.7609039,
+   "lng": -111.8449319,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "ASO",
+  "names": [
+   "Auxiliary Services Office"
+  ],
+  "lat": 40.7645103,
+  "lng": -111.8357498,
+  "entrance": {
+   "lat": 40.7645103,
+   "lng": -111.8357498,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "BP8",
+  "names": [
+   "Benchmark Plaza 820"
+  ],
+  "lat": 40.766722,
+  "lng": -111.8310898,
+  "entrance": {
+   "lat": 40.766722,
+   "lng": -111.8310898,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "BP83",
+  "names": [
+   "Benchmark Plaza 821"
+  ],
+  "lat": 40.7661978,
+  "lng": -111.8301786,
+  "entrance": {
+   "lat": 40.7661978,
+   "lng": -111.8301786,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "BP82",
+  "names": [
+   "Benchmark Plaza 822"
+  ],
+  "lat": 40.7659488,
+  "lng": -111.8306771,
+  "entrance": {
+   "lat": 40.7659488,
+   "lng": -111.8306771,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FD614",
+  "names": [
+   "Bennion Service House"
+  ],
+  "lat": 40.7648322,
+  "lng": -111.8321301,
+  "entrance": {
+   "lat": 40.7648322,
+   "lng": -111.8321301,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "BMRB",
+  "names": [
+   "Bio Med Research Building"
+  ],
+  "lat": 40.7590924,
+  "lng": -111.827438,
+  "entrance": {
+   "lat": 40.7590924,
+   "lng": -111.827438,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "BIOF",
+  "names": [
+   "Biofire"
+  ],
+  "lat": 40.7604452,
+  "lng": -111.8286156,
+  "entrance": {
+   "lat": 40.7604452,
+   "lng": -111.8286156,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "BPRB",
+  "names": [
+   "Biomedical Polymers Research Building"
+  ],
+  "lat": 40.7689262,
+  "lng": -111.8329628,
+  "entrance": {
+   "lat": 40.7689262,
+   "lng": -111.8329628,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "BS",
+  "names": [
+   "Blacksmith Shop"
+  ],
+  "lat": 40.754531,
+  "lng": -111.8172761,
+  "entrance": {
+   "lat": 40.754531,
+   "lng": -111.8172761,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "BYFF",
+  "names": [
+   "Brigham Young Forest Farmhouse"
+  ],
+  "lat": 40.7533904,
+  "lng": -111.820599,
+  "entrance": {
+   "lat": 40.7533904,
+   "lng": -111.820599,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "KBAC",
+  "names": [
+   "Burbidge Academic Center"
+  ],
+  "lat": 40.7629505,
+  "lng": -111.8396526,
+  "entrance": {
+   "lat": 40.7629505,
+   "lng": -111.8396526,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CRCC",
+  "names": [
+   "C Roland Christensen Center"
+  ],
+  "lat": 40.7612808,
+  "lng": -111.8439273,
+  "entrance": {
+   "lat": 40.7612808,
+   "lng": -111.8439273,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HCHV",
+  "names": [
+   "Cancer Hospital North",
+   "Catherine F Kirk Center for Comprehensive Cancer Care and Women's Cancers"
+  ],
+  "lat": 40.7738575,
+  "lng": -111.8367629,
+  "entrance": {
+   "lat": 40.7738575,
+   "lng": -111.8367629,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HCH",
+  "names": [
+   "Cancer Hospital South"
+  ],
+  "lat": 40.7735418,
+  "lng": -111.8352992,
+  "entrance": {
+   "lat": 40.7735418,
+   "lng": -111.8352992,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HCINORTH",
+  "names": [
+   "Cancer Research North"
+  ],
+  "lat": 40.7725295,
+  "lng": -111.8344786,
+  "entrance": {
+   "lat": 40.7725295,
+   "lng": -111.8344786,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HCIIV",
+  "names": [
+   "Cancer Research South"
+  ],
+  "lat": 40.7719056,
+  "lng": -111.833422,
+  "entrance": {
+   "lat": 40.7719056,
+   "lng": -111.833422,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CVCU",
+  "names": [
+   "Canyon View Credit Union"
+  ],
+  "lat": 40.7577562,
+  "lng": -111.8290227,
+  "entrance": {
+   "lat": 40.7577562,
+   "lng": -111.8290227,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CTIHB",
+  "names": [
+   "Carolyn Tanner Irish Humanities Building"
+  ],
+  "lat": 40.7645996,
+  "lng": -111.8429537,
+  "entrance": {
+   "lat": 40.7645996,
+   "lng": -111.8429537,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "GC",
+  "names": [
+   "Carolyn and Kem Gardner Commons"
+  ],
+  "lat": 40.7633665,
+  "lng": -111.844669,
+  "entrance": {
+   "lat": 40.7633665,
+   "lng": -111.844669,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CPG",
+  "names": [
+   "Central Garage"
+  ],
+  "lat": 40.7616234,
+  "lng": -111.8414638,
+  "entrance": {
+   "lat": 40.7616234,
+   "lng": -111.8414638,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CG83",
+  "names": [
+   "Chapel Glen 802"
+  ],
+  "lat": 40.7667105,
+  "lng": -111.833739,
+  "entrance": {
+   "lat": 40.7667105,
+   "lng": -111.833739,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CG82",
+  "names": [
+   "Chapel Glen 803"
+  ],
+  "lat": 40.7673198,
+  "lng": -111.8336947,
+  "entrance": {
+   "lat": 40.7673198,
+   "lng": -111.8336947,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CG8",
+  "names": [
+   "Chapel Glen 804"
+  ],
+  "lat": 40.7671464,
+  "lng": -111.8329127,
+  "entrance": {
+   "lat": 40.7671464,
+   "lng": -111.8329127,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CSSNC",
+  "names": [
+   "Children's Special Needs Clinic"
+  ],
+  "lat": 40.7687366,
+  "lng": -111.836248,
+  "entrance": {
+   "lat": 40.7687366,
+   "lng": -111.836248,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CME",
+  "names": [
+   "Civil and Materials Engineering"
+  ],
+  "lat": 40.7665169,
+  "lng": -111.8459859,
+  "entrance": {
+   "lat": 40.7665169,
+   "lng": -111.8459859,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CNC",
+  "names": [
+   "Clinical Neurosciences Building"
+  ],
+  "lat": 40.7724906,
+  "lng": -111.8361003,
+  "entrance": {
+   "lat": 40.7724906,
+   "lng": -111.8361003,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CA",
+  "names": [
+   "Collins Aerospace"
+  ],
+  "lat": 40.7548061,
+  "lng": -111.8309585,
+  "entrance": {
+   "lat": 40.7548061,
+   "lng": -111.8309585,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CSH",
+  "names": [
+   "Commander's House"
+  ],
+  "lat": 40.7653593,
+  "lng": -111.8349052,
+  "entrance": {
+   "lat": 40.7653593,
+   "lng": -111.8349052,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "NRH",
+  "names": [
+   "Craig H. Nielsen Rehabilitation Hospital"
+  ],
+  "lat": 40.7712688,
+  "lng": -111.8347466,
+  "entrance": {
+   "lat": 40.7712688,
+   "lng": -111.8347466,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FD613",
+  "names": [
+   "Crocker Science House"
+  ],
+  "lat": 40.7650979,
+  "lng": -111.832118,
+  "entrance": {
+   "lat": 40.7650979,
+   "lng": -111.832118,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CNB",
+  "names": [
+   "Cumming Nursing Building"
+  ],
+  "lat": 40.7691502,
+  "lng": -111.8347881,
+  "entrance": {
+   "lat": 40.7691502,
+   "lng": -111.8347881,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "DGSAC",
+  "names": [
+   "Dee Glen Smith Athletic Center"
+  ],
+  "lat": 40.7563237,
+  "lng": -111.846705,
+  "entrance": {
+   "lat": 40.7563237,
+   "lng": -111.846705,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MHC2",
+  "names": [
+   "Donna Garff Marriott Honors Residential Scholars Community"
+  ],
+  "lat": 40.7638672,
+  "lng": -111.8368828,
+  "entrance": {
+   "lat": 40.7638672,
+   "lng": -111.8368828,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "DGC",
+  "names": [
+   "Dumke Gymnastics Center"
+  ],
+  "lat": 40.7643724,
+  "lng": -111.8396468,
+  "entrance": {
+   "lat": 40.7643724,
+   "lng": -111.8396468,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "DHPEB",
+  "names": [
+   "Dumke Health Professions Ed. Building"
+  ],
+  "lat": 40.7582062,
+  "lng": -111.831342,
+  "entrance": {
+   "lat": 40.7582062,
+   "lng": -111.831342,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "EEJMRB",
+  "names": [
+   "E E Jones Medical Science Building"
+  ],
+  "lat": 40.7698206,
+  "lng": -111.8324059,
+  "entrance": {
+   "lat": 40.7698206,
+   "lng": -111.8324059,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "EBC",
+  "names": [
+   "Eccles Broadcast Center"
+  ],
+  "lat": 40.7673278,
+  "lng": -111.8378477,
+  "entrance": {
+   "lat": 40.7673278,
+   "lng": -111.8378477,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "EHSEB",
+  "names": [
+   "Eccles Health Sciences Education Building"
+  ],
+  "lat": 40.769127,
+  "lng": -111.8338194,
+  "entrance": {
+   "lat": 40.769127,
+   "lng": -111.8338194,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "ELIB",
+  "names": [
+   "Eccles Health Sciences Library"
+  ],
+  "lat": 40.7697948,
+  "lng": -111.8346327,
+  "entrance": {
+   "lat": 40.7697948,
+   "lng": -111.8346327,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "EH",
+  "names": [
+   "Eccles House"
+  ],
+  "lat": 40.7725824,
+  "lng": -111.8437897,
+  "entrance": {
+   "lat": 40.7725824,
+   "lng": -111.8437897,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "EIHG",
+  "names": [
+   "Eccles Institute of Human Genetics"
+  ],
+  "lat": 40.7699703,
+  "lng": -111.8340241,
+  "entrance": {
+   "lat": 40.7699703,
+   "lng": -111.8340241,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "EPCOS",
+  "names": [
+   "Eccles Outpatient Services"
+  ],
+  "lat": 40.7708886,
+  "lng": -111.8407355,
+  "entrance": {
+   "lat": 40.7708886,
+   "lng": -111.8407355,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FD608",
+  "names": [
+   "Eccles Quiney House"
+  ],
+  "lat": 40.7660465,
+  "lng": -111.8329703,
+  "entrance": {
+   "lat": 40.7660465,
+   "lng": -111.8329703,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MED",
+  "names": [
+   "Eccles School of Medicine Building",
+   "Spencer Fox Eccles School of Medicine Building"
+  ],
+  "lat": 40.7694872,
+  "lng": -111.8354944,
+  "entrance": {
+   "lat": 40.7694872,
+   "lng": -111.8354944,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SKI",
+  "names": [
+   "Eccles Ski Team Building"
+  ],
+  "lat": 40.7669614,
+  "lng": -111.8405477,
+  "entrance": {
+   "lat": 40.7669614,
+   "lng": -111.8405477,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FLDH",
+  "names": [
+   "Einar Nielsen Fieldhouse"
+  ],
+  "lat": 40.7612196,
+  "lng": -111.8488991,
+  "entrance": {
+   "lat": 40.7612196,
+   "lng": -111.8488991,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "EMMA",
+  "names": [
+   "Emma"
+  ],
+  "lat": 40.7708215,
+  "lng": -111.8559135,
+  "entrance": {
+   "lat": 40.7708215,
+   "lng": -111.8559135,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FD607",
+  "names": [
+   "Emma Eccles Jones Fine Arts House"
+  ],
+  "lat": 40.766137,
+  "lng": -111.8332989,
+  "entrance": {
+   "lat": 40.766137,
+   "lng": -111.8332989,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "EHS",
+  "names": [
+   "Environmental Health & Safety"
+  ],
+  "lat": 40.766561,
+  "lng": -111.8341917,
+  "entrance": {
+   "lat": 40.766561,
+   "lng": -111.8341917,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "ESB",
+  "names": [
+   "Experimental Studies Building"
+  ],
+  "lat": 40.7660491,
+  "lng": -111.84477,
+  "entrance": {
+   "lat": 40.7660491,
+   "lng": -111.84477,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HEB",
+  "names": [
+   "Eyring Chemistry"
+  ],
+  "lat": 40.7623886,
+  "lng": -111.8495222,
+  "entrance": {
+   "lat": 40.7623886,
+   "lng": -111.8495222,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FHA",
+  "names": [
+   "Federal Heights Apartments"
+  ],
+  "lat": 40.7697101,
+  "lng": -111.8527188,
+  "entrance": {
+   "lat": 40.7697101,
+   "lng": -111.8527188,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FMAB",
+  "names": [
+   "Film and Media Arts Building"
+  ],
+  "lat": 40.7613056,
+  "lng": -111.8454059,
+  "entrance": {
+   "lat": 40.7613056,
+   "lng": -111.8454059,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FAW",
+  "names": [
+   "Fine Arts West"
+  ],
+  "lat": 40.7631832,
+  "lng": -111.852928,
+  "entrance": {
+   "lat": 40.7631832,
+   "lng": -111.852928,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FSN8",
+  "names": [
+   "Fire Station No. 8"
+  ],
+  "lat": 40.7634989,
+  "lng": -111.8543794,
+  "entrance": {
+   "lat": 40.7634989,
+   "lng": -111.8543794,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FD609",
+  "names": [
+   "First Security Business House"
+  ],
+  "lat": 40.7658899,
+  "lng": -111.8327412,
+  "entrance": {
+   "lat": 40.7658899,
+   "lng": -111.8327412,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FUCSLC",
+  "names": [
+   "First Unitarian Church of Salt Lake City"
+  ],
+  "lat": 40.7567587,
+  "lng": -111.8533586,
+  "entrance": {
+   "lat": 40.7567587,
+   "lng": -111.8533586,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FHB3",
+  "names": [
+   "Fisher House (Bldg 32)"
+  ],
+  "lat": 40.7543326,
+  "lng": -111.8412304,
+  "entrance": {
+   "lat": 40.7543326,
+   "lng": -111.8412304,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FDBA",
+  "names": [
+   "Fort Douglas Bowling Alley"
+  ],
+  "lat": 40.7639628,
+  "lng": -111.8314546,
+  "entrance": {
+   "lat": 40.7639628,
+   "lng": -111.8314546,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FDD",
+  "names": [
+   "Fort Douglas Duplex"
+  ],
+  "lat": 40.7677723,
+  "lng": -111.8353389,
+  "entrance": {
+   "lat": 40.7677723,
+   "lng": -111.8353389,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FDH",
+  "names": [
+   "Fort Douglas House"
+  ],
+  "lat": 40.7651175,
+  "lng": -111.8353142,
+  "entrance": {
+   "lat": 40.7651175,
+   "lng": -111.8353142,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FD616",
+  "names": [
+   "Fort Douglas House 616"
+  ],
+  "lat": 40.7668778,
+  "lng": -111.8331442,
+  "entrance": {
+   "lat": 40.7668778,
+   "lng": -111.8331442,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FD617",
+  "names": [
+   "Fort Douglas House 617"
+  ],
+  "lat": 40.767105,
+  "lng": -111.8333358,
+  "entrance": {
+   "lat": 40.767105,
+   "lng": -111.8333358,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FDM",
+  "names": [
+   "Fort Douglas Museum"
+  ],
+  "lat": 40.763948,
+  "lng": -111.8336961,
+  "entrance": {
+   "lat": 40.763948,
+   "lng": -111.8336961,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FDPS",
+  "names": [
+   "Fort Douglas PO Shops"
+  ],
+  "lat": 40.7628397,
+  "lng": -111.8308994,
+  "entrance": {
+   "lat": 40.7628397,
+   "lng": -111.8308994,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FDP",
+  "names": [
+   "Fort Douglas PX"
+  ],
+  "lat": 40.7638326,
+  "lng": -111.8317046,
+  "entrance": {
+   "lat": 40.7638326,
+   "lng": -111.8317046,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FDPC",
+  "names": [
+   "Fort Douglas Post Chapel"
+  ],
+  "lat": 40.7665444,
+  "lng": -111.8349305,
+  "entrance": {
+   "lat": 40.7665444,
+   "lng": -111.8349305,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FDPS2",
+  "names": [
+   "Fort Douglas Public Safety"
+  ],
+  "lat": 40.7652284,
+  "lng": -111.8299752,
+  "entrance": {
+   "lat": 40.7652284,
+   "lng": -111.8299752,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FDRS",
+  "names": [
+   "Fort Douglas Residential Storage"
+  ],
+  "lat": 40.764386,
+  "lng": -111.8304681,
+  "entrance": {
+   "lat": 40.764386,
+   "lng": -111.8304681,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FDT",
+  "names": [
+   "Fort Douglas Triplex"
+  ],
+  "lat": 40.76574,
+  "lng": -111.8340806,
+  "entrance": {
+   "lat": 40.76574,
+   "lng": -111.8340806,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FM",
+  "names": [
+   "Friendship Manor"
+  ],
+  "lat": 40.757954,
+  "lng": -111.8532157,
+  "entrance": {
+   "lat": 40.757954,
+   "lng": -111.8532157,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FPCEB",
+  "names": [
+   "Future Price Computing and Engineering Building"
+  ],
+  "lat": 40.7680208,
+  "lng": -111.8435492,
+  "entrance": {
+   "lat": 40.7680208,
+   "lng": -111.8435492,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "DGH",
+  "names": [
+   "Gardner Hall",
+   "David P Gardner Hall"
+  ],
+  "lat": 40.7662115,
+  "lng": -111.8517466,
+  "entrance": {
+   "lat": 40.7662115,
+   "lng": -111.8517466,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "GARFF",
+  "names": [
+   "Garff Executive Education Building",
+   "Milton Bennion Hall"
+  ],
+  "lat": 40.7621683,
+  "lng": -111.8422682,
+  "entrance": {
+   "lat": 40.7621683,
+   "lng": -111.8422682,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "GH82",
+  "names": [
+   "Gateway Heights 806"
+  ],
+  "lat": 40.7663728,
+  "lng": -111.8322856,
+  "entrance": {
+   "lat": 40.7663728,
+   "lng": -111.8322856,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "GH8",
+  "names": [
+   "Gateway Heights 807"
+  ],
+  "lat": 40.7654603,
+  "lng": -111.8314171,
+  "entrance": {
+   "lat": 40.7654603,
+   "lng": -111.8314171,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "GSETC",
+  "names": [
+   "George S. Eccles Tennis Center"
+  ],
+  "lat": 40.757187,
+  "lng": -111.8462951,
+  "entrance": {
+   "lat": 40.757187,
+   "lng": -111.8462951,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "GSB",
+  "names": [
+   "Guest Suites Building"
+  ],
+  "lat": 40.7662526,
+  "lng": -111.836155,
+  "entrance": {
+   "lat": 40.7662526,
+   "lng": -111.836155,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HELIX",
+  "names": [
+   "HELIX Tower",
+   "Healthcare, Educators, Leaders and Innovators Complex"
+  ],
+  "lat": 40.7700524,
+  "lng": -111.8399402,
+  "entrance": {
+   "lat": 40.7700524,
+   "lng": -111.8399402,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HPRE",
+  "names": [
+   "HPER East"
+  ],
+  "lat": 40.7637055,
+  "lng": -111.8391677,
+  "entrance": {
+   "lat": 40.7637055,
+   "lng": -111.8391677,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HPRSE",
+  "names": [
+   "HPER Mechanical SE"
+  ],
+  "lat": 40.7629258,
+  "lng": -111.8392641,
+  "entrance": {
+   "lat": 40.7629258,
+   "lng": -111.8392641,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HPRSW",
+  "names": [
+   "HPER Mechanical SW"
+  ],
+  "lat": 40.762732,
+  "lng": -111.8396408,
+  "entrance": {
+   "lat": 40.762732,
+   "lng": -111.8396408,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HPRNAT",
+  "names": [
+   "HPER Natatorium"
+  ],
+  "lat": 40.7633359,
+  "lng": -111.8398859,
+  "entrance": {
+   "lat": 40.7633359,
+   "lng": -111.8398859,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HPRN",
+  "names": [
+   "HPER North"
+  ],
+  "lat": 40.7638545,
+  "lng": -111.8403462,
+  "entrance": {
+   "lat": 40.7638545,
+   "lng": -111.8403462,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HPRW",
+  "names": [
+   "HPER West"
+  ],
+  "lat": 40.7629402,
+  "lng": -111.8406643,
+  "entrance": {
+   "lat": 40.7629402,
+   "lng": -111.8406643,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HSCORE",
+  "names": [
+   "HSC Core Research Facility"
+  ],
+  "lat": 40.7703362,
+  "lng": -111.8336342,
+  "entrance": {
+   "lat": 40.7703362,
+   "lng": -111.8336342,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CVRTI",
+  "names": [
+   "Harrison Building"
+  ],
+  "lat": 40.7672201,
+  "lng": -111.8321067,
+  "entrance": {
+   "lat": 40.7672201,
+   "lng": -111.8321067,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HSPT",
+  "names": [
+   "Health Sciences Parking Terrace"
+  ],
+  "lat": 40.7736833,
+  "lng": -111.8378403,
+  "entrance": {
+   "lat": 40.7736833,
+   "lng": -111.8378403,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HCKH",
+  "names": [
+   "Heber C. Kimball Home"
+  ],
+  "lat": 40.7552802,
+  "lng": -111.8172675,
+  "entrance": {
+   "lat": 40.7552802,
+   "lng": -111.8172675,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HELI",
+  "names": [
+   "Helipad Garage"
+  ],
+  "lat": 40.7726503,
+  "lng": -111.8372456,
+  "entrance": {
+   "lat": 40.7726503,
+   "lng": -111.8372456,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HTW",
+  "names": [
+   "High Temperature Water Plant"
+  ],
+  "lat": 40.7604913,
+  "lng": -111.8419046,
+  "entrance": {
+   "lat": 40.7604913,
+   "lng": -111.8419046,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HC",
+  "names": [
+   "Honors Center"
+  ],
+  "lat": 40.7655762,
+  "lng": -111.8345476,
+  "entrance": {
+   "lat": 40.7655762,
+   "lng": -111.8345476,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FD606",
+  "names": [
+   "Honors Upper Division Social Justice House"
+  ],
+  "lat": 40.7661289,
+  "lng": -111.8336028,
+  "entrance": {
+   "lat": 40.7661289,
+   "lng": -111.8336028,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HGP",
+  "names": [
+   "Hospital Generation Plant"
+  ],
+  "lat": 40.7716314,
+  "lng": -111.8354109,
+  "entrance": {
+   "lat": 40.7716314,
+   "lng": -111.8354109,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HBF",
+  "names": [
+   "Huntsman Basketball Facility"
+  ],
+  "lat": 40.7630861,
+  "lng": -111.838808,
+  "entrance": {
+   "lat": 40.7630861,
+   "lng": -111.838808,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "HCIG",
+  "names": [
+   "Huntsman Cancer Institute Parking Terrace"
+  ],
+  "lat": 40.7729225,
+  "lng": -111.835615,
+  "entrance": {
+   "lat": 40.7729225,
+   "lng": -111.835615,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "IJWJCC",
+  "names": [
+   "IJ & Jeanné Wagner Jewish Community Center"
+  ],
+  "lat": 40.7735857,
+  "lng": -111.839592,
+  "entrance": {
+   "lat": 40.7735857,
+   "lng": -111.839592,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "INC",
+  "names": [
+   "Imaging and Neurosciences Center"
+  ],
+  "lat": 40.7533327,
+  "lng": -111.8249271,
+  "entrance": {
+   "lat": 40.7533327,
+   "lng": -111.8249271,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "IPE",
+  "names": [
+   "Impact Prosperity Epicenter"
+  ],
+  "lat": 40.7652051,
+  "lng": -111.8408195,
+  "entrance": {
+   "lat": 40.7652051,
+   "lng": -111.8408195,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "IH",
+  "names": [
+   "Interfaith House"
+  ],
+  "lat": 40.7673023,
+  "lng": -111.83487,
+  "entrance": {
+   "lat": 40.7673023,
+   "lng": -111.83487,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "INSCC",
+  "names": [
+   "Intermountain Network Scientific Computation Center"
+  ],
+  "lat": 40.7659031,
+  "lng": -111.8487563,
+  "entrance": {
+   "lat": 40.7659031,
+   "lng": -111.8487563,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "JCBH",
+  "names": [
+   "James C. Bungard Hall"
+  ],
+  "lat": 40.7622946,
+  "lng": -111.8347605,
+  "entrance": {
+   "lat": 40.7622946,
+   "lng": -111.8347605,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SMBB",
+  "names": [
+   "James L. Sorenson Molecular Biotechnology Building"
+  ],
+  "lat": 40.7689194,
+  "lng": -111.8420282,
+  "entrance": {
+   "lat": 40.7689194,
+   "lng": -111.8420282,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "JTB",
+  "names": [
+   "James Talmage Building"
+  ],
+  "lat": 40.7644364,
+  "lng": -111.8495279,
+  "entrance": {
+   "lat": 40.7644364,
+   "lng": -111.8495279,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "JJKFAC",
+  "names": [
+   "Jerry J. Kaufman Family Activity Center"
+  ],
+  "lat": 40.774244,
+  "lng": -111.8397834,
+  "entrance": {
+   "lat": 40.774244,
+   "lng": -111.8397834,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MEC",
+  "names": [
+   "John A Moran Eye Center"
+  ],
+  "lat": 40.7697402,
+  "lng": -111.8378588,
+  "entrance": {
+   "lat": 40.7697402,
+   "lng": -111.8378588,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "PARK",
+  "names": [
+   "John R Park Building"
+  ],
+  "lat": 40.7650137,
+  "lng": -111.8487922,
+  "entrance": {
+   "lat": 40.7650137,
+   "lng": -111.8487922,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "JWB",
+  "names": [
+   "John Widtsoe Building"
+  ],
+  "lat": 40.7659048,
+  "lng": -111.8501497,
+  "entrance": {
+   "lat": 40.7659048,
+   "lng": -111.8501497,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "JMHC",
+  "names": [
+   "Jon M. Huntsman Center"
+  ],
+  "lat": 40.762061,
+  "lng": -111.83876,
+  "entrance": {
+   "lat": 40.762061,
+   "lng": -111.83876,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FDKEN",
+  "names": [
+   "Kennecott House"
+  ],
+  "lat": 40.7655164,
+  "lng": -111.832369,
+  "entrance": {
+   "lat": 40.7655164,
+   "lng": -111.832369,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MEK",
+  "names": [
+   "Kennecott Mechanical Engineering Building",
+   "Rio Tinto Kennecott Mechanical Engineering Building"
+  ],
+  "lat": 40.7675187,
+  "lng": -111.8478227,
+  "entrance": {
+   "lat": 40.7675187,
+   "lng": -111.8478227,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "KEYB",
+  "names": [
+   "KeyBank"
+  ],
+  "lat": 40.7630872,
+  "lng": -111.8542827,
+  "entrance": {
+   "lat": 40.7630872,
+   "lng": -111.8542827,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "KH",
+  "names": [
+   "Kingsbury Hall",
+   "J T Kingsbury Hall"
+  ],
+  "lat": 40.7662214,
+  "lng": -111.8509526,
+  "entrance": {
+   "lat": 40.7662214,
+   "lng": -111.8509526,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SRB",
+  "names": [
+   "L S Skaggs Pharmacy Building"
+  ],
+  "lat": 40.7683345,
+  "lng": -111.8340392,
+  "entrance": {
+   "lat": 40.7683345,
+   "lng": -111.8340392,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "LIB",
+  "names": [
+   "LDS Institute Building"
+  ],
+  "lat": 40.7597259,
+  "lng": -111.8393263,
+  "entrance": {
+   "lat": 40.7597259,
+   "lng": -111.8393263,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "LH",
+  "names": [
+   "LEAP House"
+  ],
+  "lat": 40.7665659,
+  "lng": -111.8318,
+  "entrance": {
+   "lat": 40.7665659,
+   "lng": -111.8318,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "LNCO",
+  "names": [
+   "Languages and Communication"
+  ],
+  "lat": 40.7635873,
+  "lng": -111.8436685,
+  "entrance": {
+   "lat": 40.7635873,
+   "lng": -111.8436685,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "LEB",
+  "names": [
+   "Layton Engineering Building",
+   "Hedco"
+  ],
+  "lat": 40.7665185,
+  "lng": -111.8454751,
+  "entrance": {
+   "lat": 40.7665185,
+   "lng": -111.8454751,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "LCB",
+  "names": [
+   "LeRoy Cowles Building"
+  ],
+  "lat": 40.765619,
+  "lng": -111.8495629,
+  "entrance": {
+   "lat": 40.765619,
+   "lng": -111.8495629,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "LRC",
+  "names": [
+   "Levi Roberts Cabin"
+  ],
+  "lat": 40.7535395,
+  "lng": -111.817035,
+  "entrance": {
+   "lat": 40.7535395,
+   "lng": -111.817035,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "LS3",
+  "names": [
+   "Library Storage"
+  ],
+  "lat": 40.7543876,
+  "lng": -111.846109,
+  "entrance": {
+   "lat": 40.7543876,
+   "lng": -111.846109,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "LS2",
+  "names": [
+   "Life Sciences"
+  ],
+  "lat": 40.763543,
+  "lng": -111.8501529,
+  "entrance": {
+   "lat": 40.763543,
+   "lng": -111.8501529,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MHC",
+  "names": [
+   "Madsen Health Center"
+  ],
+  "lat": 40.758088,
+  "lng": -111.8361447,
+  "entrance": {
+   "lat": 40.758088,
+   "lng": -111.8361447,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MB",
+  "names": [
+   "Maintenance Building"
+  ],
+  "lat": 40.753475,
+  "lng": -111.8374934,
+  "entrance": {
+   "lat": 40.753475,
+   "lng": -111.8374934,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "UMFA",
+  "names": [
+   "Marcia & John Price Museum Building",
+   "Utah Museum of Fine Arts"
+  ],
+  "lat": 40.7602296,
+  "lng": -111.8433594,
+  "entrance": {
+   "lat": 40.7602296,
+   "lng": -111.8433594,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MCD",
+  "names": [
+   "Marriott Center for Dance"
+  ],
+  "lat": 40.7624003,
+  "lng": -111.8486008,
+  "entrance": {
+   "lat": 40.7624003,
+   "lng": -111.8486008,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "WINTRO",
+  "names": [
+   "Maxwell Wintrobe Research Building"
+  ],
+  "lat": 40.7705776,
+  "lng": -111.834774,
+  "entrance": {
+   "lat": 40.7705776,
+   "lng": -111.834774,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MC",
+  "names": [
+   "Mayflower Condominium"
+  ],
+  "lat": 40.7697691,
+  "lng": -111.8539611,
+  "entrance": {
+   "lat": 40.7697691,
+   "lng": -111.8539611,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MCE",
+  "names": [
+   "Meldrum Civil Engineering Building",
+   "Floyd and Jeri Meldrum Civil Engineering Building"
+  ],
+  "lat": 40.766958,
+  "lng": -111.8455532,
+  "entrance": {
+   "lat": 40.766958,
+   "lng": -111.8455532,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MH",
+  "names": [
+   "Meldrum House"
+  ],
+  "lat": 40.7647656,
+  "lng": -111.8534236,
+  "entrance": {
+   "lat": 40.7647656,
+   "lng": -111.8534236,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MBKMB",
+  "names": [
+   "Michael B. Kauffman Memorial Building"
+  ],
+  "lat": 40.7641511,
+  "lng": -111.8333073,
+  "entrance": {
+   "lat": 40.7641511,
+   "lng": -111.8333073,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MPL",
+  "names": [
+   "Mineral Processsing Lab"
+  ],
+  "lat": 40.7665181,
+  "lng": -111.8448921,
+  "entrance": {
+   "lat": 40.7665181,
+   "lng": -111.8448921,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MSRL",
+  "names": [
+   "Mining Systems Research Lab"
+  ],
+  "lat": 40.7666481,
+  "lng": -111.8445556,
+  "entrance": {
+   "lat": 40.7666481,
+   "lng": -111.8445556,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "MG",
+  "names": [
+   "Myriad Genetics"
+  ],
+  "lat": 40.7625585,
+  "lng": -111.8261198,
+  "entrance": {
+   "lat": 40.7625585,
+   "lng": -111.8261198,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "NHMU",
+  "names": [
+   "Natural History Museum Of Utah"
+  ],
+  "lat": 40.7641321,
+  "lng": -111.8227076,
+  "entrance": {
+   "lat": 40.7641321,
+   "lng": -111.8227076,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "NS",
+  "names": [
+   "Naval Science Building"
+  ],
+  "lat": 40.7666601,
+  "lng": -111.849397,
+  "entrance": {
+   "lat": 40.7666601,
+   "lng": -111.849397,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "NMG",
+  "names": [
+   "North Medical Garage"
+  ],
+  "lat": 40.7717123,
+  "lng": -111.8379248,
+  "entrance": {
+   "lat": 40.7717123,
+   "lng": -111.8379248,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "NWPG",
+  "names": [
+   "Northwest Garage"
+  ],
+  "lat": 40.7665364,
+  "lng": -111.8487258,
+  "entrance": {
+   "lat": 40.7665364,
+   "lng": -111.8487258,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FD612",
+  "names": [
+   "O.C. Tanner Humanities House"
+  ],
+  "lat": 40.7653159,
+  "lng": -111.8322343,
+  "entrance": {
+   "lat": 40.7653159,
+   "lng": -111.8322343,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "OC",
+  "names": [
+   "Officers Club"
+  ],
+  "lat": 40.7660525,
+  "lng": -111.8343325,
+  "entrance": {
+   "lat": 40.7660525,
+   "lng": -111.8343325,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "OA",
+  "names": [
+   "Osteria Amore"
+  ],
+  "lat": 40.7641789,
+  "lng": -111.8543571,
+  "entrance": {
+   "lat": 40.7641789,
+   "lng": -111.8543571,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "ORC",
+  "names": [
+   "Outdoor Recreation Center"
+  ],
+  "lat": 40.7654366,
+  "lng": -111.8290622,
+  "entrance": {
+   "lat": 40.7654366,
+   "lng": -111.8290622,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "PAB",
+  "names": [
+   "Performing Arts Building"
+  ],
+  "lat": 40.7639463,
+  "lng": -111.8479728,
+  "entrance": {
+   "lat": 40.7639463,
+   "lng": -111.8479728,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "PHC",
+  "names": [
+   "Peterson Heritage Center"
+  ],
+  "lat": 40.7661962,
+  "lng": -111.8313944,
+  "entrance": {
+   "lat": 40.7661962,
+   "lng": -111.8313944,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "PLH",
+  "names": [
+   "Pierre Lassonde House",
+   "Lassonde Entrepreneur Center"
+  ],
+  "lat": 40.7671209,
+  "lng": -111.8345959,
+  "entrance": {
+   "lat": 40.7671209,
+   "lng": -111.8345959,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "PCA",
+  "names": [
+   "Pine Cove Apartments"
+  ],
+  "lat": 40.7685249,
+  "lng": -111.8550592,
+  "entrance": {
+   "lat": 40.7685249,
+   "lng": -111.8550592,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "PMT",
+  "names": [
+   "Pioneer Memorial Theatre",
+   "Simmons Pioneer Memorial Theatre"
+  ],
+  "lat": 40.7627763,
+  "lng": -111.8511056,
+  "entrance": {
+   "lat": 40.7627763,
+   "lng": -111.8511056,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "PSB",
+  "names": [
+   "Plumbing Shop Building"
+  ],
+  "lat": 40.7540218,
+  "lng": -111.8469328,
+  "entrance": {
+   "lat": 40.7540218,
+   "lng": -111.8469328,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "PS",
+  "names": [
+   "Police Service"
+  ],
+  "lat": 40.7561661,
+  "lng": -111.8397345,
+  "entrance": {
+   "lat": 40.7561661,
+   "lng": -111.8397345,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "PT",
+  "names": [
+   "Post Theater"
+  ],
+  "lat": 40.7641687,
+  "lng": -111.8319389,
+  "entrance": {
+   "lat": 40.7641687,
+   "lng": -111.8319389,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FD610",
+  "names": [
+   "Poulsen Honors House"
+  ],
+  "lat": 40.7657105,
+  "lng": -111.8325603,
+  "entrance": {
+   "lat": 40.7657105,
+   "lng": -111.8325603,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "PTAB",
+  "names": [
+   "Price Theatre Arts Building"
+  ],
+  "lat": 40.7620373,
+  "lng": -111.8518502,
+  "entrance": {
+   "lat": 40.7620373,
+   "lng": -111.8518502,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "PCHG",
+  "names": [
+   "Primary Children's Hospital Garage"
+  ],
+  "lat": 40.7722821,
+  "lng": -111.8397407,
+  "entrance": {
+   "lat": 40.7722821,
+   "lng": -111.8397407,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "QH",
+  "names": [
+   "Quarry House"
+  ],
+  "lat": 40.7660318,
+  "lng": -111.818619,
+  "entrance": {
+   "lat": 40.7660318,
+   "lng": -111.818619,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "VRTUSB",
+  "names": [
+   "Randall Turpin University Services Building"
+  ],
+  "lat": 40.7614222,
+  "lng": -111.8400639,
+  "entrance": {
+   "lat": 40.7614222,
+   "lng": -111.8400639,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "RBGVC",
+  "names": [
+   "Red Butte Gardens Visitors Center"
+  ],
+  "lat": 40.7655514,
+  "lng": -111.8239235,
+  "entrance": {
+   "lat": 40.7655514,
+   "lng": -111.8239235,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "RBG",
+  "names": [
+   "Red Butte Greenhouse"
+  ],
+  "lat": 40.765831,
+  "lng": -111.8277285,
+  "entrance": {
+   "lat": 40.765831,
+   "lng": -111.8277285,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "RAB",
+  "names": [
+   "Research Administration Building"
+  ],
+  "lat": 40.767829,
+  "lng": -111.8325881,
+  "entrance": {
+   "lat": 40.767829,
+   "lng": -111.8325881,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "RH2",
+  "names": [
+   "Rose House"
+  ],
+  "lat": 40.7662595,
+  "lng": -111.8261062,
+  "entrance": {
+   "lat": 40.7662595,
+   "lng": -111.8261062,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "RH",
+  "names": [
+   "Rosenblatt House"
+  ],
+  "lat": 40.771578,
+  "lng": -111.8450957,
+  "entrance": {
+   "lat": 40.771578,
+   "lng": -111.8450957,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "LAW",
+  "names": [
+   "S J Quinney College of Law"
+  ],
+  "lat": 40.7611882,
+  "lng": -111.8515474,
+  "entrance": {
+   "lat": 40.7611882,
+   "lng": -111.8515474,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SP",
+  "names": [
+   "Sage Point"
+  ],
+  "lat": 40.7630127,
+  "lng": -111.8294854,
+  "entrance": {
+   "lat": 40.7630127,
+   "lng": -111.8294854,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SCSCNC",
+  "names": [
+   "Saint Catherine of Siena Catholic Newman Center",
+   "Saint Catherine of Siena Catholic Church",
+   "Saint Catherine of Siena Newman Center",
+   "Newman Center"
+  ],
+  "lat": 40.7654328,
+  "lng": -111.8528066,
+  "entrance": {
+   "lat": 40.7654328,
+   "lng": -111.8528066,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SLCACF",
+  "names": [
+   "Salt Lake City Arts Council - Finch Lane Art Gallery"
+  ],
+  "lat": 40.7679976,
+  "lng": -111.852975,
+  "entrance": {
+   "lat": 40.7679976,
+   "lng": -111.852975,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SLCMUP",
+  "names": [
+   "Salt Lake City Marriott University Park"
+  ],
+  "lat": 40.7591739,
+  "lng": -111.8304724,
+  "entrance": {
+   "lat": 40.7591739,
+   "lng": -111.8304724,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SR",
+  "names": [
+   "Sarcos Robotics"
+  ],
+  "lat": 40.7616816,
+  "lng": -111.8275353,
+  "entrance": {
+   "lat": 40.7616816,
+   "lng": -111.8275353,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SLS",
+  "names": [
+   "Savage Livery Stable"
+  ],
+  "lat": 40.7543053,
+  "lng": -111.8172766,
+  "entrance": {
+   "lat": 40.7543053,
+   "lng": -111.8172766,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SD",
+  "names": [
+   "School of Dentistry"
+  ],
+  "lat": 40.757239,
+  "lng": -111.8318101,
+  "entrance": {
+   "lat": 40.757239,
+   "lng": -111.8318101,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SCULPT",
+  "names": [
+   "Sculpture Building"
+  ],
+  "lat": 40.760425,
+  "lng": -111.8446581,
+  "entrance": {
+   "lat": 40.760425,
+   "lng": -111.8446581,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SR8",
+  "names": [
+   "Shoreline Ridge 825"
+  ],
+  "lat": 40.7669956,
+  "lng": -111.8303131,
+  "entrance": {
+   "lat": 40.7669956,
+   "lng": -111.8303131,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SR82",
+  "names": [
+   "Shoreline Ridge 826"
+  ],
+  "lat": 40.7672733,
+  "lng": -111.8299819,
+  "entrance": {
+   "lat": 40.7672733,
+   "lng": -111.8299819,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SR83",
+  "names": [
+   "Shoreline Ridge 827"
+  ],
+  "lat": 40.7672915,
+  "lng": -111.8293606,
+  "entrance": {
+   "lat": 40.7672915,
+   "lng": -111.8293606,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SR84",
+  "names": [
+   "Shoreline Ridge 828"
+  ],
+  "lat": 40.7668874,
+  "lng": -111.8287471,
+  "entrance": {
+   "lat": 40.7668874,
+   "lng": -111.8287471,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SR85",
+  "names": [
+   "Shoreline Ridge 829"
+  ],
+  "lat": 40.7666043,
+  "lng": -111.8291449,
+  "entrance": {
+   "lat": 40.7666043,
+   "lng": -111.8291449,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SR86",
+  "names": [
+   "Shoreline Ridge 830"
+  ],
+  "lat": 40.7664876,
+  "lng": -111.8296522,
+  "entrance": {
+   "lat": 40.7664876,
+   "lng": -111.8296522,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SRG",
+  "names": [
+   "Shoreline Ridge Garage"
+  ],
+  "lat": 40.7678905,
+  "lng": -111.8301933,
+  "entrance": {
+   "lat": 40.7678905,
+   "lng": -111.8301933,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SDO",
+  "names": [
+   "Shuttle Division Offices"
+  ],
+  "lat": 40.762424,
+  "lng": -111.8305237,
+  "entrance": {
+   "lat": 40.762424,
+   "lng": -111.8305237,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "LSSB",
+  "names": [
+   "Skaggs Applied Science Building"
+  ],
+  "lat": 40.7632481,
+  "lng": -111.8515867,
+  "entrance": {
+   "lat": 40.7632481,
+   "lng": -111.8515867,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "BEHS",
+  "names": [
+   "Social & Behavioral Science"
+  ],
+  "lat": 40.7614498,
+  "lng": -111.8463353,
+  "entrance": {
+   "lat": 40.7614498,
+   "lng": -111.8463353,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SBEH",
+  "names": [
+   "Social & Behavioral Science Lecture Hall"
+  ],
+  "lat": 40.7609956,
+  "lng": -111.8459741,
+  "entrance": {
+   "lat": 40.7609956,
+   "lng": -111.8459741,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SW",
+  "names": [
+   "Social Work"
+  ],
+  "lat": 40.7609367,
+  "lng": -111.8467375,
+  "entrance": {
+   "lat": 40.7609367,
+   "lng": -111.8467375,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SGC",
+  "names": [
+   "Somerset Garden Condominium"
+  ],
+  "lat": 40.7697061,
+  "lng": -111.8546784,
+  "entrance": {
+   "lat": 40.7697061,
+   "lng": -111.8546784,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SAEC",
+  "names": [
+   "Sorenson Arts and Education Complex",
+   "Beverley Taylor Sorenson Arts and Education Complex"
+  ],
+  "lat": 40.7629175,
+  "lng": -111.841604,
+  "entrance": {
+   "lat": 40.7629175,
+   "lng": -111.841604,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SCMI",
+  "names": [
+   "Sorenson Center for Medical Inovation"
+  ],
+  "lat": 40.7691698,
+  "lng": -111.8369077,
+  "entrance": {
+   "lat": 40.7691698,
+   "lng": -111.8369077,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SHPC",
+  "names": [
+   "Sorenson High Performance Center"
+  ],
+  "lat": 40.7625619,
+  "lng": -111.8401717,
+  "entrance": {
+   "lat": 40.7625619,
+   "lng": -111.8401717,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "BIOL",
+  "names": [
+   "South Biology"
+  ],
+  "lat": 40.7635213,
+  "lng": -111.8495582,
+  "entrance": {
+   "lat": 40.7635213,
+   "lng": -111.8495582,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SMG",
+  "names": [
+   "South Medical Garage"
+  ],
+  "lat": 40.7692981,
+  "lng": -111.8325441,
+  "entrance": {
+   "lat": 40.7692981,
+   "lng": -111.8325441,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SPM",
+  "names": [
+   "Space Planning and Management"
+  ],
+  "lat": 40.7687142,
+  "lng": -111.8487041,
+  "entrance": {
+   "lat": 40.7687142,
+   "lng": -111.8487041,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SEFH",
+  "names": [
+   "Spencer Eccles Field House"
+  ],
+  "lat": 40.7553771,
+  "lng": -111.8462064,
+  "entrance": {
+   "lat": 40.7553771,
+   "lng": -111.8462064,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SP2",
+  "names": [
+   "Sponsored Projects"
+  ],
+  "lat": 40.7682956,
+  "lng": -111.848612,
+  "entrance": {
+   "lat": 40.7682956,
+   "lng": -111.848612,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SH",
+  "names": [
+   "Sprout House"
+  ],
+  "lat": 40.7666504,
+  "lng": -111.8233691,
+  "entrance": {
+   "lat": 40.7666504,
+   "lng": -111.8233691,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SS",
+  "names": [
+   "Stadium Substation"
+  ],
+  "lat": 40.7592489,
+  "lng": -111.8470751,
+  "entrance": {
+   "lat": 40.7592489,
+   "lng": -111.8470751,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SILL",
+  "names": [
+   "Sterling Sill Center"
+  ],
+  "lat": 40.7653352,
+  "lng": -111.8437026,
+  "entrance": {
+   "lat": 40.7653352,
+   "lng": -111.8437026,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SSB",
+  "names": [
+   "Student Services Building"
+  ],
+  "lat": 40.7650124,
+  "lng": -111.8481337,
+  "entrance": {
+   "lat": 40.7650124,
+   "lng": -111.8481337,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "SUBW",
+  "names": [
+   "Subway"
+  ],
+  "lat": 40.7643305,
+  "lng": -111.8534879,
+  "entrance": {
+   "lat": 40.7643305,
+   "lng": -111.8534879,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "FASB",
+  "names": [
+   "Sutton Building",
+   "Frederick Albert Sutton Building"
+  ],
+  "lat": 40.7666181,
+  "lng": -111.8478504,
+  "entrance": {
+   "lat": 40.7666181,
+   "lng": -111.8478504,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "TDS",
+  "names": [
+   "Tanner Dance Studios"
+  ],
+  "lat": 40.7625151,
+  "lng": -111.8411449,
+  "entrance": {
+   "lat": 40.7625151,
+   "lng": -111.8411449,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "TBBC",
+  "names": [
+   "Thatcher Chemistry Building"
+  ],
+  "lat": 40.7616979,
+  "lng": -111.84961,
+  "entrance": {
+   "lat": 40.7616979,
+   "lng": -111.84961,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "THEB",
+  "names": [
+   "The Bungalow"
+  ],
+  "lat": 40.7551091,
+  "lng": -111.8533683,
+  "entrance": {
+   "lat": 40.7551091,
+   "lng": -111.8533683,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "CJCLDS",
+  "names": [
+   "The Church of Jesus Christ of Latter-day Saints"
+  ],
+  "lat": 40.7593391,
+  "lng": -111.8353393,
+  "entrance": {
+   "lat": 40.7593391,
+   "lng": -111.8353393,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "THED",
+  "names": [
+   "The Drayton"
+  ],
+  "lat": 40.7708088,
+  "lng": -111.8557207,
+  "entrance": {
+   "lat": 40.7708088,
+   "lng": -111.8557207,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "GPHP",
+  "names": [
+   "The Garden Place at Heritage Park"
+  ],
+  "lat": 40.7542268,
+  "lng": -111.8208359,
+  "entrance": {
+   "lat": 40.7542268,
+   "lng": -111.8208359,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "THEH",
+  "names": [
+   "The Hillside"
+  ],
+  "lat": 40.7647316,
+  "lng": -111.8543308,
+  "entrance": {
+   "lat": 40.7647316,
+   "lng": -111.8543308,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "THEM",
+  "names": [
+   "The McMullen"
+  ],
+  "lat": 40.7702845,
+  "lng": -111.8546891,
+  "entrance": {
+   "lat": 40.7702845,
+   "lng": -111.8546891,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "THES",
+  "names": [
+   "The Summit"
+  ],
+  "lat": 40.7588855,
+  "lng": -111.854682,
+  "entrance": {
+   "lat": 40.7588855,
+   "lng": -111.854682,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "TICK",
+  "names": [
+   "Ticketing"
+  ],
+  "lat": 40.7673524,
+  "lng": -111.8409444,
+  "entrance": {
+   "lat": 40.7673524,
+   "lng": -111.8409444,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "TFSB",
+  "names": [
+   "Track and Field Storage Building"
+  ],
+  "lat": 40.7672237,
+  "lng": -111.8391648,
+  "entrance": {
+   "lat": 40.7672237,
+   "lng": -111.8391648,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "TB",
+  "names": [
+   "Transformer Building",
+   "The Fountain of Ute"
+  ],
+  "lat": 40.75873,
+  "lng": -111.8512449,
+  "entrance": {
+   "lat": 40.75873,
+   "lng": -111.8512449,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "UHC",
+  "names": [
+   "University Heights Condominiums"
+  ],
+  "lat": 40.7665267,
+  "lng": -111.8544385,
+  "entrance": {
+   "lat": 40.7665267,
+   "lng": -111.8544385,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "US",
+  "names": [
+   "University Surplus"
+  ],
+  "lat": 40.7644787,
+  "lng": -111.8301865,
+  "entrance": {
+   "lat": 40.7644787,
+   "lng": -111.8301865,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "UUCS",
+  "names": [
+   "University of Utah Campus Store"
+  ],
+  "lat": 40.7637302,
+  "lng": -111.8475504,
+  "entrance": {
+   "lat": 40.7637302,
+   "lng": -111.8475504,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "UHOSP",
+  "names": [
+   "University of Utah Hospital"
+  ],
+  "lat": 40.7715653,
+  "lng": -111.8365318,
+  "entrance": {
+   "lat": 40.7715653,
+   "lng": -111.8365318,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "UUOC",
+  "names": [
+   "University of Utah Orthopaedic Center"
+  ],
+  "lat": 40.7564412,
+  "lng": -111.8330482,
+  "entrance": {
+   "lat": 40.7564412,
+   "lng": -111.8330482,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "UUTO",
+  "names": [
+   "University of Utah Ticket Office",
+   "Olympic Visitors Center"
+  ],
+  "lat": 40.758846,
+  "lng": -111.8497876,
+  "entrance": {
+   "lat": 40.758846,
+   "lng": -111.8497876,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "UDECPM",
+  "names": [
+   "Utah Diabetes & Endocrinology Center & Pain Management Center"
+  ],
+  "lat": 40.756338,
+  "lng": -111.8265916,
+  "entrance": {
+   "lat": 40.756338,
+   "lng": -111.8265916,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "VHB2",
+  "names": [
+   "Valor House (Bldg 20)"
+  ],
+  "lat": 40.7537506,
+  "lng": -111.8415131,
+  "entrance": {
+   "lat": 40.7537506,
+   "lng": -111.8415131,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "VOICE",
+  "names": [
+   "Voice and Opera Center"
+  ],
+  "lat": 40.766834,
+  "lng": -111.8518887,
+  "entrance": {
+   "lat": 40.766834,
+   "lng": -111.8518887,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "WT",
+  "names": [
+   "Wasatch Towers"
+  ],
+  "lat": 40.7654732,
+  "lng": -111.8556524,
+  "entrance": {
+   "lat": 40.7654732,
+   "lng": -111.8556524,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "WP",
+  "names": [
+   "Water Pavilion"
+  ],
+  "lat": 40.7670948,
+  "lng": -111.825255,
+  "entrance": {
+   "lat": 40.7670948,
+   "lng": -111.825255,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "WL",
+  "names": [
+   "Watson Labs"
+  ],
+  "lat": 40.7560146,
+  "lng": -111.8231371,
+  "entrance": {
+   "lat": 40.7560146,
+   "lng": -111.8231371,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "WF",
+  "names": [
+   "Wells Fargo"
+  ],
+  "lat": 40.7638481,
+  "lng": -111.8534695,
+  "entrance": {
+   "lat": 40.7638481,
+   "lng": -111.8534695,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "WMG",
+  "names": [
+   "West Medical Garage"
+  ],
+  "lat": 40.7701322,
+  "lng": -111.8371016,
+  "entrance": {
+   "lat": 40.7701322,
+   "lng": -111.8371016,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "WVCP",
+  "names": [
+   "West Village Central Plant"
+  ],
+  "lat": 40.7534067,
+  "lng": -111.833592,
+  "entrance": {
+   "lat": 40.7534067,
+   "lng": -111.833592,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "WBB",
+  "names": [
+   "William Browning Building"
+  ],
+  "lat": 40.7662476,
+  "lng": -111.8477142,
+  "entrance": {
+   "lat": 40.7662476,
+   "lng": -111.8477142,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "ST",
+  "names": [
+   "William Stewart Building"
+  ],
+  "lat": 40.7634276,
+  "lng": -111.8509572,
+  "entrance": {
+   "lat": 40.7634276,
+   "lng": -111.8509572,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "WB",
+  "names": [
+   "Williams Building",
+   "University of Utah Department of Pediatrics"
+  ],
+  "lat": 40.7645026,
+  "lng": -111.8270661,
+  "entrance": {
+   "lat": 40.7645026,
+   "lng": -111.8270661,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ },
+ {
+  "code": "BRBD",
+  "names": [
+   "bioMérieux / BioFire Diagnostics"
+  ],
+  "lat": 40.7578411,
+  "lng": -111.8200166,
+  "entrance": {
+   "lat": 40.7578411,
+   "lng": -111.8200166,
+   "step_free": "unverified"
+  },
+  "source": "osm"
+ }
 ]

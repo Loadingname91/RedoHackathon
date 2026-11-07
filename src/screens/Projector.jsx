@@ -55,7 +55,7 @@ export default function Projector({ param: eventId }) {
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12, marginBottom: 12 }} aria-live="polite">
             <p style={{ font: "700 28px 'Space Grotesk', sans-serif", margin: 0 }}>{reached ? 'The room lit up!' : `${links} / ${goal} links`}</p>
-            <p style={{ font: '600 20px Inter, sans-serif', color: '#FFE2A3', margin: 0 }}>{reached ? `${links} links tonight` : `${goal - links} more to light up the room`}</p>
+            <p style={{ font: '600 20px Inter, sans-serif', color: '#FFE2A3', margin: 0 }}>{reached ? `${links} links in this room` : `${goal - links} more to light up the room`}</p>
           </div>
           <div role="progressbar" aria-valuemin={0} aria-valuemax={goal} aria-valuenow={Math.min(links, goal)} aria-label="Room goal"
             style={{ height: 22, borderRadius: 11, background: '#1C2550', overflow: 'hidden', border: '1px solid #36407A' }}>

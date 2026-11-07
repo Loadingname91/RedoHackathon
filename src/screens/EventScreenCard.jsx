@@ -74,6 +74,13 @@ export default function EventScreenCard({ param }) {
         <h1 style={{ fontSize: 26, lineHeight: 1.15 }}>{e.title}</h1>
         <p className="cu-small" style={{ margin: 0 }}>{e.student_run ? 'Student-run · not a club post' : e.host || 'Host not listed'}</p>
         <p style={{ margin: 0 }}>{placeOf(e)}</p>
+        {/* Directions up front: in-app walking (or step-free) route to the building's entrance */}
+        {b ? (
+          <a className="btn cu-directions" href={`#/nav/${e.id}`} style={{ justifySelf: 'start', marginTop: 4 }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.7 11.3l-9-9a1 1 0 00-1.4 0l-9 9a1 1 0 000 1.4l9 9a1 1 0 001.4 0l9-9a1 1 0 000-1.4zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>
+            Directions
+          </a>
+        ) : <p className="cu-small" style={{ margin: 0 }}>No directions yet: this building isn't on our campus map.</p>}
       </header>
 
       {e.source === 'campus_connect' && <p className="cu-note" style={{ margin: 0 }}>From Campus Connect. Food and status aren't tracked live until the host claims it.</p>}
