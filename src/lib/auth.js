@@ -46,7 +46,20 @@ export function useAuth() {
 export const signInWithGoogle = () =>
   supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: `${location.origin}/` } })
 
-export const signOut = async () => { await supabase.auth.signOut(); setUid(null); setPrefs({ role: null, landed: false }); location.hash = '' }
+// Sign out = a clean slate on this browser: session, check-ins, host links and view choice all go, then a full reload
+// so every screen starts from the sign-in page (no stale map from the previous account).
+export const signOut = async () => {
+  try { await supabase.auth.signOut() } catch {} // still clear locally if the network call fails
+  setUid(null)
+  try { for (const k of ['cu.sessions', 'cu.host', 'cu.test-role', 'cu.test-onboarded']) localStorage.removeItem(k); sessionStorage.removeItem('cu.next') } catch {}
+  setPrefs({ role: null, landed: false })
+  location.replace(location.origin + '/')
+}
+// Deletes the account and everything tied to it on the server, then signs out to the sign-in page.
+export const deleteAccount = async () => {
+  if (!testRole()) { const { error } = await supabase.rpc('delete_my_account'); if (error) throw new Error(error.message) }
+  await signOut()
+}
 
 // Where each role lands after signing in.
 export const homeFor = (role) => (role === 'admin' ? '#/admin' : role === 'organizer' ? '#/host' : '#/')
