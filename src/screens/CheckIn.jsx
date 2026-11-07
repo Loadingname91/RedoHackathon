@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { supabase, rpc, EVENT_COLS } from '../lib/supabase.js'
-import { deviceId, getSession, setSession, prefs } from '../lib/identity.js'
+import { deviceId, getSession, setSession, prefs, setPrefs } from '../lib/identity.js'
+import { INTERESTS } from '../lib/foryou.js'
 import { SPARK } from '../components/social/Sky.jsx'
 import '../components/social/social.css'
 
-const INTERESTS = ['Games', 'Pizza', 'Music', 'Coding', 'Hiking', 'Art', 'Film', 'Skiing']
 const NAMES = ['Comet', 'Nova', 'Orbit', 'Vega', 'Pulsar', 'Lumen', 'Quill', 'Juniper']
 const until = (iso) => iso ? new Date(iso).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Denver' }) : null
 
@@ -13,7 +13,7 @@ export default function CheckIn({ param: eventId }) {
   const existing = getSession(eventId)
   const [event, setEvent] = useState(null)
   const [nickname, setNickname] = useState(existing?.nickname ?? NAMES[Math.floor(Math.random() * NAMES.length)])
-  const [interests, setInterests] = useState([])
+  const [interests, setInterests] = useState(prefs().interests ?? [])
   const [clue, setClue] = useState('')
   const [prefersText, setPrefersText] = useState(!!prefs().prefersText)
   const [comeToMe, setComeToMe] = useState(!!prefs().comeToMe)
@@ -34,6 +34,7 @@ export default function CheckIn({ param: eventId }) {
         p_clue: clue.trim() || null, p_prefers_text: prefersText, p_come_to_me: comeToMe,
       })
       setSession(eventId, { ...r, nickname: r.nickname ?? nickname.trim() })
+      setPrefs({ interests }) // feeds the map's "For you" ranking; stays on this phone
       location.hash = `#/at/${eventId}`
     } catch (err) { setError(err.message); setBusy(false) }
   }
