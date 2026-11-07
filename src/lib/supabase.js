@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 
-export const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY)
+// pkce: Google sign-in returns ?code= in the query string, so it doesn't collide with the hash router.
+export const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY, { auth: { flowType: 'pkce' } })
 
 // Every write goes through a database function. Throws the server's message (e.g. "code expired or not at this event").
 export async function rpc(fn, args) {

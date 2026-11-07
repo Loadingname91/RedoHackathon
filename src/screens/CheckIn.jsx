@@ -12,8 +12,8 @@ const until = (iso) => iso ? new Date(iso).toLocaleTimeString('en-US', { hour: '
 export default function CheckIn({ param: eventId }) {
   const existing = getSession(eventId)
   const [event, setEvent] = useState(null)
-  const [nickname, setNickname] = useState(existing?.nickname ?? NAMES[Math.floor(Math.random() * NAMES.length)])
-  const [interests, setInterests] = useState(prefs().interests ?? [])
+  const [nickname, setNickname] = useState(existing?.nickname ?? prefs().nickname ?? NAMES[Math.floor(Math.random() * NAMES.length)])
+  const [interests, setInterests] = useState(prefs().interests ?? []) // from your profile when signed in
   const [clue, setClue] = useState('')
   const [prefersText, setPrefersText] = useState(!!prefs().prefersText)
   const [comeToMe, setComeToMe] = useState(!!prefs().comeToMe)
