@@ -124,6 +124,7 @@ export default function Landing() {
         <ul className="lp-all-grid">
           {[
             ['map', 'Live planet map', 'Live, later and imported events at a glance, with your location.'],
+            ['star', 'For you', 'Events ranked for your interests by a learned model, with the reason shown.'],
             ['clock', 'What fits my gap', 'Load your class calendar. Events that fit your free time glow.'],
             ['nav', 'Walk there in the app', 'Turn-by-turn walking routes, step-free if you need them.'],
             ['food', 'Live food status', 'Hosts mark pizza available, running low or gone.'],
@@ -142,9 +143,10 @@ export default function Landing() {
       </section>
 
       <section className="lp-tech lp-reveal" aria-labelledby="t-h">
-        <h2 id="t-h">The smart parts, and what they unlock</h2>
+        <h2 id="t-h">The AI and ML inside, and what they unlock</h2>
         <div className="lp-tech-list">
           {[
+            ['For you ranking', 'Machine learning: a model trained by gradient descent', 'Learns which offerings people with your interests rate highly, from 3,000 simulated student ratings (32% lower error than guessing the average), then adds timing and your free gap. Runs on your phone.', 'Your best events first, each with a plain reason why.'],
             ['Language AI', 'Claude (LLM)', 'Turns messy club posts into clean events: time, building, room, food, access. Flags what it isn’t sure about instead of inventing it.', 'Organizers post in a minute. Students see accurate details.'],
             ['Interest matching', 'Fuzzy text similarity (trigrams)', 'Matches interests written different ways: “boardgames” and “Board games”, “Ski” and “Skiing”, even typos like “Cofee”.', 'Your half is someone who actually likes what you like.'],
             ['Constellations', 'Graph of confirmed connections', 'People are points, confirmed connections are lines. When three people are joined, the app spots the new group instantly on every phone.', 'The moment a group forms, everyone sees it together.'],
