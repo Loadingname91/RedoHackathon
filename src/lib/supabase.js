@@ -13,4 +13,4 @@ export async function rpc(fn, args) {
 export const PARTICIPANT_COLS = 'id,event_id,nickname,interests,prefers_text,come_to_me,half_word,created_at,expires_at'
 
 // events: host_device is hidden from browsers, so never select('*').
-export const EVENT_COLS = 'id,title,host,start_at,end_at,building_code,room,offerings,access,source_text,room_goal,created_at,source,student_run,visibility'
+export const EVENT_COLS = 'id,title,host,start_at,end_at,building_code,room,offerings,access,source_text,room_goal,created_at,source,student_run,visibility,source_url'

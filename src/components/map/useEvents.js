@@ -3,7 +3,7 @@ import { supabase } from '../../lib/supabase.js'
 import { deviceId } from '../../lib/identity.js'
 import buildings from '../../data/buildings.json'
 
-export const EVENT_COLS = 'id,title,host,start_at,end_at,building_code,room,offerings,access,source_text,source,student_run'
+export const EVENT_COLS = 'id,title,host,start_at,end_at,building_code,room,offerings,access,source_text,source,student_run,source_url'
 export const buildingByCode = Object.fromEntries(buildings.map((b) => [b.code, b]))
 export { buildings }
 

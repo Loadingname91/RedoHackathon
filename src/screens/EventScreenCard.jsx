@@ -16,6 +16,9 @@ const ACCESS = [
 ]
 const val = (v) => v === 'yes' ? 'Yes' : v === 'no' ? 'No' : !v || v === 'unknown' ? 'unknown' : String(v)
 
+// The feed's URL is untrusted: only link to Campus Connect over https.
+const ccLink = (u) => (typeof u === 'string' && u.startsWith('https://campusconnect.utah.edu/') ? u : null)
+
 export default function EventScreenCard({ param }) {
   const { events, counts, error } = useEvents()
   const [showSource, setShowSource] = useState(false)
@@ -48,6 +51,11 @@ export default function EventScreenCard({ param }) {
     <main className="screen" style={{ display: 'grid', gap: 14, alignContent: 'start' }}>
       <p className="cu-small" style={{ margin: 0, letterSpacing: 1 }}>ORIGINAL ANNOUNCEMENT · {e.source === 'campus_connect' ? 'from Campus Connect' : 'pasted by the host'}</p>
       <p className="card" style={{ whiteSpace: 'pre-wrap', margin: 0 }}>{e.source_text}</p>
+      {e.source === 'campus_connect' && (
+        <a className="btn primary" href={ccLink(e.source_url) || 'https://campusconnect.utah.edu/'} target="_blank" rel="noopener noreferrer">
+          {ccLink(e.source_url) ? 'Open this event on Campus Connect' : 'Find it on Campus Connect'}<span className="sr-only"> (opens in a new tab)</span>
+        </a>
+      )}
       <p className="cu-small" style={{ margin: 0 }}>The building and offerings above were pulled from this post{e.source === 'campus_connect' ? '' : ' and checked by the organizer before publishing'}.</p>
       <button onClick={() => setShowSource(false)}>Back to event details</button>
     </main>
