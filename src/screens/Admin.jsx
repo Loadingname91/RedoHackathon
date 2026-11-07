@@ -87,6 +87,8 @@ export default function Admin() {
         {last?.error && <p style={{ color: 'var(--coral)', margin: 0 }}>Last error: {last.error}</p>}
       </section>
 
+      <Roles adminKey={key} />
+
       <section style={{ marginTop: 20 }}>
         <h2 style={{ fontSize: 18, marginBottom: 8 }}>Run history</h2>
         <div style={{ overflowX: 'auto' }} className="card">
@@ -122,5 +124,31 @@ export default function Admin() {
         ))}
       </section>
     </main>
+  )
+}
+
+// Grant organizer/admin to an account that has signed in with Google at least once.
+function Roles({ adminKey }) {
+  const [email, setEmail] = useState(''), [role, setRole] = useState('organizer'), [msg, setMsg] = useState('')
+  const save = async (e) => {
+    e.preventDefault()
+    try { await rpc('set_role', { p_admin: adminKey, p_email: email, p_role: role }); setMsg(`${email} is now ${role === 'student' ? 'a student' : 'an ' + role}. They'll see it next time they open the app.`); setEmail('') }
+    catch (er) { setMsg(er.message) }
+  }
+  return (
+    <section style={{ marginTop: 20 }} className="card">
+      <h2 style={{ fontSize: 18, marginBottom: 8 }}>Roles</h2>
+      <form onSubmit={save} style={{ display: 'grid', gap: 10 }}>
+        <div><label htmlFor="role-email">Google account email</label>
+          <input id="role-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="club.officer@gmail.com" /></div>
+        <div><label htmlFor="role-pick">Role</label>
+          <select id="role-pick" value={role} onChange={(e) => setRole(e.target.value)}>
+            <option value="organizer">Organizer</option><option value="admin">Admin</option><option value="student">Student</option>
+          </select></div>
+        <button className="primary" type="submit">Save role</button>
+        {msg && <p role="status" style={{ margin: 0 }}>{msg}</p>}
+        <p className="muted" style={{ margin: 0, fontSize: 14 }}>They need to sign in once first. Everyone starts as a student.</p>
+      </form>
+    </section>
   )
 }
